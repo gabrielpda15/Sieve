@@ -43,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GraphicsExtension.cs" />
+    <Compile Include="Header.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PainelArrendondado.cs">
       <SubType>Component</SubType>
     </Compile>

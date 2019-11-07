@@ -17,7 +17,7 @@ namespace Sieve
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Venda());
+            Application.Run(new Estoque());
         }
     }
 }

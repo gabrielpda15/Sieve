@@ -1,3 +1,4 @@
+using Sieve.API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
-namespace SieveAPI
+namespace Sieve.API
 {
     public class Startup
     {
+        public const string CONN_STRING = "MySQL";
+        public static readonly Version SERVER_VERSION = new Version(8, 0, 4);
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -22,13 +28,18 @@ namespace SieveAPI
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<SieveDbContext>(options =>
+            {
+                options.UseMySql(Configuration.GetConnectionString(CONN_STRING), o =>
+                {
+                    o.ServerVersion(SERVER_VERSION, ServerType.MySql);
+                });
+            }, ServiceLifetime.Scoped);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
