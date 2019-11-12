@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sieve.API.Models\Sieve.API.Models.csproj" />
+    <ProjectReference Include="..\Sieve.API.Repository\Sieve.API.Repository.csproj" />
   </ItemGroup>
 
 </Project>

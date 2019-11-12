@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29123.89
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sieve.API", "Sieve.API\Sieve.API.csproj", "{FB7BF316-97CB-4F55-9B5B-F64EBC05AA0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sieve.API.Models", "Sieve.API.Models\Sieve.API.Models.csproj", "{620B8B2F-B238-4B0F-9EDA-9FD3599ECD19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sieve.API.Models", "Sieve.API.Models\Sieve.API.Models.csproj", "{620B8B2F-B238-4B0F-9EDA-9FD3599ECD19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sieve.API.Repository", "Sieve.API.Repository\Sieve.API.Repository.csproj", "{385F1BB8-E080-4E36-9257-27060CA14CF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{620B8B2F-B238-4B0F-9EDA-9FD3599ECD19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{620B8B2F-B238-4B0F-9EDA-9FD3599ECD19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{620B8B2F-B238-4B0F-9EDA-9FD3599ECD19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{385F1BB8-E080-4E36-9257-27060CA14CF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{385F1BB8-E080-4E36-9257-27060CA14CF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{385F1BB8-E080-4E36-9257-27060CA14CF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{385F1BB8-E080-4E36-9257-27060CA14CF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
