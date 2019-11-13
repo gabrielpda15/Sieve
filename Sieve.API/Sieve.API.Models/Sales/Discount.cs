@@ -10,28 +10,25 @@ namespace Sieve.API.Models.Sales
     [Table("Discount")]
     public class Discount : Base.BaseEntity
     {
-        [Required(ErrorMessage = "Data Inicial é obrigatório")]
+        [Required]
         [Display(Name = "Data Inicial")]
         public DateTime InitialDate { get; set; }
 
-        [Display(Name = "Quantidade Minima")]
         public int? MinQnt { get; set; }
 
-        [Required(ErrorMessage = "Porcentagem é obrigatório")]
+        [Required]
         [Display(Name = "Porcentagem")]
         public double Percentage { get; set; }
 
-        [Required(ErrorMessage = "Obrigatoriedade de Cartão é obrigatório")]
-        [Display(Name = "Cartão Obrigatório")]
+        [Required]
+        [Display(Name = "Deve ter cartão")]
         public bool MustHaveCard { get; set; }
 
-        [Display(Name = "Data Final")]
         public DateTime? ShelfLife { get; set; }
 
-        [Display(Name = "Ativo")]
         public bool Active { get; set; }
 
-        [Required(ErrorMessage = "Produto é obrigatório")]
+        [Required]
         [Display(Name = "Produto")]
         public virtual Product Product { get; set; }
     }

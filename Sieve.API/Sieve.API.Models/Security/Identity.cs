@@ -10,24 +10,25 @@ namespace Sieve.API.Models.Security
     public class Identity : Base.BaseEntity
     {
         [DataType("varchar")]
-        [Required(ErrorMessage = "Usuário é obrigatório")]
-        [StringLength(30, ErrorMessage = "Usuário deve ter no máximo 30 caracteres")]
+        [Required]
+        [StringLength(30)]
         [Display(Name = "Usuário")]
         public string Username { get; set; }
 
         [NotMapped]
-        [Required(ErrorMessage = "Senha é obrigatória")]
-        [StringLength(30, MinimumLength = 8, ErrorMessage = "Senha deve ter no máximo 30 caracteres")]
+        [Required]
+        [StringLength(30, MinimumLength = 8)]
         [Display(Name = "Senha")]
         public string Password { get; set; }
 
         [DataType("varchar")]
-        [Required(ErrorMessage = "Hash da senha é obrigatório")]
-        [StringLength(255, ErrorMessage = "Hash da senha deve ter no máximo 255 caractéres")]
+        [Required]
+        [StringLength(255)]
+        [Display(Name = "Hash da senha")]
         public string PasswordHash { get; set; }
 
         [DataType("varchar")]
-        [StringLength(80, ErrorMessage = "Email deve ter no máximo 80 caracteres")]
+        [StringLength(80)]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
