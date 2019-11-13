@@ -23,11 +23,18 @@ namespace Sieve.API.Repository
 
             this.repos = new Dictionary<Type, object>();
 
-            var repos = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.GetCustomAttribute<RepositoryAttribute>() != null);
-            foreach (var repo in repos)
+            try
             {
-                var type = repo.BaseType.GetGenericArguments().FirstOrDefault();
-                this.repos.Add(type, Activator.CreateInstance(repo, this.context));
+                var repos = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.GetCustomAttribute<RepositoryAttribute>() != null);
+                foreach (var repo in repos)
+                {
+                    var type = repo.BaseType.GetGenericArguments().FirstOrDefault();
+                    this.repos.Add(type, Activator.CreateInstance(repo, this.context));
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro na leitura do assembly dos Repositórios, verifique a Inner Exception para mais detalhes.", ex);
             }
         }
 
