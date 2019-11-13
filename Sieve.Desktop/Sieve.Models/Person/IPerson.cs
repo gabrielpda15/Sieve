@@ -6,8 +6,8 @@ namespace Sieve.Models.Person
 {
     public interface IPerson
     {
-        public string PhoneNumber { get; set; }
-        public string Email { get; set; }
-        public string Address { get; set; }
+         string PhoneNumber { get; set; }
+         string Email { get; set; }
+         string Address { get; set; }
     }
 }

@@ -81,6 +81,30 @@
     <Compile Include="Janelas\Estoque.Designer.cs">
       <DependentUpon>Estoque.cs</DependentUpon>
     </Compile>
+    <Compile Include="Janelas\Formularios\ClienteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Janelas\Formularios\ClienteForm.Designer.cs">
+      <DependentUpon>ClienteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\Formularios\FornecedorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Janelas\Formularios\FornecedorForm.Designer.cs">
+      <DependentUpon>FornecedorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\Formularios\FuncionarioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Janelas\Formularios\FuncionarioForm.Designer.cs">
+      <DependentUpon>FuncionarioForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\Formularios\ProdutoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Janelas\Formularios\ProdutoForm.Designer.cs">
+      <DependentUpon>ProdutoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Janelas\InicioVenda.cs">
       <SubType>Form</SubType>
     </Compile>

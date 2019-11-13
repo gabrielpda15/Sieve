@@ -6,9 +6,9 @@ namespace Sieve.Models.Person
 {
     public interface INaturalPerson : IPerson
     {
-        public string CPF { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime? Birthday { get; set; }
+        string CPF { get; set; }
+        string FirstName { get; set; }
+        string LastName { get; set; }
+        DateTime? Birthday { get; set; }
     }
 }

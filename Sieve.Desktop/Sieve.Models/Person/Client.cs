@@ -1,4 +1,4 @@
-﻿using Sieve.API.Models.Sales;
+﻿using Sieve.Models.Sales;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

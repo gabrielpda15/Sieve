@@ -1,4 +1,4 @@
-﻿using Sieve.API.Models.Security;
+﻿using Sieve.Models.Security;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
