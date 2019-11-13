@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sieve", "Sieve\Sieve.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sieve.Controles", "Sieve.Controles\Sieve.Controles.csproj", "{C515C954-B6E4-4D52-B19F-C734922026DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sieve.Models", "Sieve.Models\Sieve.Models.csproj", "{509819BA-68F6-4783-BBF7-E286EB92B6BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C515C954-B6E4-4D52-B19F-C734922026DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C515C954-B6E4-4D52-B19F-C734922026DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C515C954-B6E4-4D52-B19F-C734922026DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{509819BA-68F6-4783-BBF7-E286EB92B6BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{509819BA-68F6-4783-BBF7-E286EB92B6BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{509819BA-68F6-4783-BBF7-E286EB92B6BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{509819BA-68F6-4783-BBF7-E286EB92B6BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
