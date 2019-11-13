@@ -63,6 +63,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Janelas\ConsultaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Janelas\ConsultaProduto.Designer.cs">
+      <DependentUpon>ConsultaProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\DigitarCodigoProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Janelas\DigitarCodigoProduto.Designer.cs">
+      <DependentUpon>DigitarCodigoProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Janelas\Estoque.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +107,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Janelas\ConsultaProduto.resx">
+      <DependentUpon>ConsultaProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Janelas\DigitarCodigoProduto.resx">
+      <DependentUpon>DigitarCodigoProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Janelas\InicioVenda.resx">
+      <DependentUpon>InicioVenda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Janelas\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>

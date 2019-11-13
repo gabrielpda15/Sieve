@@ -13,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using Sieve.API.Repository;
+using Sieve.API.Repository.Security;
 
 namespace Sieve.API
 {
@@ -38,6 +40,23 @@ namespace Sieve.API
                     o.ServerVersion(SERVER_VERSION, ServerType.MySql);
                 });
             }, ServiceLifetime.Scoped);
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddHttpContextAccessor();
+            services.AddScoped<IUserContextLoader, UserContextLoader>();
+            services.AddScoped(x =>
+            {
+                IUserContext userContext = new UserContext();
+                try
+                {
+                    x.GetService<IUserContextLoader>()?.Load(userContext);
+                }
+                catch
+                {
+                }
+                return userContext;
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

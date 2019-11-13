@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace Sieve.Janelas
 {
-    public partial class Venda2 : Form
+    public partial class DigitarCodigoProduto : Form
     {
-        public Venda2()
+        public DigitarCodigoProduto()
         {
             InitializeComponent();
         }
-
     }
 }
