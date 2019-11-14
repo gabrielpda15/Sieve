@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Sieve.API.Repository.Security
+namespace Sieve.API.Security.Authentication
 {
     public sealed class UserContextLoader : IUserContextLoader
     {

@@ -45,7 +45,17 @@ namespace Sieve.API.Repository
 
         public IRepository<TEntity> GetRepository<TEntity>() where TEntity : class, IEntity
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (repos.ContainsKey(typeof(TEntity)))
+                    return (IRepository<TEntity>)repos[typeof(TEntity)];
+
+                throw new KeyNotFoundException();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Uma exceção occorreu, verifique a inner exception para obter detalhes! ", ex);
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Security.Claims;
 using System.Security.Principal;
 using System.Text;
 
-namespace Sieve.API.Repository.Security
+namespace Sieve.API.Security.Authentication
 {
     public sealed class UserContext : IUserContext
     {

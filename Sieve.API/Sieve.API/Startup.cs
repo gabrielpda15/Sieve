@@ -1,3 +1,4 @@
+using Sieve.API.Extensions;
 using Sieve.API.Models;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,6 @@ namespace Sieve.API
     public class Startup
     {
         public const string CONN_STRING = "MySQL";
-        public static readonly Version SERVER_VERSION = new Version(8, 0, 4);
 
         public Startup(IConfiguration configuration)
         {
@@ -33,30 +33,8 @@ namespace Sieve.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<SieveDbContext>(options =>
-            {
-                options.UseMySql(Configuration.GetConnectionString(CONN_STRING), o =>
-                {
-                    o.ServerVersion(SERVER_VERSION, ServerType.MySql);
-                });
-            }, ServiceLifetime.Scoped);
 
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-            services.AddHttpContextAccessor();
-            services.AddScoped<IUserContextLoader, UserContextLoader>();
-            services.AddScoped(x =>
-            {
-                IUserContext userContext = new UserContext();
-                try
-                {
-                    x.GetService<IUserContextLoader>()?.Load(userContext);
-                }
-                catch
-                {
-                }
-                return userContext;
-            });
+            services.AddSieveRepos<SieveDbContext>(Configuration.GetConnectionString(CONN_STRING));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
