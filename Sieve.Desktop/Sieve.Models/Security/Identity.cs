@@ -27,6 +27,7 @@ namespace Sieve.Models.Security
         [Display(Name = "Hash da senha")]
         public string PasswordHash { get; set; }
 
+        [Email]
         [DataType("varchar")]
         [StringLength(80)]
         [Display(Name = "Email")]

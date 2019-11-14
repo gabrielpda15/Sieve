@@ -10,6 +10,7 @@ namespace Sieve.Models.Person
     public class Client : Base.BaseEntity, INaturalPerson
     {
         [Required]
+        [CPF]
         [DataType("varchar")]
         [StringLength(14)]
         [Display(Name = "CPF")]
@@ -27,11 +28,13 @@ namespace Sieve.Models.Person
         [Display(Name = "Sobrenome")]
         public string LastName { get; set; }
 
+        [Phone]
         [DataType("varchar")]
         [StringLength(22)]
         [Display(Name = "Telefone")]
         public string PhoneNumber { get; set; }
 
+        [Email]
         [DataType("varchar")]
         [StringLength(80)]
         [Display(Name = "Email")]

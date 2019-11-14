@@ -23,6 +23,7 @@ namespace Sieve.Models.Person
         [Display(Name = "Salário")]
         public double Salary { get; set; }
 
+        [CPF]
         [Required]
         [DataType("varchar")]
         [StringLength(14)]
@@ -49,14 +50,16 @@ namespace Sieve.Models.Person
         [Display(Name = "Endereço")]
         public string Address { get; set; }
 
+        [Phone]
         [DataType("varchar")]
         [StringLength(22)]
         [Display(Name = "Telefone")]
         public string PhoneNumber { get; set; }
 
+        [Email]
         [DataType("varchar")]
         [StringLength(14)]
-        [Display(Name = "CPF")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         public EmployeeStatus Status { get; set; }

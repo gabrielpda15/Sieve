@@ -9,11 +9,13 @@ namespace Sieve.Models.Person
     {
         public enum SupplierType { None = 0, Service = 1, Product = 2}
 
+        [CNPJ]
         [DataType("varchar")]
         [StringLength(18)]
         [Display(Name = "CNPJ")]
         public string CNPJ { get; set; }
 
+        [CPF]
         [DataType("varchar")]
         [StringLength(14)]
         [Display(Name = "CPF")]
@@ -39,12 +41,14 @@ namespace Sieve.Models.Person
         [Display(Name = "Nome Fantasia")]
         public string TrandingName { get; set; }
 
+        [Phone]
         [Required]
         [DataType("varchar")]
         [StringLength(22)]
         [Display(Name = "Telefone")]
         public string PhoneNumber { get; set; }
 
+        [Email]
         [Required]
         [DataType("varchar")]
         [StringLength(60)]
