@@ -62,6 +62,11 @@ namespace Sieve.Models
 
     public sealed class PropertyValidator
     {
+        private const string STR_LEN_MAX_AND_MIN = "{0} deve ter entre {1} e {2} caracteres.";
+        private const string STR_LEN_ONLY_MAX = "{0} deve ter no máximo {1} caracteres.";
+        private const string REQUIRED = "{0} é um campo obrigatório!";
+
+
         private PropertyInfo property;
         public PropertyValidator(PropertyInfo property)
         {
@@ -71,16 +76,47 @@ namespace Sieve.Models
         public IDictionary<string, string> Validate(object value)
         {
             var result = new Dictionary<string, string>();
+            var name = property.GetCustomAttribute<DisplayAttribute>().Name;
 
             foreach (var attrib in property.GetCustomAttributes())
             {
                 if (attrib is StringLengthAttribute)
                 {
+                    var max = (attrib as StringLengthAttribute).MaximumLength;
+                    var min = (attrib as StringLengthAttribute).MinimumLength;
+                    var str = value as string;
 
+                    if (min != 0)
+                    {
+                        if (!(str.Length >= min && str.Length <= max))
+                        {
+                            result.Add("StringLength", string.Format(STR_LEN_MAX_AND_MIN, name, min, max));
+                        }
+                    }
+                    else
+                    {
+                        if (str.Length > max)
+                        {
+                            result.Add("StringLength", string.Format(STR_LEN_ONLY_MAX, name, max));
+                        }
+                    }
                 } 
                 else if (attrib is RequiredAttribute)
                 {
-
+                    if (property.PropertyType == typeof(string))
+                    {
+                        if (string.IsNullOrWhiteSpace(value as string))
+                        {
+                            result.Add("Required", string.Format(REQUIRED, name));
+                        }
+                    }
+                    else
+                    {
+                        if (value == null)
+                        {
+                            result.Add("Required", string.Format(REQUIRED, name));
+                        }
+                    }
                 }
             }
 
