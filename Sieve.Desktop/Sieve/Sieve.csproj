@@ -137,6 +137,18 @@
     <EmbeddedResource Include="Janelas\DigitarCodigoProduto.resx">
       <DependentUpon>DigitarCodigoProduto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Janelas\Formularios\ClienteForm.resx">
+      <DependentUpon>ClienteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Janelas\Formularios\FornecedorForm.resx">
+      <DependentUpon>FornecedorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Janelas\Formularios\FuncionarioForm.resx">
+      <DependentUpon>FuncionarioForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Janelas\Formularios\ProdutoForm.resx">
+      <DependentUpon>ProdutoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Janelas\Estoque.resx">
       <DependentUpon>Estoque.cs</DependentUpon>
     </EmbeddedResource>
