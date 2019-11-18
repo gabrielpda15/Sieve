@@ -137,6 +137,9 @@
     <EmbeddedResource Include="Janelas\DigitarCodigoProduto.resx">
       <DependentUpon>DigitarCodigoProduto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Janelas\Estoque.resx">
+      <DependentUpon>Estoque.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Janelas\InicioVenda.resx">
       <DependentUpon>InicioVenda.cs</DependentUpon>
     </EmbeddedResource>
