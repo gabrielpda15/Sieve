@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Sieve.Models.Utility
@@ -14,7 +15,7 @@ namespace Sieve.Models.Utility
             var multipliersForFirstDigit = new[] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             var multipliersForSecondDigit = new[] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
 
-            return this.IsValid(cpf.Replace(".", "").Replace("-", ""), valueValidLength, multipliersForFirstDigit, multipliersForSecondDigit);
+            return IsValid(cpf.Replace(".", "").Replace("-", ""), valueValidLength, multipliersForFirstDigit, multipliersForSecondDigit);
         }
 
         public static bool IsValidCNPJ(string cnpj)
@@ -22,7 +23,7 @@ namespace Sieve.Models.Utility
             var valueValidLength = 14;
             var multipliersForFirstDigit = new[] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
             var multipliersForSecondDigit = new[] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
-            return this.IsValid(cnpj.Replace(".", "").Replace("-", "").Replace("/", ""), valueValidLength, multipliersForFirstDigit, multipliersForSecondDigit);
+            return IsValid(cnpj.Replace(".", "").Replace("-", "").Replace("/", ""), valueValidLength, multipliersForFirstDigit, multipliersForSecondDigit);
         }
 
         private static bool IsValid(
