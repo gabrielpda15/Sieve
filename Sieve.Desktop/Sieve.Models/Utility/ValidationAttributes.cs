@@ -7,6 +7,16 @@ using System.Threading.Tasks;
 
 namespace Sieve.Models.Utility
 {
+    public class AddressAttribute : ValidationAttribute
+    {
+        public AddressAttribute() : base() { }
+    }
+
+    public class CEPAttribute : ValidationAttribute
+    {
+        public CEPAttribute() : base() { }
+    }
+
     public class CPFAttribute : ValidationAttribute
     {
         public CPFAttribute() : base() { }

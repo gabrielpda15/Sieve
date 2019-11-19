@@ -1,4 +1,6 @@
-﻿using Sieve.Models.Person;
+﻿using Newtonsoft.Json;
+using Sieve.Models.Person;
+using Sieve.Models.Extensions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -13,7 +15,7 @@ using System.Xml.Serialization;
 
 namespace Sieve.Models.Utility
 {
-    public sealed class EntityValidator<TEntity> where TEntity : class, Base.IEntity
+    public sealed class EntityValidator<TEntity> where TEntity : class
     {
         public EntityValidator() { }
 
@@ -70,7 +72,7 @@ namespace Sieve.Models.Utility
         }
     }
 
-    public sealed class PropertyValidator<TEntity> where TEntity : class, Base.IEntity
+    public sealed class PropertyValidator<TEntity> where TEntity : class
     {
         private const string STR_LEN_MAX_AND_MIN = "{0} deve ter entre {1} e {2} caracteres.";
         private const string STR_LEN_ONLY_MAX = "{0} deve ter no máximo {1} caracteres.";
@@ -178,6 +180,32 @@ namespace Sieve.Models.Utility
                     {
                         errors.Add("Email", string.Format(INVALID, name));
                     }
+                }
+                else if (attrib is CEPAttribute)
+                {
+                    var postalCodes = JsonConvert.DeserializeObject<IDictionary<string, string>>(Properties.Resources.PostalCodes);
+                    var country = ((string)value)?.Split("=>")[0];
+                    var code = ((string)value)?.Split("=>")[1];
+
+                    Regex regex;
+                    if (postalCodes.ContainsKey(country.ToUpper()))
+                        regex = new Regex(postalCodes[country.ToUpper()]);
+                    else
+                        regex = new Regex(postalCodes["US"]);
+
+                    if (!regex.IsMatch(code))
+                    {
+                        errors.Add("CEP", string.Format(INVALID, name));
+                    }
+                }
+                else if (attrib is AddressAttribute)
+                {
+                    var val = new EntityValidator<Address>();
+                    if (!val.Validate((Address)value, out var adrsErrors))
+                    {
+                        errors.Add("Address", string.Format(INVALID, name));
+                    }
+
                 }
             }
 
