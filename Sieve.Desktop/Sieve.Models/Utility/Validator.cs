@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Sieve.Models
+namespace Sieve.Models.Utility
 {
     public sealed class EntityValidator<TEntity> where TEntity : class, Base.IEntity
     {
@@ -131,9 +131,9 @@ namespace Sieve.Models
                     {
                         errors.Add("CPF", string.Format(INVALID, name));
                     }
-                    else
+                    else if (!CpfCnpjValidator.IsValidCPF(value as string))
                     {
-
+                        errors.Add("CPF", string.Format(INVALID, name));
                     }
                 }
                 else if (attrib is CNPJAttribute)
@@ -142,9 +142,9 @@ namespace Sieve.Models
                     {
                         errors.Add("CNPJ", string.Format(INVALID, name));
                     }
-                    else
+                    else if (!CpfCnpjValidator.IsValidCNPJ(value as string))
                     {
-
+                        errors.Add("CNPJ", string.Format(INVALID, name));
                     }
                 }
                 else if (attrib is PhoneAttribute)

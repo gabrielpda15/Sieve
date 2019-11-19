@@ -54,7 +54,8 @@
     <Compile Include="Base\BaseEntity.cs" />
     <Compile Include="Base\BaseEntityDescription.cs" />
     <Compile Include="Base\IEntity.cs" />
-    <Compile Include="ValidationAttributes.cs" />
+    <Compile Include="Utility\CpfCnpjValidator.cs" />
+    <Compile Include="Utility\ValidationAttributes.cs" />
     <Compile Include="Person\Client.cs" />
     <Compile Include="Person\Employee.cs" />
     <Compile Include="Person\ILegalPerson.cs" />
@@ -74,7 +75,7 @@
     <Compile Include="Storage\Product.cs" />
     <Compile Include="Storage\Storage.cs" />
     <Compile Include="Storage\StorageEntry.cs" />
-    <Compile Include="Validator.cs" />
+    <Compile Include="Utility\Validator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

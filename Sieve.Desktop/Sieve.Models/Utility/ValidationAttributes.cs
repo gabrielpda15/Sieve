@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sieve.Models
+namespace Sieve.Models.Utility
 {
     public class CPFAttribute : ValidationAttribute
     {
