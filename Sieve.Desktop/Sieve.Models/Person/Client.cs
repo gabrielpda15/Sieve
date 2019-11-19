@@ -1,8 +1,7 @@
 ﻿using Sieve.Models.Sales;
+using Sieve.Models.Utility;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Sieve.Models.Person
@@ -11,39 +10,33 @@ namespace Sieve.Models.Person
     {
         [Required]
         [CPF]
-        [DataType("varchar")]
         [StringLength(14)]
-        [Display(Name = "CPF")]
+        [Display("CPF")]
         public string CPF { get; set; }
 
         [Required]
-        [DataType("varchar")]
         [StringLength(30)]
-        [Display(Name = "Nome")]
+        [Display("Nome")]
         public string FirstName { get; set; }
 
         [Required]
-        [DataType("varchar")]
         [StringLength(80)]
-        [Display(Name = "Sobrenome")]
+        [Display("Sobrenome")]
         public string LastName { get; set; }
 
         [Phone]
-        [DataType("varchar")]
         [StringLength(22)]
-        [Display(Name = "Telefone")]
+        [Display("Telefone")]
         public string PhoneNumber { get; set; }
 
         [Email]
-        [DataType("varchar")]
         [StringLength(80)]
-        [Display(Name = "Email")]
+        [Display("Email")]
         public string Email { get; set; }
 
         [Required]
-        [DataType("varchar")]
         [StringLength(255)]
-        [Display(Name = "Endereço")]
+        [Display("Endereço")]
         public string Address { get; set; }
 
         public DateTime? Birthday { get; set; }

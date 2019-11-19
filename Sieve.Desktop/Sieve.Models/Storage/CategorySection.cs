@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Sieve.Models.Utility;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Sieve.Models.Storage
 {
-    [Table("CategorySection")]
     public class CategorySection : Base.BaseEntityDescription
     {
     }
@@ -14,7 +12,7 @@ namespace Sieve.Models.Storage
     public class Category : CategorySection
     {
         [Required]
-        [Display(Name = "Seção")]
+        [Display("Seção")]
         public virtual Section Section { get; set; }
     }
     

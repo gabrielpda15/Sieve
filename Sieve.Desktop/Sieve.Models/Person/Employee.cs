@@ -1,7 +1,7 @@
 ﻿using Sieve.Models.Security;
+using Sieve.Models.Utility;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Sieve.Models.Person
@@ -14,64 +14,58 @@ namespace Sieve.Models.Person
         }
 
         [Required]
-        [DataType("varchar")]
         [StringLength(14)]
-        [Display(Name = "CTPS")]
+        [Display("CTPS")]
         public string CTPS { get; set; }
 
         [Required]
-        [Display(Name = "Salário")]
-        public double Salary { get; set; }
+        [Display("Salário")]
+        public double? Salary { get; set; }
 
         [CPF]
         [Required]
-        [DataType("varchar")]
         [StringLength(14)]
-        [Display(Name = "CPF")]
+        [Display("CPF")]
         public string CPF { get; set; }
 
         [Required]
-        [DataType("varchar")]
         [StringLength(30)]
-        [Display(Name = "Nome")]
+        [Display("Nome")]
         public string FirstName { get; set; }
 
         [Required]
-        [DataType("varchar")]
         [StringLength(80)]
-        [Display(Name = "Sobrenome")]
+        [Display("Sobrenome")]
         public string LastName { get; set; }
 
         public DateTime? Birthday { get; set; }
 
         [Required]
-        [DataType("varchar")]
         [StringLength(255)]
-        [Display(Name = "Endereço")]
+        [Display("Endereço")]
         public string Address { get; set; }
 
         [Phone]
-        [DataType("varchar")]
         [StringLength(22)]
-        [Display(Name = "Telefone")]
+        [Display("Telefone")]
         public string PhoneNumber { get; set; }
 
         [Email]
-        [DataType("varchar")]
         [StringLength(14)]
-        [Display(Name = "Email")]
+        [Display("Email")]
         public string Email { get; set; }
 
-        public EmployeeStatus Status { get; set; }
+        [Required]
+        [Display("Status")]
+        public EmployeeStatus Status { get; set; } = EmployeeStatus.None;
 
         [Required]
-        [DataType("varchar")]
         [StringLength(80)]
-        [Display(Name = "Cargo")]
+        [Display("Cargo")]
         public string JobRole { get; set; }
 
         [Required]
-        [Display(Name = "Identidade")]
+        [Display("Identidade")]
         public virtual Identity Identity { get; set; }
     }
 }

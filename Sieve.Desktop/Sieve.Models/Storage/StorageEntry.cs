@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Sieve.Models.Utility;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Sieve.Models.Storage
@@ -13,33 +13,32 @@ namespace Sieve.Models.Storage
         }
 
         [Required]
-        [Display(Name = "Data")]
-        public DateTime Date { get; set; }
+        [Display("Data")]
+        public DateTime? Date { get; set; }
 
         [Required]
-        [Display(Name = "Quantidade")]
-        public int Quantity { get; set; }
+        [Display("Quantidade")]
+        public int? Quantity { get; set; }
 
         [Required]
-        [Display(Name = "Tipo")]
-        public EntryType Type { get; set; }
+        [Display("Tipo")]
+        public EntryType Type { get; set; } = EntryType.None;
 
         [Required]
-        [Display(Name = "Preço")]
-        public double Price { get; set; }
+        [Display("Preço")]
+        public double? Price { get; set; }
 
-        [DataType("varchar")]
         [Required]
         [StringLength(30)]
-        [Display(Name = "Lote")]
+        [Display("Lote")]
         public string Batch { get; set; }
 
         [Required]
-        [Display(Name = "Data de Validade")]
+        [Display("Data de Validade")]
         public DateTime? ShelfLife { get; set; }
 
         [Required]
-        [Display(Name = "Estoque")]
+        [Display("Estoque")]
         public virtual Storage Storage { get; set; }
 
     }

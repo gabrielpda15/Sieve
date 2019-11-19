@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Sieve.Models.Utility;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Sieve.Models.Person
@@ -10,72 +10,63 @@ namespace Sieve.Models.Person
         public enum SupplierType { None = 0, Service = 1, Product = 2}
 
         [CNPJ]
-        [DataType("varchar")]
         [StringLength(18)]
-        [Display(Name = "CNPJ")]
+        [Display("CNPJ")]
         public string CNPJ { get; set; }
 
         [CPF]
-        [DataType("varchar")]
         [StringLength(14)]
-        [Display(Name = "CPF")]
+        [Display("CPF")]
         public string CPF { get; set; }
 
-        [DataType("varchar")]
         [StringLength(30)]
-        [Display(Name = "Nome")]
+        [Display("Nome")]
         public string FirstName { get; set; }
 
-        [DataType("varchar")]
         [StringLength(80)]
-        [Display(Name = "Sobrenome")]
+        [Display("Sobrenome")]
         public string LastName { get; set; }
 
-        [DataType("varchar")]
         [StringLength(80)]
-        [Display(Name = "Razão Social")]
+        [Display("Razão Social")]
         public string CompanyName { get; set; }
 
-        [DataType("varchar")]
         [StringLength(30)]
-        [Display(Name = "Nome Fantasia")]
+        [Display("Nome Fantasia")]
         public string TrandingName { get; set; }
 
         [Phone]
         [Required]
-        [DataType("varchar")]
         [StringLength(22)]
-        [Display(Name = "Telefone")]
+        [Display("Telefone")]
         public string PhoneNumber { get; set; }
 
         [Email]
         [Required]
-        [DataType("varchar")]
         [StringLength(60)]
-        [Display(Name = "Email")]
+        [Display("Email")]
         public string Email { get; set; }
 
         [Required]
-        [DataType("varchar")]
         [StringLength(255)]
-        [Display(Name = "Endereço")]
+        [Display("Endereço")]
         public string Address { get; set; }
 
         public DateTime? Birthday { get; set; }
 
         [Required]
-        [DataType("varchar")]
         [StringLength(80)]
-        [Display(Name = "Serviço")]
+        [Display("Serviço")]
         public string Service { get; set; }
 
-        public SupplierType Type { get; set; }
+        [Required]
+        [Display("Tipo")]
+        public SupplierType Type { get; set; } = SupplierType.None;
 
         public TimeSpan ShippingTime { get; set; }
 
-        [DataType("varchar")]
         [StringLength(255)]
-        [Display(Name = "Observação")]
+        [Display("Observação")]
         public string Obs { get; set; }
     }
 }

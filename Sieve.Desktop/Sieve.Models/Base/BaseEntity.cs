@@ -8,15 +8,10 @@ namespace Sieve.Models.Base
 {
     public class BaseEntity : IEntity
     {
-        [Key]
         public virtual int Id { get; set; }
 
-        [DataType("varchar")]
-        [StringLength(30)]
         public string CreationUser { get; set; }
 
-        [DataType("varchar")]
-        [StringLength(30)]
         public string EditionUser { get; set; }
 
         public DateTime? CreationDate { get; set; }
