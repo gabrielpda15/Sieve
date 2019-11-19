@@ -24,11 +24,10 @@ namespace Sieve.Models.Person
         [Display("Email")]
         public string Email { get; set; }
 
+        [Address]
+        [Display("Endereço")]
         public Address AddressObj { get; set; }
 
-        [Required]
-        [StringLength(255)]
-        [Display("Endereço")]
         public string Address { get => this.AddressObj?.ToString(); set => AddressObj = new Address(value); }
     }
 }
