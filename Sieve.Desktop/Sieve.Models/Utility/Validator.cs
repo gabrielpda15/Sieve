@@ -17,22 +17,30 @@ namespace Sieve.Models.Utility
     {
         public EntityValidator() { }
 
-        public PropertyValidator Property(Expression<Func<TEntity, object>> selector)
+        public PropertyValidator<TEntity> Property(Expression<Func<TEntity, object>> selector)
         {
-            return new PropertyValidator(GetPropertyFromExpression(selector));
+            return new PropertyValidator<TEntity>(GetPropertyFromExpression(selector));
         }
 
-        public IDictionary<string, IDictionary<string, string>> Validate(TEntity entity)
+        public bool Validate(TEntity entity, out IDictionary<string, IDictionary<string, string>> errors)
         {
-            var result = new Dictionary<string, IDictionary<string, string>>();
+            errors = new Dictionary<string, IDictionary<string, string>>();
 
             foreach (var property in typeof(TEntity).GetProperties())
             {
-                if (!new PropertyValidator(property).Validate(property.GetValue(entity), out IDictionary<string, string> errors))
-                    result.Add(property.Name, errors);
+                if (!new PropertyValidator<TEntity>(property).Validate(entity, out var propErrors))
+                    errors.Add(property.Name, propErrors);
             }
 
-            return result;
+            if (errors.Count > 0)
+            {
+                return false;
+            }
+            else
+            {
+                errors = null;
+                return true;
+            }
         }
 
         private PropertyInfo GetPropertyFromExpression<T, TResult>(Expression<Func<T, TResult>> propertyLambda)
@@ -62,7 +70,7 @@ namespace Sieve.Models.Utility
         }
     }
 
-    public sealed class PropertyValidator
+    public sealed class PropertyValidator<TEntity> where TEntity : class, Base.IEntity
     {
         private const string STR_LEN_MAX_AND_MIN = "{0} deve ter entre {1} e {2} caracteres.";
         private const string STR_LEN_ONLY_MAX = "{0} deve ter no máximo {1} caracteres.";
@@ -80,10 +88,11 @@ namespace Sieve.Models.Utility
             this.property = property;
         }
 
-        public bool Validate(object value, out IDictionary<string, string> errors)
+        public bool Validate(TEntity entity, out IDictionary<string, string> errors)
         {
             errors = new Dictionary<string, string>();
-            var name = property.GetCustomAttribute<DisplayAttribute>().Name;
+            var value = this.property.GetValue(entity);
+            var name = property.GetCustomAttribute<DisplayAttribute>()?.Name;
 
             foreach (var attrib in property.GetCustomAttributes())
             {
@@ -91,7 +100,7 @@ namespace Sieve.Models.Utility
                 {
                     var max = (attrib as StringLengthAttribute).MaximumLength;
                     var min = (attrib as StringLengthAttribute).MinimumLength;
-                    var str = value as string;
+                    var str = value != null ? (string)value : "";
 
                     if (min != 0)
                     {
@@ -112,7 +121,14 @@ namespace Sieve.Models.Utility
                 {
                     if (property.PropertyType == typeof(string))
                     {
-                        if (string.IsNullOrWhiteSpace(value as string))
+                        if (string.IsNullOrWhiteSpace((string)value))
+                        {
+                            errors.Add("Required", string.Format(REQUIRED, name));
+                        }
+                    }
+                    else if (property.PropertyType.BaseType == typeof(Enum))
+                    {
+                        if ((int)value == 0)
                         {
                             errors.Add("Required", string.Format(REQUIRED, name));
                         }
@@ -127,36 +143,38 @@ namespace Sieve.Models.Utility
                 }
                 else if (attrib is CPFAttribute)
                 {
-                    if (!CPF_REGEX.IsMatch(value as string))
+                    var str = value != null ? (string)value : "";
+                    if (!CPF_REGEX.IsMatch(str))
                     {
                         errors.Add("CPF", string.Format(INVALID, name));
                     }
-                    else if (!CpfCnpjValidator.IsValidCPF(value as string))
+                    else if (!CpfCnpjValidator.IsValidCPF(str))
                     {
                         errors.Add("CPF", string.Format(INVALID, name));
                     }
                 }
                 else if (attrib is CNPJAttribute)
                 {
-                    if (!CNPJ_REGEX.IsMatch(value as string))
+                    var str = value != null ? (string)value : "";
+                    if (!CNPJ_REGEX.IsMatch(str))
                     {
                         errors.Add("CNPJ", string.Format(INVALID, name));
                     }
-                    else if (!CpfCnpjValidator.IsValidCNPJ(value as string))
+                    else if (!CpfCnpjValidator.IsValidCNPJ(str))
                     {
                         errors.Add("CNPJ", string.Format(INVALID, name));
                     }
                 }
                 else if (attrib is PhoneAttribute)
                 {
-                    if (!PHONE_REGEX.IsMatch(value as string))
+                    if (!PHONE_REGEX.IsMatch(value != null ? (string)value : ""))
                     {
                         errors.Add("Phone", string.Format(INVALID, name));
                     }
                 }
                 else if (attrib is EmailAttribute)
                 {
-                    if (!EMAIL_REGEX.IsMatch(value as string))
+                    if (!EMAIL_REGEX.IsMatch(value != null ? (string)value : ""))
                     {
                         errors.Add("Email", string.Format(INVALID, name));
                     }
