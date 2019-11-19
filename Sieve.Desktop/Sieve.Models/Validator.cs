@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
@@ -65,7 +66,12 @@ namespace Sieve.Models
         private const string STR_LEN_MAX_AND_MIN = "{0} deve ter entre {1} e {2} caracteres.";
         private const string STR_LEN_ONLY_MAX = "{0} deve ter no máximo {1} caracteres.";
         private const string REQUIRED = "{0} é um campo obrigatório!";
+        private const string INVALID = "{0} inválido!";
 
+        private static readonly Regex PHONE_REGEX = new Regex(@"^[+]{1}[(]*[0-9]{1,4}[)]* [0-9]{1,3} [-\s\./0-9]{1,10}$");
+        private static readonly Regex CNPJ_REGEX = new Regex(@"^[0-9]{2}[\.]{1}[0-9]{3}[\.]{1}[0-9]{3}[\/]{1}[0-9]{4}[-]{1}[0-9]{2}$");
+        private static readonly Regex CPF_REGEX = new Regex(@"[0-9]{3}[\.]{1}[0-9]{3}[\.]{1}[0-9]{3}[-]{1}[0-9]{2}");
+        private static readonly Regex EMAIL_REGEX = new Regex(@"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
 
         private PropertyInfo property;
         public PropertyValidator(PropertyInfo property)
@@ -116,6 +122,42 @@ namespace Sieve.Models
                         {
                             result.Add("Required", string.Format(REQUIRED, name));
                         }
+                    }
+                }
+                else if (attrib is CPFAttribute)
+                {
+                    if (!CPF_REGEX.IsMatch(value as string))
+                    {
+                        result.Add("CPF", string.Format(INVALID, name));
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else if (attrib is CNPJAttribute)
+                {
+                    if (!CNPJ_REGEX.IsMatch(value as string))
+                    {
+                        result.Add("CNPJ", string.Format(INVALID, name));
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else if (attrib is PhoneAttribute)
+                {
+                    if (!PHONE_REGEX.IsMatch(value as string))
+                    {
+                        result.Add("Phone", string.Format(INVALID, name));
+                    }
+                }
+                else if (attrib is EmailAttribute)
+                {
+                    if (!EMAIL_REGEX.IsMatch(value as string))
+                    {
+                        result.Add("Email", string.Format(INVALID, name));
                     }
                 }
             }
