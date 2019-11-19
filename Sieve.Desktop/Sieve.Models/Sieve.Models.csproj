@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\..\Packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -48,8 +51,18 @@
     <Compile Include="Base\BaseEntity.cs" />
     <Compile Include="Base\BaseEntityDescription.cs" />
     <Compile Include="Base\IEntity.cs" />
+    <Compile Include="Extensions\Mapper.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="Location\City.cs" />
+    <Compile Include="Location\Country.cs" />
+    <Compile Include="Location\Region.cs" />
     <Compile Include="Person\Address.cs" />
     <Compile Include="Person\Person.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utility\CpfCnpjValidator.cs" />
     <Compile Include="Utility\ValidationAttributes.cs" />
     <Compile Include="Person\Client.cs" />
@@ -72,6 +85,16 @@
     <Compile Include="Storage\Storage.cs" />
     <Compile Include="Storage\StorageEntry.cs" />
     <Compile Include="Utility\Validator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Location\PostalCodes.json" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
