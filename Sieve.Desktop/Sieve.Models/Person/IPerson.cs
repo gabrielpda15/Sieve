@@ -8,6 +8,7 @@ namespace Sieve.Models.Person
     {
          string PhoneNumber { get; set; }
          string Email { get; set; }
+         Address AddressObj { get; set; }
          string Address { get; set; }
     }
 }

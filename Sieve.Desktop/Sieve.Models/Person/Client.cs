@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Sieve.Models.Person
 {
-    public class Client : Base.BaseEntity, INaturalPerson
+    public class Client : Person, INaturalPerson
     {
         [Required]
         [CPF]
@@ -23,21 +23,6 @@ namespace Sieve.Models.Person
         [StringLength(80)]
         [Display("Sobrenome")]
         public string LastName { get; set; }
-
-        [Phone]
-        [StringLength(22)]
-        [Display("Telefone")]
-        public string PhoneNumber { get; set; }
-
-        [Email]
-        [StringLength(80)]
-        [Display("Email")]
-        public string Email { get; set; }
-
-        [Required]
-        [StringLength(255)]
-        [Display("Endereço")]
-        public string Address { get; set; }
 
         public DateTime? Birthday { get; set; }
 

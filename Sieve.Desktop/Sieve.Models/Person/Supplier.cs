@@ -5,52 +5,41 @@ using System.Text;
 
 namespace Sieve.Models.Person
 {
-    public class Supplier : Base.BaseEntity, INaturalPerson, ILegalPerson
+    public class Supplier : Person, INaturalPerson, ILegalPerson
     {
         public enum SupplierType { None = 0, Service = 1, Product = 2}
 
         [CNPJ]
+        [Required]
         [StringLength(18)]
         [Display("CNPJ")]
         public string CNPJ { get; set; }
 
         [CPF]
+        [Required]
         [StringLength(14)]
         [Display("CPF")]
         public string CPF { get; set; }
 
+        [Required]
         [StringLength(30)]
         [Display("Nome")]
         public string FirstName { get; set; }
 
+        [Required]
         [StringLength(80)]
         [Display("Sobrenome")]
         public string LastName { get; set; }
 
+        [Required]
         [StringLength(80)]
         [Display("Razão Social")]
         public string CompanyName { get; set; }
 
+        [Required]
         [StringLength(30)]
         [Display("Nome Fantasia")]
         public string TrandingName { get; set; }
-
-        [Phone]
-        [Required]
-        [StringLength(22)]
-        [Display("Telefone")]
-        public string PhoneNumber { get; set; }
-
-        [Email]
-        [Required]
-        [StringLength(60)]
-        [Display("Email")]
-        public string Email { get; set; }
-
-        [Required]
-        [StringLength(255)]
-        [Display("Endereço")]
-        public string Address { get; set; }
 
         public DateTime? Birthday { get; set; }
 

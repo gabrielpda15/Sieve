@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Sieve.Models.Person
 {
-    public class Employee : Base.BaseEntity, INaturalPerson
+    public class Employee : Person, INaturalPerson
     {
         public enum EmployeeStatus
         {
@@ -39,21 +39,6 @@ namespace Sieve.Models.Person
         public string LastName { get; set; }
 
         public DateTime? Birthday { get; set; }
-
-        [Required]
-        [StringLength(255)]
-        [Display("Endereço")]
-        public string Address { get; set; }
-
-        [Phone]
-        [StringLength(22)]
-        [Display("Telefone")]
-        public string PhoneNumber { get; set; }
-
-        [Email]
-        [StringLength(14)]
-        [Display("Email")]
-        public string Email { get; set; }
 
         [Required]
         [Display("Status")]
