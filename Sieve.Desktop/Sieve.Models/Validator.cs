@@ -28,7 +28,8 @@ namespace Sieve.Models
 
             foreach (var property in typeof(TEntity).GetProperties())
             {
-                result.Add(property.Name, new PropertyValidator(property).Validate(property.GetValue(entity)));
+                if (!new PropertyValidator(property).Validate(property.GetValue(entity), out IDictionary<string, string> errors))
+                    result.Add(property.Name, errors);
             }
 
             return result;
@@ -79,9 +80,9 @@ namespace Sieve.Models
             this.property = property;
         }
 
-        public IDictionary<string, string> Validate(object value)
+        public bool Validate(object value, out IDictionary<string, string> errors)
         {
-            var result = new Dictionary<string, string>();
+            errors = new Dictionary<string, string>();
             var name = property.GetCustomAttribute<DisplayAttribute>().Name;
 
             foreach (var attrib in property.GetCustomAttributes())
@@ -96,14 +97,14 @@ namespace Sieve.Models
                     {
                         if (!(str.Length >= min && str.Length <= max))
                         {
-                            result.Add("StringLength", string.Format(STR_LEN_MAX_AND_MIN, name, min, max));
+                            errors.Add("StringLength", string.Format(STR_LEN_MAX_AND_MIN, name, min, max));
                         }
                     }
                     else
                     {
                         if (str.Length > max)
                         {
-                            result.Add("StringLength", string.Format(STR_LEN_ONLY_MAX, name, max));
+                            errors.Add("StringLength", string.Format(STR_LEN_ONLY_MAX, name, max));
                         }
                     }
                 } 
@@ -113,14 +114,14 @@ namespace Sieve.Models
                     {
                         if (string.IsNullOrWhiteSpace(value as string))
                         {
-                            result.Add("Required", string.Format(REQUIRED, name));
+                            errors.Add("Required", string.Format(REQUIRED, name));
                         }
                     }
                     else
                     {
                         if (value == null)
                         {
-                            result.Add("Required", string.Format(REQUIRED, name));
+                            errors.Add("Required", string.Format(REQUIRED, name));
                         }
                     }
                 }
@@ -128,7 +129,7 @@ namespace Sieve.Models
                 {
                     if (!CPF_REGEX.IsMatch(value as string))
                     {
-                        result.Add("CPF", string.Format(INVALID, name));
+                        errors.Add("CPF", string.Format(INVALID, name));
                     }
                     else
                     {
@@ -139,7 +140,7 @@ namespace Sieve.Models
                 {
                     if (!CNPJ_REGEX.IsMatch(value as string))
                     {
-                        result.Add("CNPJ", string.Format(INVALID, name));
+                        errors.Add("CNPJ", string.Format(INVALID, name));
                     }
                     else
                     {
@@ -150,19 +151,27 @@ namespace Sieve.Models
                 {
                     if (!PHONE_REGEX.IsMatch(value as string))
                     {
-                        result.Add("Phone", string.Format(INVALID, name));
+                        errors.Add("Phone", string.Format(INVALID, name));
                     }
                 }
                 else if (attrib is EmailAttribute)
                 {
                     if (!EMAIL_REGEX.IsMatch(value as string))
                     {
-                        result.Add("Email", string.Format(INVALID, name));
+                        errors.Add("Email", string.Format(INVALID, name));
                     }
                 }
             }
 
-            return result;
+            if (errors.Count > 0)
+            {
+                return false;
+            }
+            else
+            {
+                errors = null;
+                return true;
+            }
         }
     }
 }
