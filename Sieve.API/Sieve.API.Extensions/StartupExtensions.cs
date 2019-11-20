@@ -2,9 +2,11 @@
 using Microsoft.Extensions.DependencyInjection;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using Sieve.API.Repository;
-using Sieve.API.Repository.Security;
+using Sieve.API.Security.Authentication;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace Sieve.API.Extensions
@@ -39,6 +41,13 @@ namespace Sieve.API.Extensions
                 }
                 return userContext;
             });
+
+            services.AddAuthentication("Basic")
+                .AddScheme<SieveAuthSchmOptions, SieveAuthHandler>("Basic", null);
+
+            var repos = typeof(RepositoryAttribute).Assembly.GetTypes().Where(x => x.GetCustomAttribute<RepositoryAttribute>() != null);
+            foreach (var repo in repos)
+                services.AddScoped(typeof(IRepository<>).MakeGenericType(repo.BaseType.GetGenericArguments().FirstOrDefault()), repo);
         }
     }
 }

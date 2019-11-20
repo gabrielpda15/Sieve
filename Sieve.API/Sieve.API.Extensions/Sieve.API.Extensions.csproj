@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.0.0" />
@@ -14,6 +16,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sieve.API.Repository\Sieve.API.Repository.csproj" />
+    <ProjectReference Include="..\Sieve.API.Security.Authentication\Sieve.API.Security.Authentication.csproj" />
+    <ProjectReference Include="..\Sieve.API.Security\Sieve.API.Security.csproj" />
   </ItemGroup>
 
 </Project>
