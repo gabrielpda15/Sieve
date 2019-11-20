@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sieve.API.Models\Sieve.API.Models.csproj" />
+    <ProjectReference Include="..\Sieve.API.Security\Sieve.API.Security.csproj" />
   </ItemGroup>
 
   <ItemGroup>

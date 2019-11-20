@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sieve.API.Models;
 using Sieve.API.Models.Base;
-using Sieve.API.Repository.Security;
+using Sieve.API.Security.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
