@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Sieve.API.Models.Security;
 using Sieve.API.Repository;
+using Sieve.API.Security.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +15,13 @@ namespace Sieve.API.Controllers
     [Route("api/[controller]")]
     public class TestController : Controller
     {
+        public TestController()
+        {
+        }
+
         [HttpGet]
-        public async Task<IActionResult> Test([FromServices]IUnitOfWork unitOfWork)
+        [SieveAuth]
+        public async Task<IActionResult> Test()
         {
             return await Task.FromResult(Ok());
         }
