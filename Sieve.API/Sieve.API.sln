@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sieve.API.Repository", "Sie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sieve.API.Extensions", "Sieve.API.Extensions\Sieve.API.Extensions.csproj", "{59C020B5-EB2B-4EA9-AE4A-200E22834382}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sieve.API.Security", "Sieve.API.Security\Sieve.API.Security.csproj", "{2BDBB8E1-1432-47F2-ABB2-A40B459F29A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sieve.API.Security", "Sieve.API.Security\Sieve.API.Security.csproj", "{2BDBB8E1-1432-47F2-ABB2-A40B459F29A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sieve.API.Security.Authentication", "Sieve.API.Security.Authentication\Sieve.API.Security.Authentication.csproj", "{8E0F3FE5-AAF3-475F-B27B-D42C191A0600}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{2BDBB8E1-1432-47F2-ABB2-A40B459F29A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BDBB8E1-1432-47F2-ABB2-A40B459F29A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BDBB8E1-1432-47F2-ABB2-A40B459F29A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E0F3FE5-AAF3-475F-B27B-D42C191A0600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E0F3FE5-AAF3-475F-B27B-D42C191A0600}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E0F3FE5-AAF3-475F-B27B-D42C191A0600}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E0F3FE5-AAF3-475F-B27B-D42C191A0600}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
