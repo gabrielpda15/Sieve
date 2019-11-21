@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sieve.API.Models.Relations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -31,5 +32,7 @@ namespace Sieve.API.Models.Security
         [StringLength(80)]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        
+        public virtual IList<RIdentityRole> Roles { get; set; }
     }
 }

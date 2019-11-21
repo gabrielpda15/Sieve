@@ -18,6 +18,17 @@ namespace Sieve.API.Security.Authentication
         private string issuer;
         private bool? createdFromIdentity = null;
 
+        public RawToken Token { get; }
+
+        public class RawToken
+        {
+            public string Username { get; set; }
+            public string Audience { get; set; }
+            public string Issuer { get; set; }
+            public DateTime CreatedAt { get; set; }
+            public DateTime ValidTo { get; set; }
+        }
+
         private SieveToken(AuthConfig config)
         {
             cryptor = new Cryptor();
@@ -36,6 +47,35 @@ namespace Sieve.API.Security.Authentication
         public SieveToken(string token, AuthConfig config) : this(config)
         {
             createdFromIdentity = false;
+
+            try
+            {
+                var json = cryptor.Decrypt(token, key);
+                var obj = JsonConvert.DeserializeObject<RawToken>(json);
+
+                if (audience == obj.Audience && issuer == obj.Issuer)
+                {
+                    if (obj.CreatedAt < DateTime.Now && obj.ValidTo > obj.CreatedAt)
+                    {
+                        if (obj.ValidTo > DateTime.Now)
+                        {
+                            Token = obj;
+                            return;
+                        }
+
+                        throw new Exception("Token vencido");
+                    }
+
+                    throw new Exception("Datas incorretas");
+                }
+
+                throw new Exception("Audience e Issuer diferentes");
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Token invalido!", ex);
+            }
+            
         }
 
         public override string ToString()
@@ -43,7 +83,7 @@ namespace Sieve.API.Security.Authentication
             if (!createdFromIdentity.GetValueOrDefault(false))
                 throw new NullReferenceException("Não foi criado um token com um identidade valida");
 
-            var json = JsonConvert.SerializeObject(new
+            var json = JsonConvert.SerializeObject(new RawToken
             {
                 Username = username,
                 Audience = audience,

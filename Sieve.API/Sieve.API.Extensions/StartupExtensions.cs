@@ -42,8 +42,8 @@ namespace Sieve.API.Extensions
                 return userContext;
             });
 
-            services.AddAuthentication("Basic")
-                .AddScheme<SieveAuthSchmOptions, SieveAuthHandler>("Basic", null);
+            services.AddAuthentication(SieveAuthHandler.SIEVE_AUTH)
+                .AddScheme<SieveAuthSchmOptions, SieveAuthHandler>(SieveAuthHandler.SIEVE_AUTH, null);
 
             var repos = typeof(RepositoryAttribute).Assembly.GetTypes().Where(x => x.GetCustomAttribute<RepositoryAttribute>() != null);
             foreach (var repo in repos)

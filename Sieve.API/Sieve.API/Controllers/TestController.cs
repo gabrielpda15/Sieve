@@ -20,7 +20,7 @@ namespace Sieve.API.Controllers
         }
 
         [HttpGet]
-        [SieveAuth]
+        [Authorize(AuthenticationSchemes = "SieveAuth")]
         public async Task<IActionResult> Test()
         {
             return await Task.FromResult(Ok());
