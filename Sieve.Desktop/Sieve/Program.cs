@@ -1,4 +1,5 @@
 ﻿using Sieve.Janelas;
+using Sieve.Janelas.Formularios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Sieve
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Venda2());
+            Application.Run(new FornecedorForm());
         }
     }
 }

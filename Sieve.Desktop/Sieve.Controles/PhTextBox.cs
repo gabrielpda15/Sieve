@@ -12,7 +12,7 @@ namespace Sieve.Controles
     public class PhTextBox : TextBox
     {
         private string _placeholder = string.Empty;
-        private Color _placeholderColor = Color.LightGray;
+        private Color _placeholderColor = Color.Gray;
         private bool _isShowingPlaceholder = true;
         private bool _isForeColor = true;
         private Color _foreColorBackup;
