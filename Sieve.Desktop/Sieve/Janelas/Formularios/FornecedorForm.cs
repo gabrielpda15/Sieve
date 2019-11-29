@@ -15,8 +15,6 @@ namespace Sieve.Janelas.Formularios
         public FornecedorForm()
         {
             InitializeComponent();
-        }
-
-       
+        }       
     }
 }
