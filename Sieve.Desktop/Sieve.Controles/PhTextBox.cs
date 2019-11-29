@@ -11,6 +11,10 @@ namespace Sieve.Controles
 {
     public class PhTextBox : TextBox
     {
+        private static readonly IDictionary<int, Keys[]> keys;
+
+        public enum TextType { Normal, Numeric }
+
         private string _placeholder = string.Empty;
         private Color _placeholderColor = Color.LightGray;
         private bool _isShowingPlaceholder = true;
@@ -24,20 +28,35 @@ namespace Sieve.Controles
         public string Placeholder { get => _placeholder; set { _placeholder = value; PlaceholderChange?.Invoke(this, EventArgs.Empty); } }
 
         [Browsable(true)]
-        [DefaultValue(typeof(Color), "LightGray")]
+        [DefaultValue(typeof(Color), "Gray")]
         public Color PlaceholderColor { get => _placeholderColor; set { _placeholderColor = value; PlaceholderColorChange?.Invoke(this, EventArgs.Empty); } }
 
         private bool IsPlaceholder { get => this.Text == this.Placeholder; }
         
         private bool IsEmpty { get => string.IsNullOrWhiteSpace(this.Text); }
 
+        [Browsable(true)]
+        [DefaultValue("")]
+        public string Mask { get; set; }
+
+        [Browsable(true)]
+        [DefaultValue(typeof(TextType), "Normal")]
+        public TextType Type { get; set; }
+
         public PhTextBox() : base()
         {
+            for (int i = 0; i < 10; i++)
+            {
+                Keys.D0
+                keys.Add(i, new [Keys. ])
+            }
+
             this.PlaceholderChange += PhTextBox_PlaceholderChange;
             this.PlaceholderColorChange += PhTextBox_PlaceholderColorChange;
             this.GotFocus += PhTextBox_GotFocus;
             this.LostFocus += PhTextBox_LostFocus;
             this.TextChanged += PhTextBox_TextChanged;
+            this.KeyDown += PhTextBox_KeyDown;
 
             if (IsEmpty)
             {
@@ -48,6 +67,14 @@ namespace Sieve.Controles
             else
             {
                 _isShowingPlaceholder = false;
+            }
+        }
+
+        private void PhTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Type == TextType.Numeric)
+            {
+                e.
             }
         }
 
@@ -78,6 +105,10 @@ namespace Sieve.Controles
                 SetForeColor(this.PlaceholderColor);
                 this.Text = this.Placeholder;
             }
+            else
+            {
+
+            }
         }
 
         private void PhTextBox_GotFocus(object sender, EventArgs e)
@@ -86,6 +117,10 @@ namespace Sieve.Controles
             {
                 this.Text = string.Empty;
                 RestoreForeColor();
+            }
+            else
+            {
+
             }
         }
 
