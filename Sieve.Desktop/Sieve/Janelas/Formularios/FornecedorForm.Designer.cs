@@ -34,20 +34,20 @@ namespace Sieve.Janelas.Formularios
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox1 = new Sieve.Controles.PhTextBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.textBox18 = new Sieve.Controles.PhTextBox();
+            this.txtServico = new Sieve.Controles.PhTextBox();
+            this.comboBoxTipo = new System.Windows.Forms.ComboBox();
+            this.txtObservacoes = new Sieve.Controles.PhTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox11 = new Sieve.Controles.PhTextBox();
-            this.textBox8 = new Sieve.Controles.PhTextBox();
-            this.textBox7 = new Sieve.Controles.PhTextBox();
-            this.textBox14 = new Sieve.Controles.PhTextBox();
-            this.textBox15 = new Sieve.Controles.PhTextBox();
+            this.txtRazaoSocial = new Sieve.Controles.PhTextBox();
+            this.txtNomeFantasia = new Sieve.Controles.PhTextBox();
+            this.txtCNPJ = new Sieve.Controles.PhTextBox();
+            this.txtEmailEmpresa = new Sieve.Controles.PhTextBox();
+            this.txtTelefoneEmpresa = new Sieve.Controles.PhTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -57,20 +57,20 @@ namespace Sieve.Janelas.Formularios
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.textBox10 = new Sieve.Controles.PhTextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox9 = new Sieve.Controles.PhTextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox5 = new Sieve.Controles.PhTextBox();
-            this.textBox4 = new Sieve.Controles.PhTextBox();
-            this.textBox3 = new Sieve.Controles.PhTextBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.textBox25 = new Sieve.Controles.PhTextBox();
-            this.textBox24 = new Sieve.Controles.PhTextBox();
-            this.textBox23 = new Sieve.Controles.PhTextBox();
-            this.textBox22 = new Sieve.Controles.PhTextBox();
-            this.textBox21 = new Sieve.Controles.PhTextBox();
+            this.comboBoxPais = new System.Windows.Forms.ComboBox();
+            this.txtComplemento = new Sieve.Controles.PhTextBox();
+            this.comboBoxCidade = new System.Windows.Forms.ComboBox();
+            this.txtBairro = new Sieve.Controles.PhTextBox();
+            this.comboBoxEstado = new System.Windows.Forms.ComboBox();
+            this.txtCEP = new Sieve.Controles.PhTextBox();
+            this.txtEndereco = new Sieve.Controles.PhTextBox();
+            this.txtNumero = new Sieve.Controles.PhTextBox();
+            this.comboBoxPessoa = new System.Windows.Forms.ComboBox();
+            this.txtNome = new Sieve.Controles.PhTextBox();
+            this.txtSobrenome = new Sieve.Controles.PhTextBox();
+            this.txtTelefone = new Sieve.Controles.PhTextBox();
+            this.txtEmail = new Sieve.Controles.PhTextBox();
+            this.txtCPF = new Sieve.Controles.PhTextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -78,9 +78,9 @@ namespace Sieve.Janelas.Formularios
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.dataNascimento = new System.Windows.Forms.DateTimePicker();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.btnEnviar = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -92,9 +92,9 @@ namespace Sieve.Janelas.Formularios
             this.groupBox3.Controls.Add(this.label22);
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.label20);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.comboBox5);
-            this.groupBox3.Controls.Add(this.textBox18);
+            this.groupBox3.Controls.Add(this.txtServico);
+            this.groupBox3.Controls.Add(this.comboBoxTipo);
+            this.groupBox3.Controls.Add(this.txtObservacoes);
             this.groupBox3.Location = new System.Drawing.Point(12, 494);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(480, 200);
@@ -125,40 +125,39 @@ namespace Sieve.Janelas.Formularios
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(6, 20);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(41, 13);
+            this.label20.Size = new System.Drawing.Size(28, 13);
             this.label20.TabIndex = 19;
-            this.label20.Text = "label20";
+            this.label20.Text = "Tipo";
             // 
-            // textBox1
+            // txtServico
             // 
-            this.textBox1.ForeColor = System.Drawing.Color.Gray;
-            this.textBox1.Location = new System.Drawing.Point(228, 36);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Placeholder = "Serviço";
-            this.textBox1.PlaceholderColor = System.Drawing.Color.Gray;
-            this.textBox1.Size = new System.Drawing.Size(246, 20);
-            this.textBox1.TabIndex = 18;
-            this.textBox1.Text = "Serviço";
+            this.txtServico.ForeColor = System.Drawing.Color.Gray;
+            this.txtServico.Location = new System.Drawing.Point(228, 36);
+            this.txtServico.Name = "txtServico";
+            this.txtServico.Placeholder = "Serviço";
+            this.txtServico.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtServico.Size = new System.Drawing.Size(246, 20);
+            this.txtServico.TabIndex = 18;
             // 
-            // comboBox5
+            // comboBoxTipo
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(6, 36);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(216, 21);
-            this.comboBox5.TabIndex = 5;
+            this.comboBoxTipo.FormattingEnabled = true;
+            this.comboBoxTipo.Location = new System.Drawing.Point(6, 36);
+            this.comboBoxTipo.Name = "comboBoxTipo";
+            this.comboBoxTipo.Size = new System.Drawing.Size(216, 21);
+            this.comboBoxTipo.TabIndex = 5;
             // 
-            // textBox18
+            // txtObservacoes
             // 
-            this.textBox18.ForeColor = System.Drawing.Color.Gray;
-            this.textBox18.Location = new System.Drawing.Point(6, 76);
-            this.textBox18.Multiline = true;
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Placeholder = "Observações";
-            this.textBox18.PlaceholderColor = System.Drawing.Color.Gray;
-            this.textBox18.Size = new System.Drawing.Size(468, 114);
-            this.textBox18.TabIndex = 4;
-            this.textBox18.Text = "Observações";
+            this.txtObservacoes.ForeColor = System.Drawing.Color.Gray;
+            this.txtObservacoes.Location = new System.Drawing.Point(6, 76);
+            this.txtObservacoes.Multiline = true;
+            this.txtObservacoes.Name = "txtObservacoes";
+            this.txtObservacoes.Placeholder = "Observações";
+            this.txtObservacoes.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtObservacoes.Size = new System.Drawing.Size(468, 114);
+            this.txtObservacoes.TabIndex = 4;
+            this.txtObservacoes.Text = "Observações";
             // 
             // groupBox2
             // 
@@ -167,11 +166,11 @@ namespace Sieve.Janelas.Formularios
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.textBox11);
-            this.groupBox2.Controls.Add(this.textBox8);
-            this.groupBox2.Controls.Add(this.textBox7);
-            this.groupBox2.Controls.Add(this.textBox14);
-            this.groupBox2.Controls.Add(this.textBox15);
+            this.groupBox2.Controls.Add(this.txtRazaoSocial);
+            this.groupBox2.Controls.Add(this.txtNomeFantasia);
+            this.groupBox2.Controls.Add(this.txtCNPJ);
+            this.groupBox2.Controls.Add(this.txtEmailEmpresa);
+            this.groupBox2.Controls.Add(this.txtTelefoneEmpresa);
             this.groupBox2.Location = new System.Drawing.Point(12, 197);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(480, 138);
@@ -224,60 +223,55 @@ namespace Sieve.Janelas.Formularios
             this.label7.TabIndex = 19;
             this.label7.Text = "Nome da Empresa";
             // 
-            // textBox11
+            // txtRazaoSocial
             // 
-            this.textBox11.ForeColor = System.Drawing.Color.Gray;
-            this.textBox11.Location = new System.Drawing.Point(188, 32);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Placeholder = "Razão Social";
-            this.textBox11.PlaceholderColor = System.Drawing.Color.Gray;
-            this.textBox11.Size = new System.Drawing.Size(286, 20);
-            this.textBox11.TabIndex = 18;
-            this.textBox11.Text = "Razão Social";
+            this.txtRazaoSocial.ForeColor = System.Drawing.Color.Gray;
+            this.txtRazaoSocial.Location = new System.Drawing.Point(188, 32);
+            this.txtRazaoSocial.Name = "txtRazaoSocial";
+            this.txtRazaoSocial.Placeholder = "Razão Social";
+            this.txtRazaoSocial.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtRazaoSocial.Size = new System.Drawing.Size(286, 20);
+            this.txtRazaoSocial.TabIndex = 18;
             // 
-            // textBox8
+            // txtNomeFantasia
             // 
-            this.textBox8.ForeColor = System.Drawing.Color.Gray;
-            this.textBox8.Location = new System.Drawing.Point(6, 32);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Placeholder = "Nome da Empresa";
-            this.textBox8.PlaceholderColor = System.Drawing.Color.Gray;
-            this.textBox8.Size = new System.Drawing.Size(176, 20);
-            this.textBox8.TabIndex = 17;
-            this.textBox8.Text = "Nome da Empresa";
+            this.txtNomeFantasia.ForeColor = System.Drawing.Color.Gray;
+            this.txtNomeFantasia.Location = new System.Drawing.Point(6, 32);
+            this.txtNomeFantasia.Name = "txtNomeFantasia";
+            this.txtNomeFantasia.Placeholder = "Nome da Empresa";
+            this.txtNomeFantasia.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtNomeFantasia.Size = new System.Drawing.Size(176, 20);
+            this.txtNomeFantasia.TabIndex = 17;
             // 
-            // textBox7
+            // txtCNPJ
             // 
-            this.textBox7.ForeColor = System.Drawing.Color.Gray;
-            this.textBox7.Location = new System.Drawing.Point(6, 110);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Placeholder = "CNPJ";
-            this.textBox7.PlaceholderColor = System.Drawing.Color.Gray;
-            this.textBox7.Size = new System.Drawing.Size(210, 20);
-            this.textBox7.TabIndex = 16;
-            this.textBox7.Text = "CNPJ";
+            this.txtCNPJ.ForeColor = System.Drawing.Color.Gray;
+            this.txtCNPJ.Location = new System.Drawing.Point(6, 110);
+            this.txtCNPJ.Name = "txtCNPJ";
+            this.txtCNPJ.Placeholder = "CNPJ";
+            this.txtCNPJ.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtCNPJ.Size = new System.Drawing.Size(210, 20);
+            this.txtCNPJ.TabIndex = 16;
             // 
-            // textBox14
+            // txtEmailEmpresa
             // 
-            this.textBox14.ForeColor = System.Drawing.Color.Gray;
-            this.textBox14.Location = new System.Drawing.Point(188, 71);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Placeholder = "Email";
-            this.textBox14.PlaceholderColor = System.Drawing.Color.Gray;
-            this.textBox14.Size = new System.Drawing.Size(286, 20);
-            this.textBox14.TabIndex = 13;
-            this.textBox14.Text = "Email";
+            this.txtEmailEmpresa.ForeColor = System.Drawing.Color.Gray;
+            this.txtEmailEmpresa.Location = new System.Drawing.Point(188, 71);
+            this.txtEmailEmpresa.Name = "txtEmailEmpresa";
+            this.txtEmailEmpresa.Placeholder = "Email";
+            this.txtEmailEmpresa.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtEmailEmpresa.Size = new System.Drawing.Size(286, 20);
+            this.txtEmailEmpresa.TabIndex = 13;
             // 
-            // textBox15
+            // txtTelefoneEmpresa
             // 
-            this.textBox15.ForeColor = System.Drawing.Color.Gray;
-            this.textBox15.Location = new System.Drawing.Point(6, 71);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Placeholder = "Telefone";
-            this.textBox15.PlaceholderColor = System.Drawing.Color.Gray;
-            this.textBox15.Size = new System.Drawing.Size(176, 20);
-            this.textBox15.TabIndex = 12;
-            this.textBox15.Text = "Telefone";
+            this.txtTelefoneEmpresa.ForeColor = System.Drawing.Color.Gray;
+            this.txtTelefoneEmpresa.Location = new System.Drawing.Point(6, 71);
+            this.txtTelefoneEmpresa.Name = "txtTelefoneEmpresa";
+            this.txtTelefoneEmpresa.Placeholder = "Telefone";
+            this.txtTelefoneEmpresa.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtTelefoneEmpresa.Size = new System.Drawing.Size(176, 20);
+            this.txtTelefoneEmpresa.TabIndex = 12;
             // 
             // groupBox1
             // 
@@ -289,14 +283,14 @@ namespace Sieve.Janelas.Formularios
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.textBox10);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.textBox9);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.comboBoxPais);
+            this.groupBox1.Controls.Add(this.txtComplemento);
+            this.groupBox1.Controls.Add(this.comboBoxCidade);
+            this.groupBox1.Controls.Add(this.txtBairro);
+            this.groupBox1.Controls.Add(this.comboBoxEstado);
+            this.groupBox1.Controls.Add(this.txtCEP);
+            this.groupBox1.Controls.Add(this.txtEndereco);
+            this.groupBox1.Controls.Add(this.txtNumero);
             this.groupBox1.Location = new System.Drawing.Point(12, 341);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(480, 147);
@@ -376,152 +370,142 @@ namespace Sieve.Janelas.Formularios
             this.label12.TabIndex = 18;
             this.label12.Text = "CEP";
             // 
-            // comboBox3
+            // comboBoxPais
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(76, 114);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(255, 21);
-            this.comboBox3.TabIndex = 17;
+            this.comboBoxPais.FormattingEnabled = true;
+            this.comboBoxPais.Location = new System.Drawing.Point(76, 114);
+            this.comboBoxPais.Name = "comboBoxPais";
+            this.comboBoxPais.Size = new System.Drawing.Size(255, 21);
+            this.comboBoxPais.TabIndex = 17;
             // 
-            // textBox10
+            // txtComplemento
             // 
-            this.textBox10.ForeColor = System.Drawing.Color.Gray;
-            this.textBox10.Location = new System.Drawing.Point(336, 115);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Placeholder = "Complemento";
-            this.textBox10.PlaceholderColor = System.Drawing.Color.Gray;
-            this.textBox10.Size = new System.Drawing.Size(133, 20);
-            this.textBox10.TabIndex = 16;
-            this.textBox10.Text = "Complemento";
+            this.txtComplemento.ForeColor = System.Drawing.Color.Gray;
+            this.txtComplemento.Location = new System.Drawing.Point(336, 115);
+            this.txtComplemento.Name = "txtComplemento";
+            this.txtComplemento.Placeholder = "Complemento";
+            this.txtComplemento.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtComplemento.Size = new System.Drawing.Size(133, 20);
+            this.txtComplemento.TabIndex = 16;
             // 
-            // comboBox2
+            // comboBoxCidade
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(191, 75);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(278, 21);
-            this.comboBox2.TabIndex = 15;
+            this.comboBoxCidade.FormattingEnabled = true;
+            this.comboBoxCidade.Location = new System.Drawing.Point(191, 75);
+            this.comboBoxCidade.Name = "comboBoxCidade";
+            this.comboBoxCidade.Size = new System.Drawing.Size(278, 21);
+            this.comboBoxCidade.TabIndex = 15;
             // 
-            // textBox9
+            // txtBairro
             // 
-            this.textBox9.ForeColor = System.Drawing.Color.Gray;
-            this.textBox9.Location = new System.Drawing.Point(6, 75);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Placeholder = "Bairro";
-            this.textBox9.PlaceholderColor = System.Drawing.Color.Gray;
-            this.textBox9.Size = new System.Drawing.Size(182, 20);
-            this.textBox9.TabIndex = 14;
-            this.textBox9.Text = "Bairro";
+            this.txtBairro.ForeColor = System.Drawing.Color.Gray;
+            this.txtBairro.Location = new System.Drawing.Point(6, 75);
+            this.txtBairro.Name = "txtBairro";
+            this.txtBairro.Placeholder = "Bairro";
+            this.txtBairro.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtBairro.Size = new System.Drawing.Size(182, 20);
+            this.txtBairro.TabIndex = 14;
             // 
-            // comboBox1
+            // comboBoxEstado
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 114);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(66, 21);
-            this.comboBox1.TabIndex = 13;
+            this.comboBoxEstado.FormattingEnabled = true;
+            this.comboBoxEstado.Location = new System.Drawing.Point(6, 114);
+            this.comboBoxEstado.Name = "comboBoxEstado";
+            this.comboBoxEstado.Size = new System.Drawing.Size(66, 21);
+            this.comboBoxEstado.TabIndex = 13;
             // 
-            // textBox5
+            // txtCEP
             // 
-            this.textBox5.ForeColor = System.Drawing.Color.Gray;
-            this.textBox5.Location = new System.Drawing.Point(6, 36);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Placeholder = "CEP";
-            this.textBox5.PlaceholderColor = System.Drawing.Color.Gray;
-            this.textBox5.Size = new System.Drawing.Size(108, 20);
-            this.textBox5.TabIndex = 12;
-            this.textBox5.Text = "CEP";
+            this.txtCEP.ForeColor = System.Drawing.Color.Gray;
+            this.txtCEP.Location = new System.Drawing.Point(6, 36);
+            this.txtCEP.Name = "txtCEP";
+            this.txtCEP.Placeholder = "CEP";
+            this.txtCEP.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtCEP.Size = new System.Drawing.Size(108, 20);
+            this.txtCEP.TabIndex = 12;
             // 
-            // textBox4
+            // txtEndereco
             // 
-            this.textBox4.ForeColor = System.Drawing.Color.Gray;
-            this.textBox4.Location = new System.Drawing.Point(118, 36);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Placeholder = "Endereço";
-            this.textBox4.PlaceholderColor = System.Drawing.Color.Gray;
-            this.textBox4.Size = new System.Drawing.Size(277, 20);
-            this.textBox4.TabIndex = 11;
-            this.textBox4.Text = "Endereço";
+            this.txtEndereco.ForeColor = System.Drawing.Color.Gray;
+            this.txtEndereco.Location = new System.Drawing.Point(118, 36);
+            this.txtEndereco.Name = "txtEndereco";
+            this.txtEndereco.Placeholder = "Endereço";
+            this.txtEndereco.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtEndereco.Size = new System.Drawing.Size(277, 20);
+            this.txtEndereco.TabIndex = 11;
             // 
-            // textBox3
+            // txtNumero
             // 
-            this.textBox3.ForeColor = System.Drawing.Color.Gray;
-            this.textBox3.Location = new System.Drawing.Point(400, 36);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Placeholder = "Nº";
-            this.textBox3.PlaceholderColor = System.Drawing.Color.Gray;
-            this.textBox3.Size = new System.Drawing.Size(69, 20);
-            this.textBox3.TabIndex = 10;
-            this.textBox3.Text = "Nº";
+            this.txtNumero.ForeColor = System.Drawing.Color.Gray;
+            this.txtNumero.Location = new System.Drawing.Point(400, 36);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Placeholder = "Nº";
+            this.txtNumero.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtNumero.Size = new System.Drawing.Size(69, 20);
+            this.txtNumero.TabIndex = 10;
             // 
-            // comboBox4
+            // comboBoxPessoa
             // 
-            this.comboBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.comboBoxPessoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxPessoa.FormattingEnabled = true;
+            this.comboBoxPessoa.Items.AddRange(new object[] {
             "Pessoa Física",
             "Pessoa Jurídica"});
-            this.comboBox4.Location = new System.Drawing.Point(12, 12);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(157, 23);
-            this.comboBox4.TabIndex = 18;
-            this.comboBox4.Text = "Pessoa Jurídica";
+            this.comboBoxPessoa.Location = new System.Drawing.Point(12, 12);
+            this.comboBoxPessoa.Name = "comboBoxPessoa";
+            this.comboBoxPessoa.Size = new System.Drawing.Size(157, 23);
+            this.comboBoxPessoa.TabIndex = 18;
+            this.comboBoxPessoa.Text = "Pessoa Jurídica";
             // 
-            // textBox25
+            // txtNome
             // 
-            this.textBox25.ForeColor = System.Drawing.Color.Gray;
-            this.textBox25.Location = new System.Drawing.Point(6, 36);
-            this.textBox25.Name = "textBox25";
-            this.textBox25.Placeholder = "Nome";
-            this.textBox25.PlaceholderColor = System.Drawing.Color.Gray;
-            this.textBox25.Size = new System.Drawing.Size(161, 20);
-            this.textBox25.TabIndex = 10;
-            this.textBox25.Text = "Nome";
+            this.txtNome.ForeColor = System.Drawing.Color.Gray;
+            this.txtNome.Location = new System.Drawing.Point(6, 36);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Placeholder = "Nome";
+            this.txtNome.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtNome.Size = new System.Drawing.Size(161, 20);
+            this.txtNome.TabIndex = 10;
             // 
-            // textBox24
+            // txtSobrenome
             // 
-            this.textBox24.ForeColor = System.Drawing.Color.Gray;
-            this.textBox24.Location = new System.Drawing.Point(171, 36);
-            this.textBox24.Name = "textBox24";
-            this.textBox24.Placeholder = "Sobrenome";
-            this.textBox24.PlaceholderColor = System.Drawing.Color.Gray;
-            this.textBox24.Size = new System.Drawing.Size(301, 20);
-            this.textBox24.TabIndex = 11;
-            this.textBox24.Text = "Sobrenome";
+            this.txtSobrenome.ForeColor = System.Drawing.Color.Gray;
+            this.txtSobrenome.Location = new System.Drawing.Point(171, 36);
+            this.txtSobrenome.Name = "txtSobrenome";
+            this.txtSobrenome.Placeholder = "Sobrenome";
+            this.txtSobrenome.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtSobrenome.Size = new System.Drawing.Size(301, 20);
+            this.txtSobrenome.TabIndex = 11;
             // 
-            // textBox23
+            // txtTelefone
             // 
-            this.textBox23.ForeColor = System.Drawing.Color.Gray;
-            this.textBox23.Location = new System.Drawing.Point(6, 115);
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Placeholder = "Telefone";
-            this.textBox23.PlaceholderColor = System.Drawing.Color.Gray;
-            this.textBox23.Size = new System.Drawing.Size(161, 20);
-            this.textBox23.TabIndex = 12;
-            this.textBox23.Text = "Telefone";
+            this.txtTelefone.ForeColor = System.Drawing.Color.Gray;
+            this.txtTelefone.Location = new System.Drawing.Point(6, 115);
+            this.txtTelefone.Name = "txtTelefone";
+            this.txtTelefone.Placeholder = "Telefone";
+            this.txtTelefone.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtTelefone.Size = new System.Drawing.Size(161, 20);
+            this.txtTelefone.TabIndex = 12;
             // 
-            // textBox22
+            // txtEmail
             // 
-            this.textBox22.ForeColor = System.Drawing.Color.Gray;
-            this.textBox22.Location = new System.Drawing.Point(171, 76);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Placeholder = "Email";
-            this.textBox22.PlaceholderColor = System.Drawing.Color.Gray;
-            this.textBox22.Size = new System.Drawing.Size(303, 20);
-            this.textBox22.TabIndex = 13;
-            this.textBox22.Text = "Email";
+            this.txtEmail.ForeColor = System.Drawing.Color.Gray;
+            this.txtEmail.Location = new System.Drawing.Point(171, 76);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Placeholder = "Email";
+            this.txtEmail.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtEmail.Size = new System.Drawing.Size(303, 20);
+            this.txtEmail.TabIndex = 13;
             // 
-            // textBox21
+            // txtCPF
             // 
-            this.textBox21.ForeColor = System.Drawing.Color.Gray;
-            this.textBox21.Location = new System.Drawing.Point(6, 76);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Placeholder = "CPF";
-            this.textBox21.PlaceholderColor = System.Drawing.Color.Gray;
-            this.textBox21.Size = new System.Drawing.Size(161, 20);
-            this.textBox21.TabIndex = 14;
-            this.textBox21.Text = "CPF";
+            this.txtCPF.ForeColor = System.Drawing.Color.Gray;
+            this.txtCPF.Location = new System.Drawing.Point(6, 76);
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Placeholder = "CPF";
+            this.txtCPF.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtCPF.Size = new System.Drawing.Size(161, 20);
+            this.txtCPF.TabIndex = 14;
             // 
             // groupBox4
             // 
@@ -531,12 +515,12 @@ namespace Sieve.Janelas.Formularios
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Controls.Add(this.dateTimePicker1);
-            this.groupBox4.Controls.Add(this.textBox21);
-            this.groupBox4.Controls.Add(this.textBox22);
-            this.groupBox4.Controls.Add(this.textBox23);
-            this.groupBox4.Controls.Add(this.textBox24);
-            this.groupBox4.Controls.Add(this.textBox25);
+            this.groupBox4.Controls.Add(this.dataNascimento);
+            this.groupBox4.Controls.Add(this.txtCPF);
+            this.groupBox4.Controls.Add(this.txtEmail);
+            this.groupBox4.Controls.Add(this.txtTelefone);
+            this.groupBox4.Controls.Add(this.txtSobrenome);
+            this.groupBox4.Controls.Add(this.txtNome);
             this.groupBox4.Location = new System.Drawing.Point(12, 41);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(480, 150);
@@ -598,39 +582,39 @@ namespace Sieve.Janelas.Formularios
             this.label1.TabIndex = 16;
             this.label1.Text = "Nome";
             // 
-            // dateTimePicker1
+            // dataNascimento
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(171, 115);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(303, 20);
-            this.dateTimePicker1.TabIndex = 15;
+            this.dataNascimento.Location = new System.Drawing.Point(171, 115);
+            this.dataNascimento.Name = "dataNascimento";
+            this.dataNascimento.Size = new System.Drawing.Size(303, 20);
+            this.dataNascimento.TabIndex = 15;
             // 
-            // button1
+            // btnVoltar
             // 
-            this.button1.Location = new System.Drawing.Point(12, 714);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Voltar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnVoltar.Location = new System.Drawing.Point(12, 714);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(122, 23);
+            this.btnVoltar.TabIndex = 20;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnEnviar
             // 
-            this.button2.Location = new System.Drawing.Point(364, 714);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(122, 23);
-            this.button2.TabIndex = 21;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnEnviar.Location = new System.Drawing.Point(364, 714);
+            this.btnEnviar.Name = "btnEnviar";
+            this.btnEnviar.Size = new System.Drawing.Size(122, 23);
+            this.btnEnviar.TabIndex = 21;
+            this.btnEnviar.UseVisualStyleBackColor = true;
             // 
             // FornecedorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 749);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnEnviar);
+            this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.comboBoxPessoa);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -652,31 +636,31 @@ namespace Sieve.Janelas.Formularios
 
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private PhTextBox textBox14;
-        private PhTextBox textBox15;
+        private PhTextBox txtEmailEmpresa;
+        private PhTextBox txtTelefoneEmpresa;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private PhTextBox textBox10;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private PhTextBox textBox9;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private PhTextBox textBox5;
-        private PhTextBox textBox4;
-        private PhTextBox textBox3;
-        private PhTextBox textBox7;
-        private PhTextBox textBox8;
-        private PhTextBox textBox11;
-        private PhTextBox textBox18;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private PhTextBox textBox1;
-        private PhTextBox textBox25;
-        private PhTextBox textBox24;
-        private PhTextBox textBox23;
-        private PhTextBox textBox22;
-        private PhTextBox textBox21;
+        private System.Windows.Forms.ComboBox comboBoxPais;
+        private PhTextBox txtComplemento;
+        private System.Windows.Forms.ComboBox comboBoxCidade;
+        private PhTextBox txtBairro;
+        private System.Windows.Forms.ComboBox comboBoxEstado;
+        private PhTextBox txtCEP;
+        private PhTextBox txtEndereco;
+        private PhTextBox txtNumero;
+        private PhTextBox txtCNPJ;
+        private PhTextBox txtNomeFantasia;
+        private PhTextBox txtRazaoSocial;
+        private PhTextBox txtObservacoes;
+        private System.Windows.Forms.ComboBox comboBoxTipo;
+        private System.Windows.Forms.ComboBox comboBoxPessoa;
+        private PhTextBox txtServico;
+        private PhTextBox txtNome;
+        private PhTextBox txtSobrenome;
+        private PhTextBox txtTelefone;
+        private PhTextBox txtEmail;
+        private PhTextBox txtCPF;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dataNascimento;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -699,7 +683,7 @@ namespace Sieve.Janelas.Formularios
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnVoltar;
+        private System.Windows.Forms.Button btnEnviar;
     }
 }

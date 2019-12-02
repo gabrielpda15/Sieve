@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.phTextBox1 = new Sieve.Controles.PhTextBox();
+            this.comboBoxCategoria = new System.Windows.Forms.ComboBox();
+            this.comboBoxSecao = new System.Windows.Forms.ComboBox();
+            this.txtNome = new Sieve.Controles.PhTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.phTextBox2 = new Sieve.Controles.PhTextBox();
+            this.txtDescricao = new Sieve.Controles.PhTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnEnviar = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,32 +50,31 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // comboBox1
+            // comboBoxCategoria
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(13, 264);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(169, 21);
-            this.comboBox1.TabIndex = 5;
+            this.comboBoxCategoria.FormattingEnabled = true;
+            this.comboBoxCategoria.Location = new System.Drawing.Point(13, 264);
+            this.comboBoxCategoria.Name = "comboBoxCategoria";
+            this.comboBoxCategoria.Size = new System.Drawing.Size(169, 21);
+            this.comboBoxCategoria.TabIndex = 5;
             // 
-            // comboBox2
+            // comboBoxSecao
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(188, 264);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(169, 21);
-            this.comboBox2.TabIndex = 6;
+            this.comboBoxSecao.FormattingEnabled = true;
+            this.comboBoxSecao.Location = new System.Drawing.Point(188, 264);
+            this.comboBoxSecao.Name = "comboBoxSecao";
+            this.comboBoxSecao.Size = new System.Drawing.Size(169, 21);
+            this.comboBoxSecao.TabIndex = 6;
             // 
-            // phTextBox1
+            // txtNome
             // 
-            this.phTextBox1.ForeColor = System.Drawing.Color.Gray;
-            this.phTextBox1.Location = new System.Drawing.Point(12, 222);
-            this.phTextBox1.Name = "phTextBox1";
-            this.phTextBox1.Placeholder = "Nome";
-            this.phTextBox1.PlaceholderColor = System.Drawing.Color.Gray;
-            this.phTextBox1.Size = new System.Drawing.Size(344, 20);
-            this.phTextBox1.TabIndex = 7;
-            this.phTextBox1.Text = "Nome";
+            this.txtNome.ForeColor = System.Drawing.Color.Gray;
+            this.txtNome.Location = new System.Drawing.Point(12, 222);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Placeholder = "Nome";
+            this.txtNome.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtNome.Size = new System.Drawing.Size(344, 20);
+            this.txtNome.TabIndex = 7;
             // 
             // label1
             // 
@@ -104,17 +103,16 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "Seção";
             // 
-            // phTextBox2
+            // txtDescricao
             // 
-            this.phTextBox2.ForeColor = System.Drawing.Color.Gray;
-            this.phTextBox2.Location = new System.Drawing.Point(12, 314);
-            this.phTextBox2.Multiline = true;
-            this.phTextBox2.Name = "phTextBox2";
-            this.phTextBox2.Placeholder = "Descrição";
-            this.phTextBox2.PlaceholderColor = System.Drawing.Color.Gray;
-            this.phTextBox2.Size = new System.Drawing.Size(343, 101);
-            this.phTextBox2.TabIndex = 11;
-            this.phTextBox2.Text = "Descrição";
+            this.txtDescricao.ForeColor = System.Drawing.Color.Gray;
+            this.txtDescricao.Location = new System.Drawing.Point(12, 314);
+            this.txtDescricao.Multiline = true;
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Placeholder = "Descrição";
+            this.txtDescricao.PlaceholderColor = System.Drawing.Color.Gray;
+            this.txtDescricao.Size = new System.Drawing.Size(343, 101);
+            this.txtDescricao.TabIndex = 11;
             // 
             // label4
             // 
@@ -125,38 +123,38 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "Descrição";
             // 
-            // button1
+            // btnEnviar
             // 
-            this.button1.Location = new System.Drawing.Point(234, 443);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 23);
-            this.button1.TabIndex = 13;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnEnviar.Location = new System.Drawing.Point(234, 443);
+            this.btnEnviar.Name = "btnEnviar";
+            this.btnEnviar.Size = new System.Drawing.Size(122, 23);
+            this.btnEnviar.TabIndex = 13;
+            this.btnEnviar.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnVoltar
             // 
-            this.button2.Location = new System.Drawing.Point(12, 443);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(122, 23);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Voltar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnVoltar.Location = new System.Drawing.Point(12, 443);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(122, 23);
+            this.btnVoltar.TabIndex = 14;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.UseVisualStyleBackColor = true;
             // 
             // ProdutoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(368, 499);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnVoltar);
+            this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.phTextBox2);
+            this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.phTextBox1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.txtNome);
+            this.Controls.Add(this.comboBoxSecao);
+            this.Controls.Add(this.comboBoxCategoria);
             this.Controls.Add(this.pictureBox1);
             this.Name = "ProdutoForm";
             this.Text = "ProdutoForm";
@@ -169,15 +167,15 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private Controles.PhTextBox phTextBox1;
+        private System.Windows.Forms.ComboBox comboBoxCategoria;
+        private System.Windows.Forms.ComboBox comboBoxSecao;
+        private Controles.PhTextBox txtNome;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private Controles.PhTextBox phTextBox2;
+        private Controles.PhTextBox txtDescricao;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnEnviar;
+        private System.Windows.Forms.Button btnVoltar;
     }
 }
