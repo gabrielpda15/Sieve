@@ -31,7 +31,7 @@ namespace Sieve.API
         {
             services.AddControllers();
 
-            services.AddSieveRepos<SieveDbContext>(Configuration.GetConnectionString(CONN_STRING));
+            services.AddSieveRepos<SieveDbContext>(Configuration.GetConnectionString(CONN_STRING), Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using Sieve.API.Repository;
@@ -15,8 +16,16 @@ namespace Sieve.API.Extensions
     {
         public static readonly Version SERVER_VERSION = new Version(8, 0, 4);
 
-        public static void AddSieveRepos<TContext>(this IServiceCollection services, string connString) where TContext : DbContext
+        public static T GetConfig<T>(this IConfiguration config)
         {
+            return config.GetSection(typeof(T).Name).Get<T>();
+        }
+        
+        public static void AddSieveRepos<TContext>(this IServiceCollection services, string connString, IConfiguration configuration) where TContext : DbContext
+        {
+            var authConfig = configuration.GetConfig<AuthConfig>();
+            services.AddSingleton(authConfig);
+            
             services.AddDbContext<TContext>(options =>
             {
                 options.UseMySql(connString, o =>

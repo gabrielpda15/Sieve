@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://localhost/Sieve",
+      "applicationUrl": "http://localhost/Sieve/api",
       "sslPort": 0
     },
     "iisExpress": {
@@ -32,7 +32,6 @@
     },
     "IIS": {
       "commandName": "IIS",
-      "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
