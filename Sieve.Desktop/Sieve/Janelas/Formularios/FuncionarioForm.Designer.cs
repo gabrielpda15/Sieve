@@ -69,6 +69,8 @@ namespace Sieve.Janelas.Formularios
             this.textBox2 = new Sieve.Controles.PhTextBox();
             this.textBox1 = new Sieve.Controles.PhTextBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -93,7 +95,7 @@ namespace Sieve.Janelas.Formularios
             this.groupBox2.Size = new System.Drawing.Size(480, 145);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Dados Pessoais";
             // 
             // label18
             // 
@@ -234,7 +236,7 @@ namespace Sieve.Janelas.Formularios
             this.groupBox1.Size = new System.Drawing.Size(480, 150);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Endereço";
             // 
             // label12
             // 
@@ -402,7 +404,7 @@ namespace Sieve.Janelas.Formularios
             this.groupBox3.Size = new System.Drawing.Size(480, 107);
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "groupBox3";
+            this.groupBox3.Text = "Dados Profissionais";
             // 
             // label4
             // 
@@ -481,11 +483,30 @@ namespace Sieve.Janelas.Formularios
             this.comboBox4.Size = new System.Drawing.Size(161, 21);
             this.comboBox4.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 457);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Voltar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(370, 457);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(122, 23);
+            this.button2.TabIndex = 16;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // FuncionarioForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(508, 464);
+            this.ClientSize = new System.Drawing.Size(508, 511);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -542,5 +563,7 @@ namespace Sieve.Janelas.Formularios
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
