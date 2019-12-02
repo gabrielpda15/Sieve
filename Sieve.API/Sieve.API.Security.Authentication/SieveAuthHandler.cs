@@ -24,14 +24,14 @@ namespace Sieve.API.Security.Authentication
         private IRepository<Role> RoleRepo { get; }
         private AuthConfig AuthConfig { get; }
 
-        public SieveAuthHandler(IOptionsMonitor<SieveAuthSchmOptions> options, 
-                                ILoggerFactory logger, 
-                                UrlEncoder encoder, 
+        public SieveAuthHandler(IOptionsMonitor<SieveAuthSchmOptions> options,
+                                ILoggerFactory logger,
+                                UrlEncoder encoder,
                                 ISystemClock clock,
                                 IRepository<Identity> identityRepo,
                                 IRepository<Role> roleRepo,
                                 AuthConfig authConfig)
-            : base(options, logger, encoder, clock) 
+            : base(options, logger, encoder, clock)
         {
             this.IdentityRepo = identityRepo;
             this.RoleRepo = roleRepo;
@@ -53,20 +53,23 @@ namespace Sieve.API.Security.Authentication
             {
                 var token = new SieveToken(value.Parameter, this.AuthConfig);
 
-                return AuthenticateResult.Success(new AuthenticationTicket(new ClaimsPrincipal(new SievePrincipal((RoleRepository)this.RoleRepo)
-                {
-                    Identity = new SieveIdentity
-                    {
-                        IsAuthenticated = true,
-                        Name = token.Token.Username
-                }
-                })));
+                var user = new { token.Token.Username };
+                // var user = await IdentityRepo.SingleAsync(x => x.Username == token.Token.Username);
+                // if (user == null) throw new Exception("Usuário inválido");
+
+                return AuthenticateResult.Success(
+                    new AuthenticationTicket(new ClaimsPrincipal(
+                        new SievePrincipal((RoleRepository)this.RoleRepo)
+                        {
+                            Identity = new SieveIdentity
+                            {
+                                IsAuthenticated = true,
+                                Name = user.Username
+                            }
+                        }), SIEVE_AUTH));
             }
-            catch { }
+            catch (Exception ex) { return AuthenticateResult.Fail(ex); }
 
-
-            // var identities = await IdentityRepo.QueryAsync(query => query);
-
-            
         }
+    }
 }

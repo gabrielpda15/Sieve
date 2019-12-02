@@ -79,6 +79,8 @@ namespace Sieve.Janelas.Formularios
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -98,7 +100,7 @@ namespace Sieve.Janelas.Formularios
             this.groupBox3.Size = new System.Drawing.Size(480, 200);
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "groupBox3";
+            this.groupBox3.Text = "Outros";
             // 
             // label22
             // 
@@ -175,7 +177,7 @@ namespace Sieve.Janelas.Formularios
             this.groupBox2.Size = new System.Drawing.Size(480, 138);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Dados da Empresa";
             // 
             // label11
             // 
@@ -300,7 +302,7 @@ namespace Sieve.Janelas.Formularios
             this.groupBox1.Size = new System.Drawing.Size(480, 147);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Endereço";
             // 
             // label19
             // 
@@ -475,6 +477,7 @@ namespace Sieve.Janelas.Formularios
             this.textBox25.PlaceholderColor = System.Drawing.Color.Gray;
             this.textBox25.Size = new System.Drawing.Size(161, 20);
             this.textBox25.TabIndex = 10;
+            this.textBox25.Text = "Nome";
             // 
             // textBox24
             // 
@@ -539,7 +542,7 @@ namespace Sieve.Janelas.Formularios
             this.groupBox4.Size = new System.Drawing.Size(480, 150);
             this.groupBox4.TabIndex = 19;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "groupBox4";
+            this.groupBox4.Text = "Dados Pessoais";
             // 
             // label6
             // 
@@ -602,11 +605,30 @@ namespace Sieve.Janelas.Formularios
             this.dateTimePicker1.Size = new System.Drawing.Size(303, 20);
             this.dateTimePicker1.TabIndex = 15;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 714);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Voltar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(364, 714);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(122, 23);
+            this.button2.TabIndex = 21;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // FornecedorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 705);
+            this.ClientSize = new System.Drawing.Size(502, 749);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.groupBox3);
@@ -677,5 +699,7 @@ namespace Sieve.Janelas.Formularios
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
