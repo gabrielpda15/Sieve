@@ -31,11 +31,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboBoxCategoria = new System.Windows.Forms.ComboBox();
             this.comboBoxSecao = new System.Windows.Forms.ComboBox();
-            this.txtNome = new Sieve.Controles.PhTextBox();
+            this.txtNome = new Sieve.Controles.SvTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtDescricao = new Sieve.Controles.PhTextBox();
+            this.txtDescricao = new Sieve.Controles.SvTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnEnviar = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
@@ -169,11 +169,11 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox comboBoxCategoria;
         private System.Windows.Forms.ComboBox comboBoxSecao;
-        private Controles.PhTextBox txtNome;
+        private Controles.SvTextBox txtNome;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private Controles.PhTextBox txtDescricao;
+        private Controles.SvTextBox txtDescricao;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnEnviar;
         private System.Windows.Forms.Button btnVoltar;

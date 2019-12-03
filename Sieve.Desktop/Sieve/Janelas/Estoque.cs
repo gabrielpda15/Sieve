@@ -32,14 +32,6 @@ namespace Sieve.Janelas
             metroGrid.Rows.Add("Teste", "Teste 2", "Teste 3");
         }
 
-        private void btnMinimize_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

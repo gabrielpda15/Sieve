@@ -1,11 +1,13 @@
 ﻿using Sieve.Models.Utility;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Sieve.Models.Security
 {
-    public class Identity : Base.BaseEntity
+    public class User
     {
         [Required]
         [StringLength(30)]
@@ -16,14 +18,5 @@ namespace Sieve.Models.Security
         [StringLength(30, MinimumLength = 8)]
         [Display("Senha")]
         public string Password { get; set; }
-
-        public string PasswordHash { get; set; }
-
-        [Email]
-        [StringLength(80)]
-        [Display("Email")]
-        public string Email { get; set; }
-
-        public virtual IList<Relations.RIdentityRole> Roles { get; set; }
     }
 }
