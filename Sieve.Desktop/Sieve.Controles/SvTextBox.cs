@@ -38,13 +38,13 @@ namespace Sieve.Controles
         
         private bool IsEmpty { get => string.IsNullOrWhiteSpace(this.Text); }
 
-        public PhTextBox() : base()
+        public SvTextBox() : base()
         {
-            for (int i = 0; i < 10; i++)
+            /*for (int i = 0; i < 10; i++)
             {
                 Keys.D0
                 keys.Add(i, new [Keys. ])
-            }
+            }*/
 
             this.PlaceholderChange += PhTextBox_PlaceholderChange;
             this.PlaceholderColorChange += PhTextBox_PlaceholderColorChange;
@@ -67,10 +67,10 @@ namespace Sieve.Controles
 
         private void PhTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (Type == TextType.Numeric)
+            /*if (Type == TextType.Numeric)
             {
                 e.
-            }
+            }*/
         }
 
         private void RestoreForeColor()
