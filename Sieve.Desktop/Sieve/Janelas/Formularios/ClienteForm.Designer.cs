@@ -60,8 +60,9 @@ namespace Sieve.Janelas.Formularios
             this.txtTelefone = new Sieve.Controles.SvTextBox();
             this.txtSobrenome = new Sieve.Controles.SvTextBox();
             this.txtNome = new Sieve.Controles.SvTextBox();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.btnEnviar = new System.Windows.Forms.Button();
+            this.svHeader1 = new Sieve.Controles.SvHeader();
+            this.btnVoltar = new Sieve.Controles.SvButton();
+            this.btnEnviar = new Sieve.Controles.SvButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -84,7 +85,7 @@ namespace Sieve.Janelas.Formularios
             this.groupBox1.Controls.Add(this.txtCep);
             this.groupBox1.Controls.Add(this.txtEndereco);
             this.groupBox1.Controls.Add(this.txtNumero);
-            this.groupBox1.Location = new System.Drawing.Point(12, 172);
+            this.groupBox1.Location = new System.Drawing.Point(12, 197);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(480, 155);
             this.groupBox1.TabIndex = 10;
@@ -175,11 +176,12 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtComplemento.ForeColor = System.Drawing.Color.Gray;
             this.txtComplemento.Location = new System.Drawing.Point(345, 114);
+            this.txtComplemento.Mask = null;
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Placeholder = "Complemento";
-            this.txtComplemento.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtComplemento.Size = new System.Drawing.Size(122, 20);
             this.txtComplemento.TabIndex = 16;
+            this.txtComplemento.Text = "Complemento";
             // 
             // comboBoxCidade
             // 
@@ -193,11 +195,12 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtBairro.ForeColor = System.Drawing.Color.Gray;
             this.txtBairro.Location = new System.Drawing.Point(9, 75);
+            this.txtBairro.Mask = null;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Placeholder = "Bairro";
-            this.txtBairro.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtBairro.Size = new System.Drawing.Size(185, 20);
             this.txtBairro.TabIndex = 14;
+            this.txtBairro.Text = "Bairro";
             // 
             // comboBoxEstado
             // 
@@ -211,31 +214,34 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtCep.ForeColor = System.Drawing.Color.Gray;
             this.txtCep.Location = new System.Drawing.Point(9, 36);
+            this.txtCep.Mask = null;
             this.txtCep.Name = "txtCep";
             this.txtCep.Placeholder = "CEP";
-            this.txtCep.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtCep.Size = new System.Drawing.Size(103, 20);
             this.txtCep.TabIndex = 12;
+            this.txtCep.Text = "CEP";
             // 
             // txtEndereco
             // 
             this.txtEndereco.ForeColor = System.Drawing.Color.Gray;
             this.txtEndereco.Location = new System.Drawing.Point(118, 36);
+            this.txtEndereco.Mask = null;
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Placeholder = "Endereço";
-            this.txtEndereco.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtEndereco.Size = new System.Drawing.Size(285, 20);
             this.txtEndereco.TabIndex = 11;
+            this.txtEndereco.Text = "Endereço";
             // 
             // txtNumero
             // 
             this.txtNumero.ForeColor = System.Drawing.Color.Gray;
             this.txtNumero.Location = new System.Drawing.Point(409, 36);
+            this.txtNumero.Mask = null;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Placeholder = "Nº";
-            this.txtNumero.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtNumero.Size = new System.Drawing.Size(58, 20);
             this.txtNumero.TabIndex = 10;
+            this.txtNumero.Text = "Nº";
             // 
             // groupBox2
             // 
@@ -251,7 +257,7 @@ namespace Sieve.Janelas.Formularios
             this.groupBox2.Controls.Add(this.txtTelefone);
             this.groupBox2.Controls.Add(this.txtSobrenome);
             this.groupBox2.Controls.Add(this.txtNome);
-            this.groupBox2.Location = new System.Drawing.Point(12, 23);
+            this.groupBox2.Location = new System.Drawing.Point(12, 48);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(480, 143);
             this.groupBox2.TabIndex = 11;
@@ -323,80 +329,114 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtCPF.ForeColor = System.Drawing.Color.Gray;
             this.txtCPF.Location = new System.Drawing.Point(12, 70);
+            this.txtCPF.Mask = null;
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Placeholder = "CPF";
-            this.txtCPF.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtCPF.Size = new System.Drawing.Size(153, 20);
             this.txtCPF.TabIndex = 14;
+            this.txtCPF.Text = "CPF";
             // 
             // txtEmail
             // 
             this.txtEmail.ForeColor = System.Drawing.Color.Gray;
             this.txtEmail.Location = new System.Drawing.Point(171, 70);
+            this.txtEmail.Mask = null;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Placeholder = "Email";
-            this.txtEmail.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtEmail.Size = new System.Drawing.Size(301, 20);
             this.txtEmail.TabIndex = 13;
+            this.txtEmail.Text = "Email";
             // 
             // txtTelefone
             // 
             this.txtTelefone.ForeColor = System.Drawing.Color.Gray;
             this.txtTelefone.Location = new System.Drawing.Point(12, 109);
+            this.txtTelefone.Mask = null;
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Placeholder = "Telefone";
-            this.txtTelefone.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtTelefone.Size = new System.Drawing.Size(153, 20);
             this.txtTelefone.TabIndex = 12;
+            this.txtTelefone.Text = "Telefone";
             // 
             // txtSobrenome
             // 
             this.txtSobrenome.ForeColor = System.Drawing.Color.Gray;
             this.txtSobrenome.Location = new System.Drawing.Point(171, 32);
+            this.txtSobrenome.Mask = null;
             this.txtSobrenome.Name = "txtSobrenome";
             this.txtSobrenome.Placeholder = "Sobrenome";
-            this.txtSobrenome.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtSobrenome.Size = new System.Drawing.Size(301, 20);
             this.txtSobrenome.TabIndex = 11;
+            this.txtSobrenome.Text = "Sobrenome";
             // 
             // txtNome
             // 
             this.txtNome.ForeColor = System.Drawing.Color.Gray;
             this.txtNome.Location = new System.Drawing.Point(12, 32);
+            this.txtNome.Mask = null;
             this.txtNome.Name = "txtNome";
             this.txtNome.Placeholder = "Nome";
-            this.txtNome.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtNome.Size = new System.Drawing.Size(153, 20);
             this.txtNome.TabIndex = 10;
+            this.txtNome.Text = "Nome";
+            // 
+            // svHeader1
+            // 
+            this.svHeader1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
+            this.svHeader1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.svHeader1.Location = new System.Drawing.Point(0, 0);
+            this.svHeader1.Logo = global::Sieve.Properties.Resources.icon;
+            this.svHeader1.Margin = new System.Windows.Forms.Padding(4);
+            this.svHeader1.Name = "svHeader1";
+            this.svHeader1.Size = new System.Drawing.Size(502, 41);
+            this.svHeader1.TabIndex = 2;
+            this.svHeader1.Title = "Cliente";
             // 
             // btnVoltar
             // 
-            this.btnVoltar.Location = new System.Drawing.Point(12, 357);
+            this.btnVoltar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(230)))), ((int)(((byte)(217)))));
+            this.btnVoltar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnVoltar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(209)))), ((int)(((byte)(197)))));
+            this.btnVoltar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(245)))), ((int)(((byte)(234)))));
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.Location = new System.Drawing.Point(24, 383);
             this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(112, 23);
+            this.btnVoltar.Size = new System.Drawing.Size(135, 35);
             this.btnVoltar.TabIndex = 12;
             this.btnVoltar.Text = "Voltar";
-            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.UseVisualStyleBackColor = false;
             // 
             // btnEnviar
             // 
-            this.btnEnviar.Location = new System.Drawing.Point(370, 357);
+            this.btnEnviar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(230)))), ((int)(((byte)(217)))));
+            this.btnEnviar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(209)))), ((int)(((byte)(197)))));
+            this.btnEnviar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(245)))), ((int)(((byte)(234)))));
+            this.btnEnviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnviar.Location = new System.Drawing.Point(344, 383);
             this.btnEnviar.Name = "btnEnviar";
-            this.btnEnviar.Size = new System.Drawing.Size(122, 23);
+            this.btnEnviar.Size = new System.Drawing.Size(135, 35);
             this.btnEnviar.TabIndex = 13;
-            this.btnEnviar.UseVisualStyleBackColor = true;
+            this.btnEnviar.UseVisualStyleBackColor = false;
             // 
             // ClienteForm
             // 
+            this.AcceptButton = this.btnEnviar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 399);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(255)))), ((int)(((byte)(250)))));
+            this.CancelButton = this.btnVoltar;
+            this.ClientSize = new System.Drawing.Size(502, 435);
+            this.ControlBox = false;
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.btnVoltar);
+            this.Controls.Add(this.svHeader1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ClienteForm";
-            this.Text = "ClienteForm";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Cliente";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -437,7 +477,8 @@ namespace Sieve.Janelas.Formularios
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btnVoltar;
-        private System.Windows.Forms.Button btnEnviar;
+        private SvHeader svHeader1;
+        private SvButton btnVoltar;
+        private SvButton btnEnviar;
     }
 }

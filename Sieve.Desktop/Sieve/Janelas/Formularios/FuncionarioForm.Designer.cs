@@ -69,8 +69,9 @@ namespace Sieve.Janelas.Formularios
             this.txtCTPS = new Sieve.Controles.SvTextBox();
             this.txtCargo = new Sieve.Controles.SvTextBox();
             this.comboBoxStatus = new System.Windows.Forms.ComboBox();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.btnEnviar = new System.Windows.Forms.Button();
+            this.btnVoltar = new Sieve.Controles.SvButton();
+            this.btnEnviar = new Sieve.Controles.SvButton();
+            this.svHeader1 = new Sieve.Controles.SvHeader();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -90,7 +91,7 @@ namespace Sieve.Janelas.Formularios
             this.groupBox2.Controls.Add(this.txTelefone);
             this.groupBox2.Controls.Add(this.txtSobrenome);
             this.groupBox2.Controls.Add(this.txtNome);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Location = new System.Drawing.Point(12, 54);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(480, 145);
             this.groupBox2.TabIndex = 13;
@@ -162,9 +163,9 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtCPF.ForeColor = System.Drawing.Color.Gray;
             this.txtCPF.Location = new System.Drawing.Point(12, 71);
+            this.txtCPF.Mask = null;
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Placeholder = "CPF";
-            this.txtCPF.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtCPF.Size = new System.Drawing.Size(153, 20);
             this.txtCPF.TabIndex = 14;
             this.txtCPF.Text = "CPF";
@@ -173,9 +174,9 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtEmail.ForeColor = System.Drawing.Color.Gray;
             this.txtEmail.Location = new System.Drawing.Point(171, 71);
+            this.txtEmail.Mask = null;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Placeholder = "Email";
-            this.txtEmail.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtEmail.Size = new System.Drawing.Size(301, 20);
             this.txtEmail.TabIndex = 13;
             this.txtEmail.Text = "Email";
@@ -184,9 +185,9 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txTelefone.ForeColor = System.Drawing.Color.Gray;
             this.txTelefone.Location = new System.Drawing.Point(12, 110);
+            this.txTelefone.Mask = null;
             this.txTelefone.Name = "txTelefone";
             this.txTelefone.Placeholder = "Telefone";
-            this.txTelefone.PlaceholderColor = System.Drawing.Color.Gray;
             this.txTelefone.Size = new System.Drawing.Size(153, 20);
             this.txTelefone.TabIndex = 12;
             this.txTelefone.Text = "Telefone";
@@ -195,9 +196,9 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtSobrenome.ForeColor = System.Drawing.Color.Gray;
             this.txtSobrenome.Location = new System.Drawing.Point(171, 32);
+            this.txtSobrenome.Mask = null;
             this.txtSobrenome.Name = "txtSobrenome";
             this.txtSobrenome.Placeholder = "Sobrenome";
-            this.txtSobrenome.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtSobrenome.Size = new System.Drawing.Size(301, 20);
             this.txtSobrenome.TabIndex = 11;
             this.txtSobrenome.Text = "Sobrenome";
@@ -206,9 +207,9 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtNome.ForeColor = System.Drawing.Color.Gray;
             this.txtNome.Location = new System.Drawing.Point(12, 32);
+            this.txtNome.Mask = null;
             this.txtNome.Name = "txtNome";
             this.txtNome.Placeholder = "Nome";
-            this.txtNome.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtNome.Size = new System.Drawing.Size(153, 20);
             this.txtNome.TabIndex = 10;
             this.txtNome.Text = "Nome";
@@ -231,7 +232,7 @@ namespace Sieve.Janelas.Formularios
             this.groupBox1.Controls.Add(this.txtCEP);
             this.groupBox1.Controls.Add(this.txtEndereco);
             this.groupBox1.Controls.Add(this.txtNumero);
-            this.groupBox1.Location = new System.Drawing.Point(12, 163);
+            this.groupBox1.Location = new System.Drawing.Point(12, 205);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(480, 150);
             this.groupBox1.TabIndex = 12;
@@ -322,9 +323,9 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtComplemento.ForeColor = System.Drawing.Color.Gray;
             this.txtComplemento.Location = new System.Drawing.Point(339, 113);
+            this.txtComplemento.Mask = null;
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Placeholder = "Complemento";
-            this.txtComplemento.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtComplemento.Size = new System.Drawing.Size(122, 20);
             this.txtComplemento.TabIndex = 16;
             this.txtComplemento.Text = "Complemento";
@@ -341,9 +342,9 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtBairro.ForeColor = System.Drawing.Color.Gray;
             this.txtBairro.Location = new System.Drawing.Point(12, 74);
+            this.txtBairro.Mask = null;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Placeholder = "Bairro";
-            this.txtBairro.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtBairro.Size = new System.Drawing.Size(174, 20);
             this.txtBairro.TabIndex = 14;
             this.txtBairro.Text = "Bairro";
@@ -360,9 +361,9 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtCEP.ForeColor = System.Drawing.Color.Gray;
             this.txtCEP.Location = new System.Drawing.Point(12, 32);
+            this.txtCEP.Mask = null;
             this.txtCEP.Name = "txtCEP";
             this.txtCEP.Placeholder = "CEP";
-            this.txtCEP.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtCEP.Size = new System.Drawing.Size(100, 20);
             this.txtCEP.TabIndex = 12;
             this.txtCEP.Text = "CEP";
@@ -371,9 +372,9 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtEndereco.ForeColor = System.Drawing.Color.Gray;
             this.txtEndereco.Location = new System.Drawing.Point(118, 32);
+            this.txtEndereco.Mask = null;
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Placeholder = "Endereço";
-            this.txtEndereco.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtEndereco.Size = new System.Drawing.Size(277, 20);
             this.txtEndereco.TabIndex = 11;
             this.txtEndereco.Text = "Endereço";
@@ -382,9 +383,9 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtNumero.ForeColor = System.Drawing.Color.Gray;
             this.txtNumero.Location = new System.Drawing.Point(401, 32);
+            this.txtNumero.Mask = null;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Placeholder = "Nº";
-            this.txtNumero.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtNumero.Size = new System.Drawing.Size(58, 20);
             this.txtNumero.TabIndex = 10;
             this.txtNumero.Text = "Nº";
@@ -399,7 +400,7 @@ namespace Sieve.Janelas.Formularios
             this.groupBox3.Controls.Add(this.txtCTPS);
             this.groupBox3.Controls.Add(this.txtCargo);
             this.groupBox3.Controls.Add(this.comboBoxStatus);
-            this.groupBox3.Location = new System.Drawing.Point(12, 319);
+            this.groupBox3.Location = new System.Drawing.Point(12, 361);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(480, 107);
             this.groupBox3.TabIndex = 14;
@@ -446,9 +447,9 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtSalario.ForeColor = System.Drawing.Color.Gray;
             this.txtSalario.Location = new System.Drawing.Point(228, 76);
+            this.txtSalario.Mask = null;
             this.txtSalario.Name = "txtSalario";
             this.txtSalario.Placeholder = "Salário";
-            this.txtSalario.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtSalario.Size = new System.Drawing.Size(129, 20);
             this.txtSalario.TabIndex = 3;
             this.txtSalario.Text = "Salário";
@@ -457,9 +458,9 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtCTPS.ForeColor = System.Drawing.Color.Gray;
             this.txtCTPS.Location = new System.Drawing.Point(6, 76);
+            this.txtCTPS.Mask = null;
             this.txtCTPS.Name = "txtCTPS";
             this.txtCTPS.Placeholder = "CTPS";
-            this.txtCTPS.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtCTPS.Size = new System.Drawing.Size(216, 20);
             this.txtCTPS.TabIndex = 2;
             this.txtCTPS.Text = "CTPS";
@@ -468,9 +469,9 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtCargo.ForeColor = System.Drawing.Color.Gray;
             this.txtCargo.Location = new System.Drawing.Point(173, 37);
+            this.txtCargo.Mask = null;
             this.txtCargo.Name = "txtCargo";
             this.txtCargo.Placeholder = "Cargo";
-            this.txtCargo.PlaceholderColor = System.Drawing.Color.Gray;
             this.txtCargo.Size = new System.Drawing.Size(299, 20);
             this.txtCargo.TabIndex = 1;
             this.txtCargo.Text = "Cargo";
@@ -485,32 +486,61 @@ namespace Sieve.Janelas.Formularios
             // 
             // btnVoltar
             // 
-            this.btnVoltar.Location = new System.Drawing.Point(12, 457);
+            this.btnVoltar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(230)))), ((int)(((byte)(217)))));
+            this.btnVoltar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnVoltar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(209)))), ((int)(((byte)(197)))));
+            this.btnVoltar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(245)))), ((int)(((byte)(234)))));
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.Location = new System.Drawing.Point(12, 506);
             this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(122, 23);
+            this.btnVoltar.Size = new System.Drawing.Size(135, 35);
             this.btnVoltar.TabIndex = 15;
             this.btnVoltar.Text = "Voltar";
-            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.UseVisualStyleBackColor = false;
             // 
             // btnEnviar
             // 
-            this.btnEnviar.Location = new System.Drawing.Point(370, 457);
+            this.btnEnviar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(230)))), ((int)(((byte)(217)))));
+            this.btnEnviar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(209)))), ((int)(((byte)(197)))));
+            this.btnEnviar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(245)))), ((int)(((byte)(234)))));
+            this.btnEnviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnviar.Location = new System.Drawing.Point(357, 506);
             this.btnEnviar.Name = "btnEnviar";
-            this.btnEnviar.Size = new System.Drawing.Size(122, 23);
+            this.btnEnviar.Size = new System.Drawing.Size(135, 35);
             this.btnEnviar.TabIndex = 16;
-            this.btnEnviar.UseVisualStyleBackColor = true;
+            this.btnEnviar.UseVisualStyleBackColor = false;
+            // 
+            // svHeader1
+            // 
+            this.svHeader1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
+            this.svHeader1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.svHeader1.Location = new System.Drawing.Point(0, 0);
+            this.svHeader1.Logo = global::Sieve.Properties.Resources.icon;
+            this.svHeader1.Margin = new System.Windows.Forms.Padding(4);
+            this.svHeader1.Name = "svHeader1";
+            this.svHeader1.Size = new System.Drawing.Size(508, 41);
+            this.svHeader1.TabIndex = 2;
+            this.svHeader1.Title = "Funcionário";
             // 
             // FuncionarioForm
             // 
+            this.AcceptButton = this.btnEnviar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(508, 511);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(255)))), ((int)(((byte)(250)))));
+            this.CancelButton = this.btnVoltar;
+            this.ClientSize = new System.Drawing.Size(508, 557);
+            this.ControlBox = false;
+            this.Controls.Add(this.svHeader1);
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FuncionarioForm";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FuncionarioForm";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -563,7 +593,8 @@ namespace Sieve.Janelas.Formularios
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnVoltar;
-        private System.Windows.Forms.Button btnEnviar;
+        private SvButton btnVoltar;
+        private SvButton btnEnviar;
+        private SvHeader svHeader1;
     }
 }
