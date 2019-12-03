@@ -399,7 +399,7 @@ namespace Sieve.Janelas.Formularios
             this.btnVoltar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(209)))), ((int)(((byte)(197)))));
             this.btnVoltar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(245)))), ((int)(((byte)(234)))));
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoltar.Location = new System.Drawing.Point(24, 383);
+            this.btnVoltar.Location = new System.Drawing.Point(12, 372);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(135, 35);
             this.btnVoltar.TabIndex = 12;
@@ -412,7 +412,7 @@ namespace Sieve.Janelas.Formularios
             this.btnEnviar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(209)))), ((int)(((byte)(197)))));
             this.btnEnviar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(245)))), ((int)(((byte)(234)))));
             this.btnEnviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEnviar.Location = new System.Drawing.Point(344, 383);
+            this.btnEnviar.Location = new System.Drawing.Point(357, 372);
             this.btnEnviar.Name = "btnEnviar";
             this.btnEnviar.Size = new System.Drawing.Size(135, 35);
             this.btnEnviar.TabIndex = 13;
@@ -425,7 +425,7 @@ namespace Sieve.Janelas.Formularios
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(255)))), ((int)(((byte)(250)))));
             this.CancelButton = this.btnVoltar;
-            this.ClientSize = new System.Drawing.Size(502, 435);
+            this.ClientSize = new System.Drawing.Size(502, 419);
             this.ControlBox = false;
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.btnVoltar);
