@@ -13,6 +13,8 @@ namespace Sieve
         private static IDictionary<string, string[]> Permissions { get; } = new Dictionary<string, string[]>();
         private static IDictionary<string, Form> Screens { get; } = new Dictionary<string, Form>();
 
+        public static ApiManager ApiManager { get; private set; }
+
         private static void InitData()
         {
             Permissions.Add("--vendas", new string[] { "Vendas", "VendasAdm" });
@@ -20,6 +22,8 @@ namespace Sieve
 
             Screens.Add("--vendas", new Vendas());
             Screens.Add("--estoque", new Estoque());
+
+            ApiManager = new ApiManager("http://localhost/api/");            
         }
 
         /// <summary>
@@ -32,6 +36,12 @@ namespace Sieve
             Application.SetCompatibleTextRenderingDefault(false);
 
             InitData();
+
+            /*if (!ApiManager.CheckHealth("health").GetAwaiter().GetResult())
+            {
+                MessageBox.Show("Servidor Offline", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }*/
 
             if (args.Length == 0)
             {
