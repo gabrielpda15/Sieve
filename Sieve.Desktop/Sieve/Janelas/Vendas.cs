@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 namespace Sieve.Janelas
 {
-    public partial class Venda2 : Form
+    public partial class Vendas : Form
     {
-        public Venda2()
+        public Vendas()
         {
             InitializeComponent();
+
+            this.TopMost = true;
+            this.WindowState = FormWindowState.Maximized;
         }
 
     }

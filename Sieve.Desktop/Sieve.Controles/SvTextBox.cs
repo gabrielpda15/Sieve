@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Sieve.Controles
 {
-    public class PhTextBox : TextBox
+    public class SvTextBox : TextBox
     {
         private static readonly IDictionary<int, Keys[]> keys;
 
@@ -31,17 +31,12 @@ namespace Sieve.Controles
         [DefaultValue(typeof(Color), "Gray")]
         public Color PlaceholderColor { get => _placeholderColor; set { _placeholderColor = value; PlaceholderColorChange?.Invoke(this, EventArgs.Empty); } }
 
+        [Browsable(true)]
+        public string Mask { get; set; }
+
         private bool IsPlaceholder { get => this.Text == this.Placeholder; }
         
         private bool IsEmpty { get => string.IsNullOrWhiteSpace(this.Text); }
-
-        [Browsable(true)]
-        [DefaultValue("")]
-        public string Mask { get; set; }
-
-        [Browsable(true)]
-        [DefaultValue(typeof(TextType), "Normal")]
-        public TextType Type { get; set; }
 
         public PhTextBox() : base()
         {

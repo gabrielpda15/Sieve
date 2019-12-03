@@ -44,6 +44,9 @@
     <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\Packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -63,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiManager.cs" />
     <Compile Include="Janelas\ConsultaProduto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,17 +121,11 @@
     <Compile Include="Janelas\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Janelas\Venda.cs">
+    <Compile Include="Janelas\Vendas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Janelas\Venda.Designer.cs">
-      <DependentUpon>Venda.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Janelas\Venda2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Janelas\Venda2.Designer.cs">
-      <DependentUpon>Venda2.cs</DependentUpon>
+    <Compile Include="Janelas\Vendas.Designer.cs">
+      <DependentUpon>Vendas.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -158,11 +156,8 @@
     <EmbeddedResource Include="Janelas\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Janelas\Venda.resx">
-      <DependentUpon>Venda.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Janelas\Venda2.resx">
-      <DependentUpon>Venda2.cs</DependentUpon>
+    <EmbeddedResource Include="Janelas\Vendas.resx">
+      <DependentUpon>Vendas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -172,6 +167,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -196,6 +192,15 @@
       <Project>{509819ba-68f6-4783-bbf7-e286eb92b6bd}</Project>
       <Name>Sieve.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\avatar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
