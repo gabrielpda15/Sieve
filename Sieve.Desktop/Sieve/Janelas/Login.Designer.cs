@@ -42,7 +42,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 127);
+            this.label1.Location = new System.Drawing.Point(33, 123);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 2;
@@ -51,7 +51,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(39, 155);
+            this.label2.Location = new System.Drawing.Point(39, 154);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 3;
@@ -60,7 +60,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Sieve.Properties.Resources.avatar;
-            this.pictureBox1.Location = new System.Drawing.Point(35, 22);
+            this.pictureBox1.Location = new System.Drawing.Point(35, 21);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(221, 74);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -71,7 +71,7 @@
             // 
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.ForeColor = System.Drawing.Color.Gray;
-            this.txtUsername.Location = new System.Drawing.Point(81, 122);
+            this.txtUsername.Location = new System.Drawing.Point(81, 118);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtUsername.Mask = null;
             this.txtUsername.Name = "txtUsername";
@@ -84,7 +84,7 @@
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.ForeColor = System.Drawing.Color.Gray;
-            this.txtPassword.Location = new System.Drawing.Point(81, 150);
+            this.txtPassword.Location = new System.Drawing.Point(81, 149);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPassword.Mask = null;
             this.txtPassword.Name = "txtPassword";
@@ -97,7 +97,7 @@
             // 
             this.lbError.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbError.Location = new System.Drawing.Point(35, 180);
+            this.lbError.Location = new System.Drawing.Point(35, 179);
             this.lbError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbError.Name = "lbError";
             this.lbError.Size = new System.Drawing.Size(221, 28);
@@ -110,7 +110,7 @@
             this.btnLogin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(209)))), ((int)(((byte)(197)))));
             this.btnLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(245)))), ((int)(((byte)(234)))));
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Location = new System.Drawing.Point(157, 214);
+            this.btnLogin.Location = new System.Drawing.Point(156, 214);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(100, 30);
             this.btnLogin.TabIndex = 10;
@@ -138,7 +138,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(255)))), ((int)(((byte)(250)))));
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(307, 263);
+            this.ClientSize = new System.Drawing.Size(292, 263);
             this.ControlBox = false;
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
@@ -155,6 +155,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

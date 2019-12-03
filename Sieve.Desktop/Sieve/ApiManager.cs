@@ -29,5 +29,10 @@ namespace Sieve
             catch { return false; }
         }
 
+        public async Task<T> GetAsync<T>(string url, CancellationToken ct = default) where T : class
+        {
+            return await Task.FromResult<T>(null);
+        }
+
     }
 }

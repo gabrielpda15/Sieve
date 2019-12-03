@@ -18,7 +18,17 @@ namespace Sieve.Janelas
 
             this.TopMost = true;
             this.WindowState = FormWindowState.Maximized;
+            this.timer.Tick += Timer_Tick;
         }
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            lbDateTime.Text = DateTime.Now.ToString();
+        }
+
+        private void Vendas_Load(object sender, EventArgs e)
+        {
+            timer.Start();
+        }
     }
 }
