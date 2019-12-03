@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SessionService } from './shared/session.service';
 import { SystemGuardService } from './shared/systemguard.service';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SystemGuardService } from './shared/systemguard.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HomeModule
   ],
   providers: [SessionService, SystemGuardService],
   bootstrap: [AppComponent]

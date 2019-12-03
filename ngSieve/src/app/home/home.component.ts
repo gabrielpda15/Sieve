@@ -9,23 +9,9 @@ import { SessionService } from '../shared/session.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public router: Router, public session: SessionService) { }
-
-  public showLogin = false;
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  public isLoggedIn(): boolean {
-    return this.session.Token != null;
-  }
-
-  public onLoginDisable(event: boolean) {
-    this.showLogin = !event;
-  }
-
-  public onLoginClick(event: any): void {
-    this.showLogin = true;
   }
 
 }

@@ -1,0 +1,45 @@
+
+  <div class="flex pt-4">
+      <div class="bg-white shadow w-64 my-2">
+          <ul class="list-reset">
+            <li class="border">
+              <a [routerLink]="['/system/storage']" class="block cursor-pointer p-4 text-grey-darker font-bold border-purple hover:bg-grey-lighter border-r-4">Estoque</a>
+            </li>
+            <div *ngIf="getRoute('st')" class="bg-gray-300">
+              <ul class="list-reset">
+                <li>
+                  <a [routerLink]="['/system/storage/products']" class="block cursor-pointer pl-10 p-4 text-grey-darker font-bold border-purple hover:bg-grey-lighter border-r-4">Produtos</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/system/storage']" class="block cursor-pointer pl-10 p-4 text-grey-darker font-bold border-purple hover:bg-grey-lighter border-r-4">Item</a>
+                </li>
+              </ul>
+            </div>
+            <li class="border">
+              <a [routerLink]="['/system/sales']" class="block cursor-pointer p-4 text-grey-darker font-bold border-grey-lighter hover:border-purple-light hover:bg-grey-lighter border-r-4">Vendas</a>
+            </li>
+            <div *ngIf="getRoute('sl')" class="bg-gray-300">
+              <ul class="list-reset">
+                <li>
+                  <a [routerLink]="['/system/storage']" class="block cursor-pointer pl-10 p-4 text-grey-darker font-bold border-purple hover:bg-grey-lighter border-r-4">Item</a>
+                </li>
+              </ul>
+            </div>
+            <li class="border">
+              <a [routerLink]="['/system/finance']" class="block cursor-pointer p-4 text-grey-darker font-bold border-grey-lighter hover:border-purple-light hover:bg-grey-lighter border-r-4">Financeiro</a>
+            </li>
+            <div *ngIf="getRoute('fi')" class="bg-gray-300">
+              <ul class="list-reset">
+                <li>
+                  <a [routerLink]="['/system/storage']" class="block cursor-pointer pl-10 p-4 text-grey-darker font-bold border-purple hover:bg-grey-lighter border-r-4">Item</a>
+                </li>
+              </ul>
+            </div>
+          </ul>
+        </div>
+
+        <div class="w-1/2 px-16 pt-4">
+          <router-outlet></router-outlet>
+        </div>
+  </div>
+

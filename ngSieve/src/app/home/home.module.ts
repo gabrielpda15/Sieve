@@ -12,6 +12,7 @@ import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [HomeComponent, HomeContentComponent, AboutComponent, LoginComponent],
+  exports: [ LoginComponent ],
   imports: [ CommonModule, routing, SharedModule ],
   providers: [ LoginService ]
 })
