@@ -27,7 +27,6 @@ namespace Sieve.API.Models
         public DbSet<Person.Supplier> Suppliers { get; set; }
 
         /// RELATIONS 
-
         public DbSet<Relations.RIdentityRole> RIdentityRoles { get; set; }
         public DbSet<Relations.ROrderProduct> ROrderProducts { get; set; }
         public DbSet<Relations.RSupplierProduct> RSupplierProducts { get; set; }
@@ -49,14 +48,18 @@ namespace Sieve.API.Models
             builder.Entity<Sales.Card>().HasIndex(x => x.CardNumber).IsUnique();
             builder.Entity<Sales.Discount>().HasOne(x => x.Product).WithMany();
             builder.Entity<Sales.Order>().HasOne(x => x.Client).WithMany();
-            builder.Entity<Person.Client>().HasOne(x => x.Card).WithOne();
+            builder.Entity<Person.Client>().HasOne(x => x.Card).WithOne().HasForeignKey<Person.Client>(x => x.CardId);
             builder.Entity<Person.Client>().HasIndex(x => x.CPF).IsUnique();
             builder.Entity<Person.Client>().HasIndex(x => x.Email).IsUnique();
-
-
+            builder.Entity<Person.Employee>().HasIndex(x => x.CTPS).IsUnique();
+            builder.Entity<Person.Employee>().HasIndex(x => x.CPF).IsUnique();
+            builder.Entity<Person.Employee>().HasIndex(x => x.Email).IsUnique();
+            builder.Entity<Person.Supplier>().HasIndex(x => x.CNPJ).IsUnique();
+            builder.Entity<Person.Supplier>().HasIndex(x => x.CPF).IsUnique();
+            builder.Entity<Person.Supplier>().HasIndex(x => x.Email).IsUnique();
 
             /// RELATIONS 
-
+            builder.Entity<Relations.RIdentityRole>().HasKey(x => new { x.IdIdentity, x.IdRole });
             builder.Entity<Relations.RIdentityRole>().HasOne(x => x.Identity)
                                                      .WithMany(x => x.Roles)
                                                      .HasForeignKey(x => x.IdIdentity)
@@ -66,6 +69,7 @@ namespace Sieve.API.Models
                                                      .HasForeignKey(x => x.IdRole)
                                                      .OnDelete(DeleteBehavior.NoAction);
 
+            builder.Entity<Relations.ROrderProduct>().HasKey(x => new { x.IdOrder, x.IdProduct });
             builder.Entity<Relations.ROrderProduct>().HasOne(x => x.Order)
                                                      .WithMany(x => x.Products)
                                                      .HasForeignKey(x => x.IdOrder)
@@ -75,6 +79,7 @@ namespace Sieve.API.Models
                                                      .HasForeignKey(x => x.IdProduct)
                                                      .OnDelete(DeleteBehavior.Restrict);
 
+            builder.Entity<Relations.RSupplierProduct>().HasKey(x => new { x.IdProduct, x.IdSupplier });
             builder.Entity<Relations.RSupplierProduct>().HasOne(x => x.Product)
                                                         .WithMany()
                                                         .HasForeignKey(x => x.IdProduct)

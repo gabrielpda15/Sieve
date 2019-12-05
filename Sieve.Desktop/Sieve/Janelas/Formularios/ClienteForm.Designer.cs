@@ -176,7 +176,6 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtComplemento.ForeColor = System.Drawing.Color.Gray;
             this.txtComplemento.Location = new System.Drawing.Point(345, 114);
-            this.txtComplemento.Mask = null;
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Placeholder = "Complemento";
             this.txtComplemento.Size = new System.Drawing.Size(122, 20);
@@ -195,7 +194,6 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtBairro.ForeColor = System.Drawing.Color.Gray;
             this.txtBairro.Location = new System.Drawing.Point(9, 75);
-            this.txtBairro.Mask = null;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Placeholder = "Bairro";
             this.txtBairro.Size = new System.Drawing.Size(185, 20);
@@ -214,7 +212,6 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtCep.ForeColor = System.Drawing.Color.Gray;
             this.txtCep.Location = new System.Drawing.Point(9, 36);
-            this.txtCep.Mask = null;
             this.txtCep.Name = "txtCep";
             this.txtCep.Placeholder = "CEP";
             this.txtCep.Size = new System.Drawing.Size(103, 20);
@@ -225,7 +222,6 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtEndereco.ForeColor = System.Drawing.Color.Gray;
             this.txtEndereco.Location = new System.Drawing.Point(118, 36);
-            this.txtEndereco.Mask = null;
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Placeholder = "Endereço";
             this.txtEndereco.Size = new System.Drawing.Size(285, 20);
@@ -236,7 +232,6 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtNumero.ForeColor = System.Drawing.Color.Gray;
             this.txtNumero.Location = new System.Drawing.Point(409, 36);
-            this.txtNumero.Mask = null;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Placeholder = "Nº";
             this.txtNumero.Size = new System.Drawing.Size(58, 20);
@@ -329,7 +324,6 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtCPF.ForeColor = System.Drawing.Color.Gray;
             this.txtCPF.Location = new System.Drawing.Point(12, 70);
-            this.txtCPF.Mask = null;
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Placeholder = "CPF";
             this.txtCPF.Size = new System.Drawing.Size(153, 20);
@@ -340,7 +334,6 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtEmail.ForeColor = System.Drawing.Color.Gray;
             this.txtEmail.Location = new System.Drawing.Point(171, 70);
-            this.txtEmail.Mask = null;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Placeholder = "Email";
             this.txtEmail.Size = new System.Drawing.Size(301, 20);
@@ -351,7 +344,6 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtTelefone.ForeColor = System.Drawing.Color.Gray;
             this.txtTelefone.Location = new System.Drawing.Point(12, 109);
-            this.txtTelefone.Mask = null;
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Placeholder = "Telefone";
             this.txtTelefone.Size = new System.Drawing.Size(153, 20);
@@ -362,7 +354,6 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtSobrenome.ForeColor = System.Drawing.Color.Gray;
             this.txtSobrenome.Location = new System.Drawing.Point(171, 32);
-            this.txtSobrenome.Mask = null;
             this.txtSobrenome.Name = "txtSobrenome";
             this.txtSobrenome.Placeholder = "Sobrenome";
             this.txtSobrenome.Size = new System.Drawing.Size(301, 20);
@@ -373,7 +364,6 @@ namespace Sieve.Janelas.Formularios
             // 
             this.txtNome.ForeColor = System.Drawing.Color.Gray;
             this.txtNome.Location = new System.Drawing.Point(12, 32);
-            this.txtNome.Mask = null;
             this.txtNome.Name = "txtNome";
             this.txtNome.Placeholder = "Nome";
             this.txtNome.Size = new System.Drawing.Size(153, 20);

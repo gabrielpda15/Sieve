@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GraphicsExtension.cs" />
+    <Compile Include="StringExtension.cs" />
     <Compile Include="SvHeader.cs">
       <SubType>Component</SubType>
     </Compile>

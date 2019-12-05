@@ -71,7 +71,6 @@
             // 
             this.txtNome.ForeColor = System.Drawing.Color.Gray;
             this.txtNome.Location = new System.Drawing.Point(15, 256);
-            this.txtNome.Mask = null;
             this.txtNome.Name = "txtNome";
             this.txtNome.Placeholder = "Nome";
             this.txtNome.Size = new System.Drawing.Size(344, 20);
@@ -109,7 +108,6 @@
             // 
             this.txtDescricao.ForeColor = System.Drawing.Color.Gray;
             this.txtDescricao.Location = new System.Drawing.Point(15, 348);
-            this.txtDescricao.Mask = null;
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Placeholder = "Descrição";

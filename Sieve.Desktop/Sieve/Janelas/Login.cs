@@ -63,10 +63,5 @@ namespace Sieve
 
             this.DialogResult = DialogResult.OK;
         }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
