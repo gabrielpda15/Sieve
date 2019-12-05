@@ -1,6 +1,6 @@
 ﻿using Sieve.API.Models.Security;
 using Sieve.API.Repository;
-using Sieve.API.Repository.Repos;
+using Sieve.API.Repository.Repos.Security;
 using System;
 using System.Collections.Generic;
 using System.Security.Principal;
