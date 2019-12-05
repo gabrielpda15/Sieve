@@ -26,6 +26,11 @@ namespace Sieve.API.Models
         public DbSet<Person.Employee> Employees { get; set; }
         public DbSet<Person.Supplier> Suppliers { get; set; }
 
+        /// LOCATIONS
+        public DbSet<Location.City> Cities { get; set; }
+        public DbSet<Location.Country> Countries { get; set; }
+        public DbSet<Location.Region> Regions { get; set; }
+
         /// RELATIONS 
         public DbSet<Relations.RIdentityRole> RIdentityRoles { get; set; }
         public DbSet<Relations.ROrderProduct> ROrderProducts { get; set; }
@@ -57,6 +62,11 @@ namespace Sieve.API.Models
             builder.Entity<Person.Supplier>().HasIndex(x => x.CNPJ).IsUnique();
             builder.Entity<Person.Supplier>().HasIndex(x => x.CPF).IsUnique();
             builder.Entity<Person.Supplier>().HasIndex(x => x.Email).IsUnique();
+
+            /// LOCATIONS
+            builder.Entity<Location.Country>().HasMany(x => x.Regions).WithOne().HasForeignKey(x => x.CountryId).OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<Location.Region>().HasMany(x => x.Cities).WithOne().HasForeignKey(x => x.RegionId).OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<Location.City>().HasOne<Location.Country>().WithMany().HasForeignKey(x => x.CountryId).OnDelete(DeleteBehavior.NoAction);
 
             /// RELATIONS 
             builder.Entity<Relations.RIdentityRole>().HasKey(x => new { x.IdIdentity, x.IdRole });

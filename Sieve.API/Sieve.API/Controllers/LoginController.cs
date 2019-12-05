@@ -39,7 +39,7 @@ namespace Sieve.API.Controllers
         [ProducesDefaultResponseType]
         public async Task<IActionResult> Login([FromBody] UserData user, CancellationToken ct)
         {
-
+            return Ok();
         }
     }
 }
