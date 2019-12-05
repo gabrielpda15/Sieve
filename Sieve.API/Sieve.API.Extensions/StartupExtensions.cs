@@ -1,14 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using Sieve.API.Extensions.Log;
 using Sieve.API.Repository;
 using Sieve.API.Security.Authentication;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Sieve.API.Extensions
 {
@@ -25,14 +26,25 @@ namespace Sieve.API.Extensions
         {
             var authConfig = configuration.GetConfig<AuthConfig>();
             services.AddSingleton(authConfig);
-            
+
+            var logHandler = new LogFileHandler();
+            logHandler.Initialize().GetAwaiter().GetResult();
+
+            var loggerFactory = new LoggerFactory(new[] { new SvLoggerProvider(logHandler) });
+
             services.AddDbContext<TContext>(options =>
             {
-                options.UseMySql(connString, o =>
-                {
-                    o.ServerVersion(SERVER_VERSION, ServerType.MySql);
-                });
+                options.UseLazyLoadingProxies()
+                       .UseMySql(connString, o =>
+                            {
+                                o.ServerVersion(SERVER_VERSION, ServerType.MySql);
+                            })
+                       .UseLoggerFactory(loggerFactory)
+                       .EnableSensitiveDataLogging();
             }, ServiceLifetime.Scoped);
+
+            services.AddSingleton(loggerFactory);
+            services.AddSingleton(logHandler);
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
