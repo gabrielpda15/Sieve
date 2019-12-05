@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,6 +8,7 @@ using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using Sieve.API.Extensions.Log;
 using Sieve.API.Repository;
 using Sieve.API.Security.Authentication;
+using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -20,6 +22,40 @@ namespace Sieve.API.Extensions
         public static T GetConfig<T>(this IConfiguration config)
         {
             return config.GetSection(typeof(T).Name).Get<T>();
+        }
+
+        public static void UseSvSwagger(this IApplicationBuilder app)
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sieve API V1");
+            });
+        }
+
+        public static void AddSvSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = "SieveAPI",
+                    Description = "API dedicada ao Sieve",
+                    TermsOfService = "None",
+                    Contact = new Contact()
+                    {
+                        Name = "Gabriel Pupim de Almeida",
+                        Email = "gabriel.pda15@gmail.com",
+                        Url = "https://github.com/gabrielpda15"
+                    },
+                    License = new License
+                    {
+                        Name = "MIT",
+                        Url = "https://opensource.org/licenses/MIT"
+                    },
+                });
+            });
         }
         
         public static void AddSieveRepos<TContext>(this IServiceCollection services, string connString, IConfiguration configuration) where TContext : DbContext

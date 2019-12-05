@@ -33,6 +33,7 @@ namespace Sieve.API
             services.AddControllers();
 
             services.AddSieveRepos<SieveDbContext>(Configuration.GetConnectionString(CONN_STRING), Configuration);
+            services.AddSvSwagger();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -45,6 +46,8 @@ namespace Sieve.API
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseHttpsRedirection();
+
+            app.UseSvSwagger();
 
             app.UseRouting();
 
