@@ -43,13 +43,14 @@ namespace Sieve.API.Repository
             await context.SaveChangesAsync(ct);
         }
 
-        public IRepository<TEntity> GetRepository<TEntity>() where TEntity : class, IEntity
+        public TRepo GetRepository<TRepo, TEntity>() 
+            where TEntity : class, IEntity
+            where TRepo : IRepository<TEntity>
         {
             try
             {
                 if (repos.ContainsKey(typeof(TEntity)))
-                    return (IRepository<TEntity>)repos[typeof(TEntity)];
-
+                    return (TRepo)repos[typeof(TEntity)];
                 throw new KeyNotFoundException();
             }
             catch (Exception ex)

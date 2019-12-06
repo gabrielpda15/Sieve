@@ -146,11 +146,9 @@ namespace Sieve.API.Repository
         {
             return await Task.Run(async () =>
             {
-                var result = this.GetEntities().Where(e => e.Id == id);
+                var result = await this.Entities.FindAsync(new[] { id }, ct);
 
-                try { return await result.SingleAsync(ct); } catch { }
-
-                return null;
+                return result;
             }, ct);
         }
 
@@ -230,30 +228,26 @@ namespace Sieve.API.Repository
             }, ct);
         }
 
-        public async virtual Task DeleteAsync(int id, CancellationToken ct = default)
+        public async virtual Task DeleteAsync(TEntity entity, CancellationToken ct = default)
         {
             await Task.Run(async () =>
             {
                 try
                 {
-                    var result = await this.Entities.FindAsync(new[] { id }, ct);
-
-                    this.Entities.Remove(result);
+                    this.Entities.Remove(entity);
                 } 
                 catch (Exception ex) { throw ex; }
                 
             }, ct);
         }
 
-        public async virtual Task DeleteAllAsync(IEnumerable<int> ids, CancellationToken ct = default)
+        public async virtual Task DeleteAllAsync(IEnumerable<TEntity> entities, CancellationToken ct = default)
         {
-            await Task.Run(async () =>
+            await Task.Run(() =>
             {
                 try
                 {
-                    var result = await this.GetEntities().Where(e => ids.Contains(e.Id)).ToArrayAsync();
-
-                    this.Entities.RemoveRange(result);
+                    this.Entities.RemoveRange(entities);
                 }
                 catch (Exception ex) { throw ex; }
 
