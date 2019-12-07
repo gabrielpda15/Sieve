@@ -11,5 +11,6 @@ namespace Sieve.API.Repository
     {
         Task CommitAsync(CancellationToken ct = default);
         IRepository<TEntity> GetRepository<TEntity>() where TEntity : class, IEntity;
+        Task<bool> CheckConnectionAsync(CancellationToken ct = default);
     }
 }

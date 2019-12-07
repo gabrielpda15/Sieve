@@ -13,9 +13,9 @@ namespace Sieve.API.Repository
 {
     public sealed class UnitOfWork : IUnitOfWork
     {
-        private SieveDbContext context;
+        private readonly SieveDbContext context;
 
-        private IDictionary<Type, object> repos;
+        private readonly IDictionary<Type, object> repos;
 
         public UnitOfWork(SieveDbContext context)
         {
@@ -36,6 +36,11 @@ namespace Sieve.API.Repository
             {
                 throw new Exception("Ocorreu um erro na leitura do assembly dos Repositórios, verifique a Inner Exception para mais detalhes.", ex);
             }
+        }
+
+        public async Task<bool> CheckConnectionAsync(CancellationToken ct = default)
+        {
+            return await context.Database.CanConnectAsync(ct);
         }
 
         public async Task CommitAsync(CancellationToken ct = default)

@@ -38,6 +38,16 @@ namespace Sieve.Controles
         
         private bool IsEmpty { get => string.IsNullOrWhiteSpace(this.Text); }
 
+        public string Value 
+        { 
+            get 
+            {
+                if (this?.IsPlaceholder == true)
+                    return "";
+                return this?.Text;
+            } 
+        }
+
         public SvTextBox() : base()
         {
             /*for (int i = 0; i < 10; i++)
