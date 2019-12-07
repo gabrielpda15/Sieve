@@ -32,7 +32,7 @@ namespace Sieve.API.Repository
         Task<IEnumerable<TEntity>> PostAllAsync(IEnumerable<TEntity> entities, IUserContext userContext, CancellationToken ct = default);
         Task<TEntity> PutAsync(TEntity entity, IUserContext userContext, CancellationToken ct = default);
         Task<IEnumerable<TEntity>> PutAllAsync(IEnumerable<TEntity> entity, IUserContext userContext, CancellationToken ct = default);
-        Task DeleteAsync(int id, CancellationToken ct = default);
-        Task DeleteAllAsync(IEnumerable<int> ids, CancellationToken ct = default);
+        Task DeleteAsync(TEntity entity, CancellationToken ct = default);
+        Task DeleteAllAsync(IEnumerable<TEntity> entities, CancellationToken ct = default);
     }
 }

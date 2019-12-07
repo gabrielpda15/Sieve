@@ -58,7 +58,6 @@
             // 
             this.svTxtCPF.ForeColor = System.Drawing.Color.Gray;
             this.svTxtCPF.Location = new System.Drawing.Point(57, 65);
-            this.svTxtCPF.Mask = null;
             this.svTxtCPF.Name = "svTxtCPF";
             this.svTxtCPF.Placeholder = "";
             this.svTxtCPF.Size = new System.Drawing.Size(194, 20);

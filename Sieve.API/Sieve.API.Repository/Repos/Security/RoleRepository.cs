@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sieve.API.Repository.Repos
+namespace Sieve.API.Repository.Repos.Security
 {
     [Repository]
     public class RoleRepository : BaseRepository<Role>

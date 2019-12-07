@@ -48,19 +48,44 @@ namespace Sieve.API.Repository
             await context.SaveChangesAsync(ct);
         }
 
-        public IRepository<TEntity> GetRepository<TEntity>() where TEntity : class, IEntity
+        public TRepo GetRepository<TRepo, TEntity>() 
+            where TEntity : class, IEntity
+            where TRepo : IRepository<TEntity>
         {
             try
             {
                 if (repos.ContainsKey(typeof(TEntity)))
-                    return (IRepository<TEntity>)repos[typeof(TEntity)];
-
+                    return (TRepo)repos[typeof(TEntity)];
                 throw new KeyNotFoundException();
             }
             catch (Exception ex)
             {
                 throw new Exception("Uma exceção occorreu, verifique a inner exception para obter detalhes! ", ex);
             }
+        }
+
+        public async Task ExecuteAsync(Func<SieveDbContext, CancellationToken, Task> action, CancellationToken ct = default)
+        {
+            using (var transaction = await context.Database.BeginTransactionAsync(ct))
+            {
+                await action(context, ct);
+
+                await transaction.CommitAsync(ct);
+            }
+        }
+
+        public async Task<TOutput> ExecuteAsync<TOutput>(Func<SieveDbContext, CancellationToken, Task<TOutput>> action, CancellationToken ct = default)
+        {
+            TOutput output;
+
+            using (var transaction = await context.Database.BeginTransactionAsync(ct))
+            {
+                output = await action(context, ct);
+
+                await transaction.CommitAsync(ct);
+            }
+
+            return output;
         }
     }
 }

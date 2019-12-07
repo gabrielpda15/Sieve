@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using Sieve.API.Models.Security;
 using Sieve.API.Repository;
 using Sieve.API.Repository.Repos;
+using Sieve.API.Repository.Repos.Security;
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;

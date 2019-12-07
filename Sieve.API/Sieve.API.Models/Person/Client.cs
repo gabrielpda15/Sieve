@@ -46,6 +46,7 @@ namespace Sieve.API.Models.Person
 
         public DateTime? Birthday { get; set; }
 
+        public virtual int CardId { get; set; }
         public virtual Card Card { get; set; }
     }
 }

@@ -11,8 +11,6 @@ namespace Sieve.Controles
 {
     public class SvTextBox : TextBox
     {
-        private static readonly IDictionary<int, Keys[]> keys;
-
         public enum TextType { Normal, Numeric }
 
         private string _placeholder = string.Empty;
@@ -20,9 +18,12 @@ namespace Sieve.Controles
         private bool _isShowingPlaceholder = true;
         private bool _isForeColor = true;
         private Color _foreColorBackup;
+        private int _oldMaxLength;
+        private StringExtension.MaskType _mask = StringExtension.MaskType.None;
 
         private event EventHandler PlaceholderChange;
         private event EventHandler PlaceholderColorChange;
+        private event EventHandler MaskChange;
 
         [Browsable(true)]
         public string Placeholder { get => _placeholder; set { _placeholder = value; PlaceholderChange?.Invoke(this, EventArgs.Empty); } }
@@ -32,7 +33,16 @@ namespace Sieve.Controles
         public Color PlaceholderColor { get => _placeholderColor; set { _placeholderColor = value; PlaceholderColorChange?.Invoke(this, EventArgs.Empty); } }
 
         [Browsable(true)]
-        public string Mask { get; set; }
+        [DefaultValue(typeof(StringExtension.MaskType), "None")]
+        public StringExtension.MaskType Mask { get => _mask; set { _mask = value; MaskChange?.Invoke(this, EventArgs.Empty); } }
+
+        [Browsable(true)]
+        [DefaultValue(2)]
+        public int DecimalDigits { get; set; } = 2;
+
+        [Browsable(true)]
+        [DefaultValue(typeof(TextType), "Normal")]
+        public TextType Type { get; set; } = TextType.Normal;
 
         private bool IsPlaceholder { get => this.Text == this.Placeholder; }
         
@@ -50,18 +60,13 @@ namespace Sieve.Controles
 
         public SvTextBox() : base()
         {
-            /*for (int i = 0; i < 10; i++)
-            {
-                Keys.D0
-                keys.Add(i, new [Keys. ])
-            }*/
-
-            this.PlaceholderChange += PhTextBox_PlaceholderChange;
-            this.PlaceholderColorChange += PhTextBox_PlaceholderColorChange;
-            this.GotFocus += PhTextBox_GotFocus;
-            this.LostFocus += PhTextBox_LostFocus;
-            this.TextChanged += PhTextBox_TextChanged;
-            this.KeyDown += PhTextBox_KeyDown;
+            this.PlaceholderChange += SvTextBox_PlaceholderChange;
+            this.PlaceholderColorChange += SvTextBox_PlaceholderColorChange;
+            this.MaskChange += SvTextBox_MaskChange;
+            this.GotFocus += SvTextBox_GotFocus;
+            this.LostFocus += SvTextBox_LostFocus;
+            this.TextChanged += SvTextBox_TextChanged;
+            this.KeyPress += SvTextBox_KeyPress;
 
             if (IsEmpty)
             {
@@ -75,12 +80,45 @@ namespace Sieve.Controles
             }
         }
 
-        private void PhTextBox_KeyDown(object sender, KeyEventArgs e)
+        private void SvTextBox_MaskChange(object sender, EventArgs e)
         {
-            /*if (Type == TextType.Numeric)
+            switch (Mask)
             {
-                e.
-            }*/
+                case StringExtension.MaskType.Money:
+                    break;
+                case StringExtension.MaskType.Phone:
+                case StringExtension.MaskType.CPF:
+                case StringExtension.MaskType.CNPJ:
+                    this.MaxLength = 11;
+                    break;
+            }
+        }
+
+        private void SvTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Type == TextType.Numeric)
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+                {
+                    e.Handled = true;
+                }
+
+                if (DecimalDigits == 0 && e.KeyChar == ',')
+                {
+                    e.Handled = true;
+                }
+
+                if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+                {
+                    e.Handled = true;
+                }
+
+                if (char.IsDigit(e.KeyChar) && (this.Text.IndexOf(',') > -1) && 
+                    (this.Text.Length - (sender as TextBox).Text.IndexOf(',') - 1) >= DecimalDigits)
+                {
+                    e.Handled = true;
+                }
+            }            
         }
 
         private void RestoreForeColor()
@@ -98,12 +136,12 @@ namespace Sieve.Controles
             this._isForeColor = false;
         }
 
-        private void PhTextBox_TextChanged(object sender, EventArgs e)
+        private void SvTextBox_TextChanged(object sender, EventArgs e)
         {
             _isShowingPlaceholder = IsEmpty;
         }
 
-        private void PhTextBox_LostFocus(object sender, EventArgs e)
+        private void SvTextBox_LostFocus(object sender, EventArgs e)
         {
             if (_isShowingPlaceholder)
             {
@@ -112,11 +150,14 @@ namespace Sieve.Controles
             }
             else
             {
-
+                var temp = this.Text.Format(this.Mask);
+                _oldMaxLength = this.MaxLength;
+                this.MaxLength = temp.Length;
+                this.Text = temp;
             }
         }
 
-        private void PhTextBox_GotFocus(object sender, EventArgs e)
+        private void SvTextBox_GotFocus(object sender, EventArgs e)
         {
             if (IsPlaceholder)
             {
@@ -125,11 +166,13 @@ namespace Sieve.Controles
             }
             else
             {
-
+                var temp =  this.Text.Unformat(this.Mask);
+                this.MaxLength = _oldMaxLength;
+                this.Text = temp;
             }
         }
 
-        private void PhTextBox_PlaceholderColorChange(object sender, EventArgs e)
+        private void SvTextBox_PlaceholderColorChange(object sender, EventArgs e)
         {
             if (IsPlaceholder)
             {
@@ -137,7 +180,7 @@ namespace Sieve.Controles
             }
         }
 
-        private void PhTextBox_PlaceholderChange(object sender, EventArgs e)
+        private void SvTextBox_PlaceholderChange(object sender, EventArgs e)
         {
             if (IsPlaceholder || IsEmpty)
                 this.Text = this.Placeholder;

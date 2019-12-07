@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Sieve.API.Repository.Repos
+namespace Sieve.API.Repository.Repos.Security
 {
     [Repository]
     public class IdentityRepository : BaseRepository<Identity>

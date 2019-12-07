@@ -1,14 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using Sieve.API.Extensions.Log;
 using Sieve.API.Repository;
 using Sieve.API.Security.Authentication;
+using Swashbuckle.AspNetCore.Swagger;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Sieve.API.Extensions
 {
@@ -20,19 +23,64 @@ namespace Sieve.API.Extensions
         {
             return config.GetSection(typeof(T).Name).Get<T>();
         }
+
+        public static void UseSvSwagger(this IApplicationBuilder app)
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sieve API V1");
+            });
+        }
+
+        public static void AddSvSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = "SieveAPI",
+                    Description = "API dedicada ao Sieve",
+                    TermsOfService = "None",
+                    Contact = new Contact()
+                    {
+                        Name = "Gabriel Pupim de Almeida",
+                        Email = "gabriel.pda15@gmail.com",
+                        Url = "https://github.com/gabrielpda15"
+                    },
+                    License = new License
+                    {
+                        Name = "MIT",
+                        Url = "https://opensource.org/licenses/MIT"
+                    },
+                });
+            });
+        }
         
         public static void AddSieveRepos<TContext>(this IServiceCollection services, string connString, IConfiguration configuration) where TContext : DbContext
         {
             var authConfig = configuration.GetConfig<AuthConfig>();
             services.AddSingleton(authConfig);
-            
+
+            var logHandler = new LogFileHandler();
+            logHandler.Initialize().GetAwaiter().GetResult();
+
+            var loggerFactory = new LoggerFactory(new[] { new SvLoggerProvider(logHandler) });
+
             services.AddDbContext<TContext>(options =>
             {
-                options.UseMySql(connString, o =>
-                {
-                    o.ServerVersion(SERVER_VERSION, ServerType.MySql);
-                });
+                options.UseLazyLoadingProxies()
+                       .UseMySql(connString, o =>
+                            {
+                                o.ServerVersion(SERVER_VERSION, ServerType.MySql);
+                            })
+                       .UseLoggerFactory(loggerFactory)
+                       .EnableSensitiveDataLogging();
             }, ServiceLifetime.Scoped);
+
+            services.AddSingleton(loggerFactory);
+            services.AddSingleton(logHandler);
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
