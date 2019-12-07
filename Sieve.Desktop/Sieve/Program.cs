@@ -1,8 +1,11 @@
 ﻿using Sieve.Janelas;
 using Sieve.Janelas.Formularios;
+using Sieve.Models.Person;
+using Sieve.Models.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,6 +16,7 @@ namespace Sieve
         private static IDictionary<string, string[]> Permissions { get; } = new Dictionary<string, string[]>();
         private static IDictionary<string, Form> Screens { get; } = new Dictionary<string, Form>();
 
+        public static ProgramData Data { get; } = new ProgramData();
         public static ApiManager ApiManager { get; private set; }
 
         private static void InitData()
@@ -30,7 +34,9 @@ namespace Sieve
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        static void Main(string[] args) => MainAsync(args).GetAwaiter().GetResult();
+
+        static async Task MainAsync(string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -47,7 +53,7 @@ namespace Sieve
             {
                 MessageBox.Show("Inicie o programa com um parametro!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
-            } 
+            }
             else if (args.Length > 1)
             {
                 MessageBox.Show("A inicialização do programa apenas requer um parametro!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -56,17 +62,25 @@ namespace Sieve
 
             using (var login = new Login())
             {
-                if (login.ShowDialog(out var user) == DialogResult.OK)
+                if (login.ShowDialog(out var user, out string token) == DialogResult.OK)
                 {
                     if (Permissions.ContainsKey(args.Single()))
                     {
                         if (user.Roles.Select(x => x.Role.Description).Any(x => Permissions[args.Single()].Contains(x)))
                         {
+                            Data.User = user;
+                            Data.Employee = await ApiManager.GetAsync<Employee>("employee/" + user.Id, "");
                             Application.Run(Screens[args.Single()]);
                         }
                     }
                 }
-            }            
+            }
         }
+    }
+
+    public class ProgramData
+    {
+        public Identity User { get; set; }
+        public Employee Employee { get; set; }
     }
 }

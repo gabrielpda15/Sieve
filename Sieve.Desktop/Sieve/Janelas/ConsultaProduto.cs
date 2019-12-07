@@ -15,6 +15,7 @@ namespace Sieve.Janelas
         public ConsultaProduto()
         {
             InitializeComponent();
+            this.TopMost = true;
         }
     }
 }

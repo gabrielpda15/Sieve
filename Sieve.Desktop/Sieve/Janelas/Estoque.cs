@@ -16,6 +16,8 @@ namespace Sieve.Janelas
         {
             InitializeComponent();
 
+            this.WindowState = FormWindowState.Maximized;
+
             metroGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             metroGrid.Columns.Add("c1", "Coluna 1");

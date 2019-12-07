@@ -15,6 +15,17 @@ namespace Sieve.Janelas
         public DigitarCodigoProduto()
         {
             InitializeComponent();
+            this.TopMost = true;
+
+            this.btnPesquisar.Click += BtnPesquisar_Click;
+        }
+
+        private void BtnPesquisar_Click(object sender, EventArgs e)
+        {
+            var result = new ConsultaProduto();
+            this.Hide();
+            result.ShowDialog();
+            this.Show();
         }
     }
 }

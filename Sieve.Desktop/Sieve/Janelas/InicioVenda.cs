@@ -15,6 +15,7 @@ namespace Sieve.Janelas
         public InicioVenda()
         {
             InitializeComponent();
+            this.TopMost = true;
         }
     }
 }
