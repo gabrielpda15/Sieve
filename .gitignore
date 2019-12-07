@@ -210,3 +210,6 @@ project.lock.json
 *.feature.cs
 *.feature.xlsx.*
 *.Specs_*.html
+
+# Log files
+/Sieve.API/Sieve.API/logs
