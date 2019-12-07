@@ -16,6 +16,7 @@ namespace Sieve
     public partial class Login : Form
     {
         private User Result { get; set; }
+        private string Token { get; set; }
         private EntityValidator<User> Validator { get; }
 
         public Login()
@@ -28,7 +29,7 @@ namespace Sieve
             this.btnCancel.Click += BtnCancel_Click;
         }
 
-        public DialogResult ShowDialog(out Identity user)
+        public DialogResult ShowDialog(out Identity user, out string token)
         {
             var result = this.ShowDialog();
             user = new Identity
@@ -39,6 +40,7 @@ namespace Sieve
                     new RIdentityRole { Role = new Role { Description = "VendasAdm" } }
                 }
             };
+            token = Token;
             return result;
         }
 
@@ -52,21 +54,17 @@ namespace Sieve
         {
             this.Result = new User
             {
-                Username = this.txtUsername.Text,
-                Password = this.txtPassword.Text
+                Username = this.txtUsername.Value,
+                Password = this.txtPassword.Value
             };
 
             if (!this.Validator.Validate(this.Result, out var erros))
             {
-                
+                lbError.Text = erros.FirstOrDefault().Value.FirstOrDefault().Value;
+                return;
             }
 
             this.DialogResult = DialogResult.OK;
-        }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

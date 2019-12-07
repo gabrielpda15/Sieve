@@ -72,7 +72,7 @@
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.ForeColor = System.Drawing.Color.Gray;
             this.txtUsername.Location = new System.Drawing.Point(81, 118);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsername.Mask = null;
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Placeholder = "Usuário";
@@ -85,13 +85,14 @@
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.ForeColor = System.Drawing.Color.Gray;
             this.txtPassword.Location = new System.Drawing.Point(81, 149);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Mask = null;
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Placeholder = "Senha";
+            this.txtPassword.PasswordChar = '•';
+            this.txtPassword.Placeholder = "SuaSenhaAqui";
             this.txtPassword.Size = new System.Drawing.Size(176, 23);
             this.txtPassword.TabIndex = 8;
-            this.txtPassword.Text = "Senha";
+            this.txtPassword.Text = "SuaSenhaAqui";
             // 
             // lbError
             // 
@@ -155,7 +156,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
