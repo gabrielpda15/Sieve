@@ -95,7 +95,7 @@ namespace Sieve.API.Controllers
                 if (storage.Countries.Count() != countries.Count)
                 {
                     if (storage.Countries.Count() > 0)
-                        await CountryRepository.DeleteAllAsync(storage.Countries.Select(x => x.Id), ct);
+                        await CountryRepository.DeleteAllAsync(storage.Countries, ct);
 
                     await CountryRepository.PostAllAsync(countries, UserContext, ct);
 
@@ -120,7 +120,7 @@ namespace Sieve.API.Controllers
                 if (storage.Regions.Count() != regions.Count)
                 {
                     if (storage.Regions.Count() > 0)
-                        await RegionRepository.DeleteAllAsync(storage.Regions.Select(x => x.Id), ct);
+                        await RegionRepository.DeleteAllAsync(storage.Regions, ct);
 
                     await RegionRepository.PostAllAsync(regions, UserContext, ct);
 
@@ -144,7 +144,7 @@ namespace Sieve.API.Controllers
                 if (storage.Cities.Count() != cities.Count)
                 {
                     if (storage.Cities.Count() > 0)
-                        await CityRepository.DeleteAllAsync(storage.Cities.Select(x => x.Id), ct);
+                        await CityRepository.DeleteAllAsync(storage.Cities, ct);
 
                     var test = cities.Where(x => x.Id == 1).ToArray();
 
