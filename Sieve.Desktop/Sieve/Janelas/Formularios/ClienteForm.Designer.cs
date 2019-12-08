@@ -264,9 +264,9 @@ namespace Sieve.Janelas.Formularios
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(171, 93);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(30, 13);
+            this.label14.Size = new System.Drawing.Size(104, 13);
             this.label14.TabIndex = 21;
-            this.label14.Text = "Data";
+            this.label14.Text = "Data de Nascimento";
             // 
             // label13
             // 
