@@ -13,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using Sieve.API.Models.Security;
+using Sieve.API.Security.Cryptography;
 
 namespace Sieve.API
 {
@@ -33,6 +35,7 @@ namespace Sieve.API
             services.AddControllers();
 
             services.AddSieveRepos<SieveDbContext>(Configuration.GetConnectionString(CONN_STRING), Configuration);
+            services.AddSingleton(new Cryptor());
             //services.AddSvSwagger();
         }
 
