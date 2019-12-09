@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sieve.API.Models;
 using Sieve.API.Models.Base;
+using Sieve.API.Models.Security;
 using Sieve.API.Security.Authentication;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace Sieve.API.Repository
         public virtual void BeforePost(TEntity entity, IUserContext userContext)
         {
             entity.CreationDate = DateTime.Now;
-            entity.CreationUser = userContext.Principal.Identity.Name;
+            entity.CreationUser = userContext?.Principal.Identity.Name;
             entity.EditionDate = entity.CreationDate;
             entity.EditionUser = entity.CreationUser;
         }
@@ -42,6 +43,28 @@ namespace Sieve.API.Repository
             entity.EditionDate = DateTime.Now;
             entity.EditionUser = userContext.Principal.Identity.Name;
         }
+
+        /*
+        public async virtual Task<IEnumerable<TEntity>> QueryAsync(Expression<Func<DbSet<TEntity>, IQueryable<TEntity>>> query,
+                                                    Expression<Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>> orderBy = null,
+                                                    CancellationToken ct = default)
+        {
+            return await Task.Run(async () =>
+            {
+                if (query != null)
+                {
+                    var result = query.Compile().Invoke(this.Entities);
+
+                    if (orderBy != null)
+                        result = orderBy.Compile().Invoke(result);
+
+                    return await result.ToArrayAsync(ct);
+                }
+
+                return await this.GetEntities().ToArrayAsync(ct);
+            }, ct);
+        }
+        */
 
         public async virtual Task<IEnumerable<TEntity>> QueryAsync(Expression<Func<IQueryable<TEntity>, IQueryable<TEntity>>> query, 
                                                     Expression<Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>> orderBy = null, 
@@ -230,7 +253,7 @@ namespace Sieve.API.Repository
 
         public async virtual Task DeleteAsync(TEntity entity, CancellationToken ct = default)
         {
-            await Task.Run(async () =>
+            await Task.Run(() =>
             {
                 try
                 {

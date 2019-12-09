@@ -66,12 +66,11 @@ namespace Sieve.API.Repository
 
         public async Task ExecuteAsync(Func<SieveDbContext, CancellationToken, Task> action, CancellationToken ct = default)
         {
-            using (var transaction = await context.Database.BeginTransactionAsync(ct))
-            {
-                await action(context, ct);
+            using var transaction = await context.Database.BeginTransactionAsync(ct);
 
-                await transaction.CommitAsync(ct);
-            }
+            await action(context, ct);
+
+            await transaction.CommitAsync(ct);
         }
 
         public async Task<TOutput> ExecuteAsync<TOutput>(Func<SieveDbContext, CancellationToken, Task<TOutput>> action, CancellationToken ct = default)

@@ -18,6 +18,7 @@ namespace Sieve.API.Repository
         void BeforePost(TEntity entity, IUserContext userContext);
         void BeforePut(TEntity entity, IUserContext userContext);
 
+        // Task<IEnumerable<TEntity>> QueryAsync(Expression<Func<DbSet<TEntity>, IQueryable<TEntity>>> query, Expression<Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>> orderBy = null, CancellationToken ct = default)
         Task<IEnumerable<TEntity>> QueryAsync(Expression<Func<IQueryable<TEntity>, IQueryable<TEntity>>> query, Expression<Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>> orderBy = null, CancellationToken ct = default);
         Task<IEnumerable<TEntity>> QueryAsync(Expression<Func<TEntity, bool>> query, Expression<Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>> orderBy = null, CancellationToken ct = default);
         Task<IEnumerable<TEntity>> QueryAsync(IEnumerable<int> ids, Expression<Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>> orderBy = null, CancellationToken ct = default);
