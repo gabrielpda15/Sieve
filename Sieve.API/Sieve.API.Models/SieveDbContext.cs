@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Sieve.API.Models.Security
+namespace Sieve.API.Models
 {
     public class SieveDbContext : DbContext
     {

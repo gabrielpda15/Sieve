@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sieve.API.Models;
+using Sieve.API.Models.Security;
 
 namespace Sieve.API.Models.Migrations
 {
