@@ -10,13 +10,13 @@ namespace Sieve.API.Security.Authentication
 {
     public class SieveToken
     {
-        private Cryptor cryptor;
-        private string username;
-        private string key;
-        private int seconds;
-        private string audience;
-        private string issuer;
-        private bool? createdFromIdentity = null;
+        private readonly Cryptor cryptor;
+        private readonly string username;
+        private readonly string key;
+        private readonly int seconds;
+        private readonly string audience;
+        private readonly string issuer;
+        private readonly bool? createdFromIdentity = null;
 
         public RawToken Token { get; }
 

@@ -32,10 +32,8 @@ namespace Sieve.API.Security.Cryptography
 
         public byte[] GenerateHash(byte[] input)
         {
-            using (var hashProvider = MD5.Create())
-            {
-                return hashProvider.ComputeHash(input);
-            }
+            using var hashProvider = MD5.Create();
+            return hashProvider.ComputeHash(input);
         }
 
         public string Encrypt(string message, string phrase)
@@ -52,25 +50,22 @@ namespace Sieve.API.Security.Cryptography
 
         private ICryptoTransform GetCryptor(string phrase, bool encrypt)
         {
-            using (var tdes = TripleDES.Create())
-            {
-                tdes.Key = GenerateHash(UTF8.GetBytes(phrase));
-                tdes.Mode = CipherMode.ECB;
-                tdes.Padding = PaddingMode.PKCS7;
+            using var tdes = TripleDES.Create();
 
-                if (encrypt)
-                    return tdes.CreateEncryptor();
-                else
-                    return tdes.CreateDecryptor();
-            }
+            tdes.Key = GenerateHash(UTF8.GetBytes(phrase));
+            tdes.Mode = CipherMode.ECB;
+            tdes.Padding = PaddingMode.PKCS7;
+
+            if (encrypt)
+                return tdes.CreateEncryptor();
+            else
+                return tdes.CreateDecryptor();
         }
 
         private byte[] Crypt(byte[] message, string phrase, bool encrypt)
         {
-            using (var cryptor = GetCryptor(phrase, encrypt))
-            {
-                return cryptor.TransformFinalBlock(message, 0, message.Length);
-            }
+            using var cryptor = GetCryptor(phrase, encrypt);
+            return cryptor.TransformFinalBlock(message, 0, message.Length);
         } 
     }
 }

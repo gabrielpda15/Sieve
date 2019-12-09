@@ -10,7 +10,7 @@ namespace Sieve.API.Security.Authentication
 {
     public class SievePrincipal : IPrincipal
     {
-        private RoleRepository RoleRepo { get; }
+        private IdentityRepository IdentityRepository { get; }
 
         public IIdentity Identity { get; set; }
 
@@ -18,15 +18,15 @@ namespace Sieve.API.Security.Authentication
         {
             if (this.Identity.IsAuthenticated)
             {
-                return this.RoleRepo.IsInRoleAsync(this.Identity.Name, role, default).GetAwaiter().GetResult();
+                return this.IdentityRepository.IsInRoleAsync(this.Identity.Name, role, default).GetAwaiter().GetResult();
             }
 
             return false;
         }
 
-        public SievePrincipal(RoleRepository roleRepo)
+        public SievePrincipal(IdentityRepository idRepo)
         {
-            this.RoleRepo = roleRepo;
+            this.IdentityRepository = idRepo;
         }
     }
 }

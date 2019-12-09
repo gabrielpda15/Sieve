@@ -22,7 +22,6 @@ namespace Sieve.API.Security.Authentication
         public const string SIEVE_AUTH = "SieveAuth";
 
         private IRepository<Identity> IdentityRepo { get; }
-        private IRepository<Role> RoleRepo { get; }
         private AuthConfig AuthConfig { get; }
 
         public SieveAuthHandler(IOptionsMonitor<SieveAuthSchmOptions> options,
@@ -30,12 +29,10 @@ namespace Sieve.API.Security.Authentication
                                 UrlEncoder encoder,
                                 ISystemClock clock,
                                 IRepository<Identity> identityRepo,
-                                IRepository<Role> roleRepo,
                                 AuthConfig authConfig)
             : base(options, logger, encoder, clock)
         {
             this.IdentityRepo = identityRepo;
-            this.RoleRepo = roleRepo;
             this.AuthConfig = authConfig;
         }
 
@@ -54,13 +51,12 @@ namespace Sieve.API.Security.Authentication
             {
                 var token = new SieveToken(value.Parameter, this.AuthConfig);
 
-                var user = new { token.Token.Username };
-                // var user = await IdentityRepo.SingleAsync(x => x.Username == token.Token.Username);
-                // if (user == null) throw new Exception("Usuário inválido");
+                var user = await IdentityRepo.SingleAsync(x => x.Username == token.Token.Username);
+                if (user == null) throw new Exception("Usuário inválido");
 
                 return AuthenticateResult.Success(
                     new AuthenticationTicket(new ClaimsPrincipal(
-                        new SievePrincipal((RoleRepository)this.RoleRepo)
+                        new SievePrincipal((IdentityRepository)this.IdentityRepo)
                         {
                             Identity = new SieveIdentity
                             {
