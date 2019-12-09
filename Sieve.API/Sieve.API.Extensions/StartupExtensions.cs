@@ -114,16 +114,24 @@ namespace Sieve.API.Extensions
                 });
             });
         }
-        
-        public static void AddSieveRepos<TContext>(this IServiceCollection services, string connString, IConfiguration configuration) where TContext : DbContext
-        {
-            var authConfig = configuration.GetConfig<AuthConfig>();
-            services.AddSingleton(authConfig);
 
+        private static LoggerFactory AddLogger(this IServiceCollection services)
+        {
             var logHandler = new LogFileHandler();
             logHandler.Initialize().GetAwaiter().GetResult();
 
             var loggerFactory = new LoggerFactory(new[] { new SvLoggerProvider(logHandler) });
+
+            services.AddSingleton(loggerFactory);
+            services.AddSingleton(logHandler);
+
+            return loggerFactory;
+        }
+
+        public static void AddSieveRepos<TContext>(this IServiceCollection services, string connString, IConfiguration configuration) where TContext : DbContext
+        {
+            var authConfig = configuration.GetConfig<AuthConfig>();
+            services.AddSingleton(authConfig);            
 
             services.AddDbContext<TContext>(options =>
             {
@@ -132,12 +140,9 @@ namespace Sieve.API.Extensions
                             {
                                 o.ServerVersion(SERVER_VERSION, ServerType.MySql);
                             })
-                       .UseLoggerFactory(loggerFactory)
+                       // .UseLoggerFactory(services.AddLogger())
                        .EnableSensitiveDataLogging();
             }, ServiceLifetime.Scoped);
-
-            services.AddSingleton(loggerFactory);
-            services.AddSingleton(logHandler);
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
