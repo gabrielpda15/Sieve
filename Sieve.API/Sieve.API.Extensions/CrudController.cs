@@ -18,9 +18,11 @@ namespace Sieve.API.Extensions
     {
         protected TRepo Repository { get; }
         protected IUserContext UserContext { get; }
+        protected IUnitOfWork UnitOfWork { get; }
 
         protected CrudController(IUnitOfWork unitOfWork, IUserContext userContext)
         {
+            UnitOfWork = unitOfWork;
             Repository = unitOfWork.GetRepository<TRepo, TEntity>();
             UserContext = userContext;
         }
@@ -57,6 +59,7 @@ namespace Sieve.API.Extensions
             try
             {
                 var result = await this.Repository.PostAsync(entity, this.UserContext, ct);
+                await this.UnitOfWork.CommitAsync(ct);
                 return CreatedAtAction(nameof(Post), result);
             }
             catch (Exception ex) { return BadRequest(ex); }
@@ -72,6 +75,7 @@ namespace Sieve.API.Extensions
             try
             {
                 var result = await this.Repository.PostAllAsync(entities, this.UserContext, ct);
+                await this.UnitOfWork.CommitAsync(ct);
                 return CreatedAtAction(nameof(PostAll), result);
             }
             catch (Exception ex) { return BadRequest(ex); }
@@ -87,6 +91,7 @@ namespace Sieve.API.Extensions
             try
             {
                 var result = await this.Repository.PutAsync(entity, this.UserContext, ct);
+                await this.UnitOfWork.CommitAsync(ct);
                 return Ok(result);
             }
             catch (Exception ex) { return BadRequest(ex); }
@@ -102,6 +107,7 @@ namespace Sieve.API.Extensions
             try
             {
                 var result = await this.Repository.PutAllAsync(entities, this.UserContext, ct);
+                await this.UnitOfWork.CommitAsync(ct);
                 return Ok(result);
             }
             catch (Exception ex) { return BadRequest(ex); }
@@ -122,6 +128,8 @@ namespace Sieve.API.Extensions
                 if (obj == null) return NotFound();
 
                 await this.Repository.DeleteAsync(obj, ct);
+
+                await this.UnitOfWork.CommitAsync(ct);
 
                 return Ok();
             }
@@ -151,6 +159,8 @@ namespace Sieve.API.Extensions
                 if (notFoundItems.Count > 0) return NotFound(notFoundItems.ToArray());
 
                 await this.Repository.DeleteAllAsync(itemList.ToArray(), ct);
+
+                await this.UnitOfWork.CommitAsync(ct);
 
                 return Ok();
             }
