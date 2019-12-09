@@ -59,14 +59,14 @@ namespace Sieve.Models.Person
         {
             var x = JsonConvert.DeserializeObject<AddressDTO>(address);
 
-            this.PostalCode = x.PostalCode;
-            this.Street = x.Street;
-            this.Number = x.Number;
-            this.Neighborhood = x.Neighborhood;
-            this.Complement = x.Complement;
-            this.City = x.City.Map(y => new City { Id = y.Id, Name = y.Name });
-            this.Region = x.Region.Map(y => new Region { Id = y.Id, Name = y.Name });
-            this.Country = x.Country.Map(y => new Country { Id = y.Id, Name = y.Name });
+            this.PostalCode = x?.PostalCode;
+            this.Street = x?.Street;
+            this.Number = x?.Number;
+            this.Neighborhood = x?.Neighborhood;
+            this.Complement = x?.Complement;
+            this.City = x?.City.Map(y => new City { Id = y.Id, Name = y.Name });
+            this.Region = x?.Region.Map(y => new Region { Id = y.Id, Name = y.Name });
+            this.Country = x?.Country.Map(y => new Country { Id = y.Id, Name = y.Name });
         }
 
         private bool IsValid()

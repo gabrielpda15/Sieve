@@ -14,54 +14,108 @@ namespace Sieve
     {
         private HttpClient Client { get; }
 
-        public ApiManager(string baseUrl)
+        private string APIEndpoint { get; }
+
+        public ApiManager(string baseUrl, string apiUrl)
         {
-            Client = new HttpClient();
-            Client.BaseAddress = new Uri(baseUrl);
-            Client.Timeout = TimeSpan.FromSeconds(30);
+            APIEndpoint = apiUrl;
+            Client = new HttpClient
+            {
+                BaseAddress = new Uri(baseUrl)/*,
+                Timeout = TimeSpan.FromSeconds(30)*/
+            };
         }
 
         public async Task<bool> CheckHealth(string url)
         {
             try
             {
-                var response = await Client.GetAsync(url);
-                return response.IsSuccessStatusCode;
+                var response = await Client.GetAsync(this.APIEndpoint + url).ConfigureAwait(false);
+                return response.IsSuccessStatusCode && (await response.Content.ReadAsStringAsync().ConfigureAwait(false)) == "healthy";
             }
             catch { return false; }
         }
 
-        public async Task<T> GetAsync<T>(string url, string token) 
+        public async Task<T> GetAsync<T>(string url, string token = null, bool expectSuccess = true) 
             where T : class
         {
             try
             {
-                Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("SieveAuth", token);
-                var response = await Client.GetAsync(url);
+                if (token != null)
+                    Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("SieveAuth", token);
 
-                if (response.IsSuccessStatusCode)
+                var response = await Client.GetAsync(this.APIEndpoint + url).ConfigureAwait(false);
+
+                if (expectSuccess)
                 {
-                    return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());                    
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+                    }
                 }
+                else
+                {
+                    return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+                }
+                
             } catch { }
 
             return null;
         }
 
-        public async Task<T> PostAsync<T, TBody>(string url, TBody body, string token, CancellationToken ct = default)
+        public async Task<T> PostAsync<T, TBody>(string url, TBody body, string token = null, bool expectSuccess = true)
             where T : class where TBody : class
         {
             try
             {
-                Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("SieveAuth", token);
+                if (token != null)
+                    Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("SieveAuth", token);
 
                 var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
 
-                var response = await Client.PostAsync(url, content);
+                var response = await Client.PostAsync(this.APIEndpoint + url, content).ConfigureAwait(false);
 
-                if (response.IsSuccessStatusCode)
+                if (expectSuccess)
                 {
-                    return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+                    }
+                }
+                else
+                {
+                    return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+                }
+
+                
+            }
+            catch { }
+
+            return null;
+        }
+
+        public async Task<T> PutAsync<T, TBody>(string url, TBody body, string token = null, bool expectSuccess = true)
+            where T : class where TBody : class
+        {
+            try
+            {
+                if (token != null)
+                    Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("SieveAuth", token);
+
+                var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
+
+                var response = await Client.PutAsync(this.APIEndpoint + url, content).ConfigureAwait(false);
+
+                if (expectSuccess)
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+                    }
+                }
+                else
+                {
+                    return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
                 }
             }
             catch { }
@@ -69,39 +123,28 @@ namespace Sieve
             return null;
         }
 
-        public async Task<T> PutAsync<T, TBody>(string url, TBody body, string token, CancellationToken ct = default)
-            where T : class where TBody : class
-        {
-            try
-            {
-                Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("SieveAuth", token);
-
-                var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-
-                var response = await Client.PutAsync(url, content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
-                }
-            }
-            catch { }
-
-            return null;
-        }
-
-        public async Task<T> DeleteAsync<T>(string url, string token, CancellationToken ct = default)
+        public async Task<T> DeleteAsync<T>(string url, string token = null, bool expectSuccess = true)
             where T : class
         {
             try
             {
-                Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("SieveAuth", token);
-                var response = await Client.DeleteAsync(url);
+                if (token != null)
+                    Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("SieveAuth", token);
 
-                if (response.IsSuccessStatusCode)
+                var response = await Client.DeleteAsync(this.APIEndpoint + url).ConfigureAwait(false);
+
+                if (expectSuccess)
                 {
-                    return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+                    }
                 }
+                else
+                {
+                    return JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+                }
+                
             }
             catch { }
 

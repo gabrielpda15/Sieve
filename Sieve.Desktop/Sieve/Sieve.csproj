@@ -74,6 +74,12 @@
     <Compile Include="Janelas\DigitarCodigoProduto.Designer.cs">
       <DependentUpon>DigitarCodigoProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Janelas\Adm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Janelas\Adm.Designer.cs">
+      <DependentUpon>Adm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Janelas\Estoque.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Janelas\DigitarCodigoProduto.resx">
       <DependentUpon>DigitarCodigoProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Janelas\Adm.resx">
+      <DependentUpon>Adm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Janelas\Formularios\ClienteForm.resx">
       <DependentUpon>ClienteForm.cs</DependentUpon>

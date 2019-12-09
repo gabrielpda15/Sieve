@@ -32,15 +32,10 @@ namespace Sieve
         public DialogResult ShowDialog(out Identity user, out string token)
         {
             var result = this.ShowDialog();
-            user = new Identity
-            {
-                Roles = new[]
-                {
-                    new RIdentityRole { Role = new Role { Description = "EstoqueAdm" } },
-                    new RIdentityRole { Role = new Role { Description = "VendasAdm" } }
-                }
-            };
+
+            user = Program.ApiManager.GetAsync<Identity>("identity/getidentity", this.Token).GetAwaiter().GetResult();
             token = Token;
+
             return result;
         }
 
@@ -48,6 +43,14 @@ namespace Sieve
         {
             this.DialogResult = DialogResult.Cancel;
             this.Result = null;
+        }
+
+        public class LoginResponse
+        {
+            public bool Authenticated { get; set; } = false;
+            public string Token { get; set; } = null;
+            public DateTime? Expiration { get; set; } = null;
+            public string Error { get; set; } = null;
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -63,6 +66,22 @@ namespace Sieve
                 lbError.Text = erros.FirstOrDefault().Value.FirstOrDefault().Value;
                 return;
             }
+
+            var response = Program.ApiManager.PostAsync<LoginResponse, User>("login", this.Result, expectSuccess: false).GetAwaiter().GetResult();
+
+            if (response == null)
+            {
+                lbError.Text = "Erro desconhecido!";
+                return;
+            }
+
+            if (!response.Authenticated)
+            {
+                lbError.Text = response.Error;
+                return;
+            }
+
+            this.Token = response.Token;
 
             this.DialogResult = DialogResult.OK;
         }

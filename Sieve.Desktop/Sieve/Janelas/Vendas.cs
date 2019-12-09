@@ -16,7 +16,7 @@ namespace Sieve.Janelas
         {
             InitializeComponent();
 
-            this.TopMost = true;
+            this.TopMost = Program.Data.Fullscreen;
             this.WindowState = FormWindowState.Maximized;
             this.timer.Tick += Timer_Tick;
         }
@@ -26,7 +26,10 @@ namespace Sieve.Janelas
             if (keyData == (Keys.F6))
             {
                 var iniVenda = new InicioVenda();
-                iniVenda.ShowDialog();
+                if (iniVenda.ShowDialog() == DialogResult.OK)
+                {
+                    this.lbCliente.Text = iniVenda.CPF;
+                }
                 return true;
             } else if (keyData == (Keys.F7))
             {

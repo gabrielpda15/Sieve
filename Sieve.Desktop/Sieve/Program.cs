@@ -23,11 +23,13 @@ namespace Sieve
         {
             Permissions.Add("--vendas", new string[] { "Vendas", "VendasAdm" });
             Permissions.Add("--estoque", new string[] { "Estoque", "EstoqueAdm" });
+            Permissions.Add("--adm", new string[] { "VendasAdm", "EstoqueAdm" });
 
             Screens.Add("--vendas", new Vendas());
             Screens.Add("--estoque", new Estoque());
+            Screens.Add("--adm", new Adm());
 
-            ApiManager = new ApiManager("http://localhost/api/");            
+            ApiManager = new ApiManager("http://localhost/", "SieveAPI/");            
         }
 
         /// <summary>
@@ -43,34 +45,39 @@ namespace Sieve
 
             InitData();
 
-            /*if (!ApiManager.CheckHealth("health").GetAwaiter().GetResult())
+
+
+            if (!await ApiManager.CheckHealth("health").ConfigureAwait(false))
             {
                 MessageBox.Show("Servidor Offline", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }*/
+            }
 
             if (args.Length == 0)
             {
                 MessageBox.Show("Inicie o programa com um parametro!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            else if (args.Length > 1)
+            else if (args.Length > 2)
             {
-                MessageBox.Show("A inicialização do programa apenas requer um parametro!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("A inicialização do programa apenas requer um ou dois parametros!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            Data.Fullscreen = args.Contains("--fullscreen");
 
             using (var login = new Login())
             {
                 if (login.ShowDialog(out var user, out string token) == DialogResult.OK)
                 {
-                    if (Permissions.ContainsKey(args.Single()))
+                    if (Permissions.ContainsKey(args.FirstOrDefault()))
                     {
-                        if (user.Roles.Select(x => x.Role.Description).Any(x => Permissions[args.Single()].Contains(x)))
+                        if (user.Roles.Select(x => x.Role.Description).Any(x => Permissions[args.FirstOrDefault()].Contains(x)))
                         {
                             Data.User = user;
-                            Data.Employee = await ApiManager.GetAsync<Employee>("employee/" + user.Id, "");
-                            Application.Run(Screens[args.Single()]);
+                            Data.Token = token;
+                            Data.Employee = await ApiManager.GetAsync<Employee>("employee/getbyuser/" + user.Id, token);
+                            Application.Run(Screens[args.FirstOrDefault()]);
                         }
                     }
                 }
@@ -80,7 +87,9 @@ namespace Sieve
 
     public class ProgramData
     {
+        public string Token { get; set; }
         public Identity User { get; set; }
         public Employee Employee { get; set; }
+        public bool Fullscreen { get; set; }
     }
 }
