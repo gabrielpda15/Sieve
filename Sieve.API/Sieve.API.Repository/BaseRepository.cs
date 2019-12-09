@@ -17,7 +17,7 @@ namespace Sieve.API.Repository
     public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
     {
         protected SieveDbContext Context { get; }
-        public virtual DbSet<TEntity> Entities { get; }
+        public DbSet<TEntity> Entities { get; }
 
         protected BaseRepository(SieveDbContext context)
         {
@@ -44,27 +44,9 @@ namespace Sieve.API.Repository
             entity.EditionUser = userContext.Principal.Identity.Name;
         }
 
-        /*
-        public async virtual Task<IEnumerable<TEntity>> QueryAsync(Expression<Func<DbSet<TEntity>, IQueryable<TEntity>>> query,
-                                                    Expression<Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>> orderBy = null,
-                                                    CancellationToken ct = default)
+        public virtual void AfterGet(TEntity entity)
         {
-            return await Task.Run(async () =>
-            {
-                if (query != null)
-                {
-                    var result = query.Compile().Invoke(this.Entities);
-
-                    if (orderBy != null)
-                        result = orderBy.Compile().Invoke(result);
-
-                    return await result.ToArrayAsync(ct);
-                }
-
-                return await this.GetEntities().ToArrayAsync(ct);
-            }, ct);
         }
-        */
 
         public async virtual Task<IEnumerable<TEntity>> QueryAsync(Expression<Func<IQueryable<TEntity>, IQueryable<TEntity>>> query, 
                                                     Expression<Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>> orderBy = null, 
@@ -72,6 +54,8 @@ namespace Sieve.API.Repository
         {
             return await Task.Run(async () =>
             {
+                var toReturn = new List<TEntity>();
+
                 if (query != null)
                 {
                     var result = query.Compile().Invoke(this.GetEntities());
@@ -79,10 +63,23 @@ namespace Sieve.API.Repository
                     if (orderBy != null)
                         result = orderBy.Compile().Invoke(result);
 
-                    return await result.ToArrayAsync(ct);
+
+                    foreach (var item in await result.ToArrayAsync(ct))
+                    {
+                        this.AfterGet(item);
+                        toReturn.Add(item);
+                    }
+
+                    return toReturn;
                 }
 
-                return await this.GetEntities().ToArrayAsync(ct);
+                foreach (var item in await this.GetEntities().ToArrayAsync(ct))
+                {
+                    this.AfterGet(item);
+                    toReturn.Add(item);
+                }
+
+                return toReturn;
             }, ct);                      
         }
 
@@ -90,6 +87,8 @@ namespace Sieve.API.Repository
         {
             return await Task.Run(async () =>
             {
+                var toReturn = new List<TEntity>();
+
                 if (query != null)
                 {
                     var result = this.GetEntities().Where(query);
@@ -97,10 +96,22 @@ namespace Sieve.API.Repository
                     if (orderBy != null) 
                         result = orderBy.Compile().Invoke(result);
 
-                    return await result.ToArrayAsync(ct);
+                    foreach (var item in await result.ToArrayAsync(ct))
+                    {
+                        this.AfterGet(item);
+                        toReturn.Add(item);
+                    }
+
+                    return toReturn;
                 }
 
-                return await this.GetEntities().ToArrayAsync(ct);
+                foreach (var item in await this.GetEntities().ToArrayAsync(ct))
+                {
+                    this.AfterGet(item);
+                    toReturn.Add(item);
+                }
+
+                return toReturn;
             }, ct);
         }
 
@@ -108,6 +119,8 @@ namespace Sieve.API.Repository
         {
             return await Task.Run(async () =>
             {
+                var toReturn = new List<TEntity>();
+
                 if (ids.Count() > 0)
                 {
                     var result = this.GetEntities().Where(e => ids.Contains(e.Id));
@@ -115,10 +128,22 @@ namespace Sieve.API.Repository
                     if (orderBy != null)
                         result = orderBy.Compile().Invoke(result);
 
-                    return await result.ToArrayAsync(ct);
+                    foreach (var item in await result.ToArrayAsync(ct))
+                    {
+                        this.AfterGet(item);
+                        toReturn.Add(item);
+                    }
+
+                    return toReturn;
                 }
 
-                return await this.GetEntities().ToArrayAsync(ct);
+                foreach (var item in await this.GetEntities().ToArrayAsync(ct))
+                {
+                    this.AfterGet(item);
+                    toReturn.Add(item);
+                }
+
+                return toReturn;
             }, ct);
         }
 
@@ -127,10 +152,14 @@ namespace Sieve.API.Repository
             return await Task.Run(async () =>
             {
                 if (query != null)
-                {
-                    var result = query.Compile().Invoke(this.GetEntities());
-
-                    try { return await result.SingleAsync(ct); } catch { }
+                {                    
+                    try 
+                    {
+                        var result = query.Compile().Invoke(this.GetEntities());
+                        var item = await result.SingleAsync(ct);
+                        this.AfterGet(item);
+                        return item; 
+                    } catch { }
                 }
 
                 return null;
@@ -143,7 +172,12 @@ namespace Sieve.API.Repository
             {
                 if (query != null)
                 {
-                    try { return query.Compile().Invoke(this.GetEntities()); } catch { }
+                    try 
+                    { 
+                        var item = query.Compile().Invoke(this.GetEntities());
+                        this.AfterGet(item);
+                        return item;
+                    } catch { }
                 }
 
                 return null;
@@ -156,9 +190,14 @@ namespace Sieve.API.Repository
             {
                 if (query != null)
                 {
-                    var result = this.GetEntities().Where(query);
 
-                    try { return await result.SingleAsync(ct); } catch { }
+                    try
+                    {
+                        var result = this.GetEntities().Where(query);
+                        var item = await result.SingleAsync(ct);
+                        this.AfterGet(item);
+                        return item;
+                    } catch { }
                 }
 
                 return null;
@@ -169,8 +208,8 @@ namespace Sieve.API.Repository
         {
             return await Task.Run(async () =>
             {
-                var result = await this.Entities.FindAsync(new[] { id }, ct);
-
+                var result = await this.GetEntities().SingleOrDefaultAsync(x => x.Id == id);
+                this.AfterGet(result);
                 return result;
             }, ct);
         }

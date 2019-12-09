@@ -18,7 +18,7 @@ namespace Sieve.API.Security.Authentication
         private readonly string issuer;
         private readonly bool? createdFromIdentity = null;
 
-        public RawToken Token { get; }
+        public RawToken Token { get; private set; }
 
         public class RawToken
         {
@@ -83,14 +83,16 @@ namespace Sieve.API.Security.Authentication
             if (!createdFromIdentity.GetValueOrDefault(false))
                 throw new NullReferenceException("Não foi criado um token com um identidade valida");
 
-            var json = JsonConvert.SerializeObject(new RawToken
+            this.Token = new RawToken
             {
                 Username = username,
                 Audience = audience,
                 Issuer = issuer,
                 CreatedAt = DateTime.Now,
                 ValidTo = DateTime.Now + TimeSpan.FromSeconds(seconds)
-            });            
+            };
+
+            var json = JsonConvert.SerializeObject(this.Token);            
 
             return cryptor.Encrypt(json, key);
         }

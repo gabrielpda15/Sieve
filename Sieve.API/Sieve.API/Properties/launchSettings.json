@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://localhost/Sieve/api",
+      "applicationUrl": "http://localhost/SieveAPI",
       "sslPort": 0
     },
     "iisExpress": {

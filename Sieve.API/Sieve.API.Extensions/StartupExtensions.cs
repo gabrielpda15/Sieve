@@ -1,8 +1,11 @@
 ﻿
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyModel;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using Sieve.API.Extensions.Log;
@@ -10,14 +13,68 @@ using Sieve.API.Repository;
 using Sieve.API.Security.Authentication;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Loader;
 
 namespace Sieve.API.Extensions
 {
     public static class StartupExtensions
     {
         public static readonly Version SERVER_VERSION = new Version(8, 0, 4);
+
+        public static IHostBuilder LoadAllDllsIBinFolder(this IHostBuilder builder)
+        {
+            LoadAllDllsIBinFolder();
+            return builder;
+        }
+
+        public static IWebHostBuilder LoadAllDllsIBinFolder(this IWebHostBuilder builder)
+        {
+            LoadAllDllsIBinFolder();
+            return builder;
+        }
+
+        public static void LoadAllDllsIBinFolder()
+        {
+            List<string> stringList = new List<string>();
+            try
+            {
+                stringList = ((IEnumerable<CompilationLibrary>)DependencyContext.Default.CompileLibraries).SelectMany(x => GetReferencePaths(x)).Distinct().Where(x => x.Contains(Directory.GetCurrentDirectory())).ToList();
+            }
+            catch (Exception) { }
+
+            foreach (string assemblyPath in stringList)
+            {
+                try
+                {
+                    AssemblyLoadContext.Default.LoadFromAssemblyPath(assemblyPath);
+                }
+                catch (FileLoadException)
+                {
+                }
+                catch (BadImageFormatException)
+                {
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+
+        private static IEnumerable<string> GetReferencePaths(CompilationLibrary x)
+        {
+            try
+            {
+                return x.ResolveReferencePaths();
+            }
+            catch
+            {
+                return new List<string>();
+            }
+        }
 
         public static T GetConfig<T>(this IConfiguration config)
         {

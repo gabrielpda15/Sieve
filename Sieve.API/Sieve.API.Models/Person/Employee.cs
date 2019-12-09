@@ -67,8 +67,6 @@ namespace Sieve.API.Models.Person
         [Display(Name = "Cargo")]
         public string JobRole { get; set; }
 
-        [Required]
-        [Display(Name = "Identidade")]
         public virtual Identity Identity { get; set; }
     }
 }
