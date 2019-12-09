@@ -29,6 +29,7 @@ namespace Sieve.API.Extensions.Log
             if (!File.Exists(LogFile))
             {
                 await File.WriteAllTextAsync(LogFile, "");
+                File.SetAttributes(LogFile, FileAttributes.Normal);
             }
             await Task.Delay(100);
         }
