@@ -6,6 +6,7 @@ using System.Text;
 
 namespace Sieve.API.Repository.Repos.Sales
 {
+    [Repository]
     public class OrderRepository : BaseRepository<Order>
     {
         public OrderRepository(SieveDbContext context) : base(context)

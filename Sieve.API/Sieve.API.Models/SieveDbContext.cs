@@ -50,12 +50,13 @@ namespace Sieve.API.Models
             builder.Entity<Security.Identity>().HasIndex(x => x.Username).IsUnique();
             builder.Entity<Security.Identity>().HasIndex(x => x.Email).IsUnique();
             builder.Entity<Security.Role>().HasIndex(x => x.Description).IsUnique();
+            builder.Entity<Person.Client>().HasOne(x => x.Card).WithOne()
+                .HasForeignKey<Person.Client>(x => x.CardId).IsRequired(false);
+            builder.Entity<Person.Client>().HasIndex(x => x.CPF).IsUnique();
+            builder.Entity<Person.Client>().HasIndex(x => x.Email).IsUnique();
             builder.Entity<Sales.Card>().HasIndex(x => x.CardNumber).IsUnique();
             builder.Entity<Sales.Discount>().HasOne(x => x.Product).WithMany();
             builder.Entity<Sales.Order>().HasOne(x => x.Client).WithMany();
-            builder.Entity<Person.Client>().HasOne(x => x.Card).WithOne().HasForeignKey<Person.Client>(x => x.CardId);
-            builder.Entity<Person.Client>().HasIndex(x => x.CPF).IsUnique();
-            builder.Entity<Person.Client>().HasIndex(x => x.Email).IsUnique();
             builder.Entity<Person.Employee>().HasIndex(x => x.CTPS).IsUnique();
             builder.Entity<Person.Employee>().HasIndex(x => x.CPF).IsUnique();
             builder.Entity<Person.Employee>().HasIndex(x => x.Email).IsUnique();

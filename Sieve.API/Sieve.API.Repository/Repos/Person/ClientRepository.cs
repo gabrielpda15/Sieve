@@ -8,6 +8,7 @@ using System.Text;
 
 namespace Sieve.API.Repository.Repos.Person
 {
+    [Repository]
     public class ClientRepository : BaseRepository<Client>
     {
         public ClientRepository(SieveDbContext context) : base(context)

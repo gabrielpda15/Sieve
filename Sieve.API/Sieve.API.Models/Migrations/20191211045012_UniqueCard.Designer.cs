@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sieve.API.Models;
 
 namespace Sieve.API.Models.Migrations
 {
     [DbContext(typeof(SieveDbContext))]
-    partial class SieveDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191211045012_UniqueCard")]
+    partial class UniqueCard
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -149,7 +151,7 @@ namespace Sieve.API.Models.Migrations
                         .HasColumnType("varchar(14) CHARACTER SET utf8mb4")
                         .HasMaxLength(14);
 
-                    b.Property<int?>("CardId")
+                    b.Property<int>("CardId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("CreationDate")

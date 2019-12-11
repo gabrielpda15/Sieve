@@ -6,6 +6,7 @@ using System.Text;
 
 namespace Sieve.API.Repository.Repos.Location
 {
+    [Repository]
     public class RegionRepository : BaseRepository<Region>
     {
         public RegionRepository(SieveDbContext context) : base(context)

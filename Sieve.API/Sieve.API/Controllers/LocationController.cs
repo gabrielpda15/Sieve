@@ -16,7 +16,8 @@ using Sieve.API.Security.Authentication;
 
 namespace Sieve.API.Controllers
 {
-    [Route("api/[controller]")]
+
+    [Route("[controller]")]
     [ApiController]
     public class LocationController : Controller
     {
@@ -26,12 +27,11 @@ namespace Sieve.API.Controllers
         private IUserContext UserContext { get; }
         private IUnitOfWork UnitOfWork { get; }
 
-        public LocationController(IUnitOfWork unitOfWork, IUserContext userContext, IRepository<Country> countryRepo,
-                                  IRepository<Region> regionRepo, IRepository<City> cityRepo) : base()
+        public LocationController(IUnitOfWork unitOfWork, IUserContext userContext) : base()
         {
-            CountryRepository = countryRepo;
-            RegionRepository = regionRepo;
-            CityRepository = cityRepo;
+            CountryRepository = unitOfWork.GetRepository<IRepository<Country>, Country>();
+            RegionRepository = unitOfWork.GetRepository<IRepository<Region>, Region>();
+            CityRepository = unitOfWork.GetRepository<IRepository<City>, City>();
 
             UserContext = userContext;
 
@@ -212,6 +212,20 @@ namespace Sieve.API.Controllers
         [NonAction]
         private async Task CommitStatus<TEntity>(SetValuesObject obj, CancellationToken ct) where TEntity : class, IEntity
         {
+#if true
+            try
+            {
+                await UnitOfWork.CommitAsync(ct);
+
+                obj.UnitOfWork.Commited.Add(new { Repository = typeof(TEntity).Name, Ok = true });
+            }
+            catch (Exception ex)
+            {
+                obj.UnitOfWork.Commited.Add(new { Repository = typeof(TEntity).Name, Ok = false });
+                obj.UnitOfWork.Error = ex;
+            }
+#else
+
             await UnitOfWork.ExecuteAsync(async (context, ct) =>
             {
                 await context.Database.SetIdentityInsertAsync<TEntity>(true, ct);
@@ -230,6 +244,7 @@ namespace Sieve.API.Controllers
 
                 await context.Database.SetIdentityInsertAsync<TEntity>(false, ct);
             }, ct);
+#endif
         }
     }
 }
