@@ -80,11 +80,23 @@
     <Compile Include="Janelas\Adm.Designer.cs">
       <DependentUpon>Adm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Janelas\Endereco.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Janelas\Endereco.Designer.cs">
+      <DependentUpon>Endereco.cs</DependentUpon>
+    </Compile>
     <Compile Include="Janelas\Estoque.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Janelas\Estoque.Designer.cs">
       <DependentUpon>Estoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Janelas\Formularios\CartaoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Janelas\Formularios\CartaoForm.Designer.cs">
+      <DependentUpon>CartaoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Janelas\Formularios\ClienteForm.cs">
       <SubType>Form</SubType>
@@ -138,6 +150,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Janelas\Adm.resx">
       <DependentUpon>Adm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Janelas\Endereco.resx">
+      <DependentUpon>Endereco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Janelas\Formularios\CartaoForm.resx">
+      <DependentUpon>CartaoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Janelas\Formularios\ClienteForm.resx">
       <DependentUpon>ClienteForm.cs</DependentUpon>

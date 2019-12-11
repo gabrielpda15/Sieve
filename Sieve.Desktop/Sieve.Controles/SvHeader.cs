@@ -47,12 +47,12 @@ namespace Sieve.Controles
             base.Dispose(disposing);
         }
 
-        protected virtual void btnMinimize_Click(object sender, EventArgs e)
+        protected virtual void BtnMinimize_Click(object sender, EventArgs e)
         {
             ((Form)this.Parent).WindowState = FormWindowState.Minimized;
         }
 
-        protected virtual void btnClose_Click(object sender, EventArgs e)
+        protected virtual void BtnClose_Click(object sender, EventArgs e)
         {
             ((Form)this.Parent).Close();
         }
@@ -84,7 +84,7 @@ namespace Sieve.Controles
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "X";
             this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new EventHandler(this.BtnClose_Click);
             // 
             // btnMinimize
             // 
@@ -102,7 +102,7 @@ namespace Sieve.Controles
             this.btnMinimize.TabIndex = 3;
             this.btnMinimize.Text = "_";
             this.btnMinimize.UseVisualStyleBackColor = false;
-            this.btnMinimize.Click += new EventHandler(this.btnMinimize_Click);
+            this.btnMinimize.Click += new EventHandler(this.BtnMinimize_Click);
             // 
             // logo
             // 

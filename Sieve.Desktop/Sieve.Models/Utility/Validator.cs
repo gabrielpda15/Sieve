@@ -47,11 +47,10 @@ namespace Sieve.Models.Utility
 
         private PropertyInfo GetPropertyFromExpression<T, TResult>(Expression<Func<T, TResult>> propertyLambda)
         {
-            MemberExpression Exp = null;
+            MemberExpression Exp;
 
-            if (propertyLambda.Body is UnaryExpression)
+            if (propertyLambda.Body is UnaryExpression UnExp)
             {
-                var UnExp = (UnaryExpression)propertyLambda.Body;
                 if (UnExp.Operand is MemberExpression)
                 {
                     Exp = (MemberExpression)UnExp.Operand;
@@ -84,7 +83,7 @@ namespace Sieve.Models.Utility
         private static readonly Regex CPF_REGEX = new Regex(@"[0-9]{3}[\.]{1}[0-9]{3}[\.]{1}[0-9]{3}[-]{1}[0-9]{2}");
         private static readonly Regex EMAIL_REGEX = new Regex(@"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
 
-        private PropertyInfo property;
+        private readonly PropertyInfo property;
         public PropertyValidator(PropertyInfo property)
         {
             this.property = property;

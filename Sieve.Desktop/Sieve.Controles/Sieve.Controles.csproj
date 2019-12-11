@@ -43,7 +43,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GraphicsExtension.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="StringExtension.cs" />
+    <Compile Include="SvForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SvHeader.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -58,6 +66,18 @@
       <SubType>Component</SubType>
     </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sieve.Models\Sieve.Models.csproj">
+      <Project>{509819BA-68F6-4783-BBF7-E286EB92B6BD}</Project>
+      <Name>Sieve.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

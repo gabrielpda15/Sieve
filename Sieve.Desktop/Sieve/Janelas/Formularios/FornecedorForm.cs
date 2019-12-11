@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Sieve.Controles;
+using Sieve.Models.Person;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +12,16 @@ using System.Windows.Forms;
 
 namespace Sieve.Janelas.Formularios
 {
-    public partial class FornecedorForm : Form
+    public partial class FornecedorForm : SvForm<Supplier>
     {
         public FornecedorForm()
         {
             InitializeComponent();
-        }       
+        }
+
+        public FornecedorForm(string submitText, string title, Supplier entity) : base(submitText, title, entity)
+        {
+            InitializeComponent();
+        }
     }
 }

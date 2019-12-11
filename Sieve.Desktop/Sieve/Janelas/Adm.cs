@@ -20,18 +20,20 @@ namespace Sieve.Janelas
     public partial class Adm : Form
     {
         private bool gridLoaded = false;
-        private IDictionary<string, Type> forms;
+        private readonly IDictionary<string, Type> forms;
         private string currentType = "";
 
         public Adm()
         {
             InitializeComponent();
 
-            forms = new Dictionary<string, Type>();
-            forms.Add("client", typeof(ClienteForm));
-            forms.Add("supplier", typeof(FornecedorForm));
-            forms.Add("employee", typeof(FuncionarioForm));
-            forms.Add("product", typeof(ProdutoForm));
+            forms = new Dictionary<string, Type>
+            {
+                { "client", typeof(ClienteForm) },
+                { "supplier", typeof(FornecedorForm) },
+                { "employee", typeof(FuncionarioForm) },
+                { "product", typeof(ProdutoForm) }
+            };
 
             this.btnLogout.Click += BtnLogout_Click;
             this.clientMenuItem.Click += MenuItem_Click;
@@ -123,25 +125,25 @@ namespace Sieve.Janelas
                     form.ShowDialog();
                     break;
                 case "card":
-                    var cardData = GetDataAsync<Card>(sender).GetAwaiter().GetResult();
+                    
                     break;
                 case "order":
-                    var orderData = GetDataAsync<Order>(sender).GetAwaiter().GetResult();
+                    
                     break;
                 case "supplier":
-                    var supplierData = GetDataAsync<Supplier>(sender).GetAwaiter().GetResult();
+                    
                     break;
                 case "employee":
-                    var employeeData = GetDataAsync<Employee>(sender).GetAwaiter().GetResult();
+                    
                     break;
                 case "identity":
-                    var identityData = GetDataAsync<Identity>(sender).GetAwaiter().GetResult();
+                    
                     break;
                 case "role":
-                    var roleData = GetDataAsync<Role>(sender).GetAwaiter().GetResult();
+                    
                     break;
                 case "product":
-                    var productData = GetDataAsync<Product>(sender).GetAwaiter().GetResult();
+                    
                     break;
                 default:
                     break;

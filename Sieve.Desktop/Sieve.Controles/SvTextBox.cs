@@ -80,6 +80,13 @@ namespace Sieve.Controles
             }
         }
 
+        public void SetValue(string value)
+        {
+            SvTextBox_GotFocus(this, EventArgs.Empty);
+            this.Text = value;
+            SvTextBox_LostFocus(this, EventArgs.Empty);
+        }
+
         private void SvTextBox_MaskChange(object sender, EventArgs e)
         {
             switch (Mask)

@@ -76,7 +76,8 @@ namespace Sieve
                             Data.User = user;
                             Data.Token = token;
                             Data.Employee = ApiManager.GetAsync<Employee>("employee/getbyuser/" + user.Id, token).GetAwaiter().GetResult();
-                            
+
+                            Application.Run(new ClienteForm("Ok", "Ver Cliente"));
                             Application.Run(Screens[args.FirstOrDefault()]);
                         }
                     }
