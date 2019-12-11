@@ -16,13 +16,14 @@ namespace Sieve.Janelas.Formularios
     public partial class ClienteForm : Form
     {
         private EntityValidator<Client> Validator { get; }
-        public ClienteForm()
+        public ClienteForm(string submitText, Client client = null)
         {
             InitializeComponent();
             this.Validator = new EntityValidator<Client>();
             this.btnEnviar.Click += BtnEnviar_Click;
+            this.btnEnviar.Text = submitText;
 
-            var temp = Program.ApiManager.GetAsync<Country>("country").GetAwaiter().GetResult();
+            var temp = Program.ApiManager.GetAsync<Country>("Location/Countries", Program.Data.Token).GetAwaiter().GetResult();
         }
 
         private void BtnEnviar_Click(object sender, EventArgs e)

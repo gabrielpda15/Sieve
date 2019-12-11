@@ -116,6 +116,7 @@ namespace Sieve.Controles
             this.logo.MouseDown += Header_MouseDown;
             this.logo.MouseUp += Header_MouseUp;
             this.logo.MouseMove += Header_MouseMove;
+            this.logo.MouseDoubleClick += Header_MouseDoubleClick;
             // 
             // title
             // 
@@ -131,6 +132,7 @@ namespace Sieve.Controles
             this.title.MouseDown += Header_MouseDown;
             this.title.MouseUp += Header_MouseUp;
             this.title.MouseMove += Header_MouseMove;
+            this.title.MouseDoubleClick += Header_MouseDoubleClick;
 
             // 
             // header
@@ -149,9 +151,21 @@ namespace Sieve.Controles
             this.MouseDown += Header_MouseDown;
             this.MouseUp += Header_MouseUp;
             this.MouseMove += Header_MouseMove;
+            this.MouseDoubleClick += Header_MouseDoubleClick;
 
             ((ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);
+        }
+
+        private void Header_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (((Form)this.Parent).WindowState == FormWindowState.Normal)
+                    ((Form)this.Parent).WindowState = FormWindowState.Maximized;
+                else
+                    ((Form)this.Parent).WindowState = FormWindowState.Normal;
+            }
         }
 
         protected bool isMouseDown;

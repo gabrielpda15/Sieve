@@ -36,10 +36,9 @@ namespace Sieve
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
         [STAThread]
-        static void Main(string[] args) => MainAsync(args).GetAwaiter().GetResult();
-
-        static async Task MainAsync(string[] args)
+        static void Main(string[] args)
         {
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -47,7 +46,7 @@ namespace Sieve
 
 
 
-            if (!await ApiManager.CheckHealth("health").ConfigureAwait(false))
+            if (!ApiManager.CheckHealth("health").GetAwaiter().GetResult())
             {
                 MessageBox.Show("Servidor Offline", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -76,12 +75,14 @@ namespace Sieve
                         {
                             Data.User = user;
                             Data.Token = token;
-                            Data.Employee = await ApiManager.GetAsync<Employee>("employee/getbyuser/" + user.Id, token);
+                            Data.Employee = ApiManager.GetAsync<Employee>("employee/getbyuser/" + user.Id, token).GetAwaiter().GetResult();
+                            
                             Application.Run(Screens[args.FirstOrDefault()]);
                         }
                     }
                 }
             }
+
         }
     }
 
