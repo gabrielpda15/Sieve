@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace Sieve.API.Controllers.Storage
 {
-    [SieveAuth]
     [ApiController]
     [Route("[controller]")]
-    public class CategorySectionController : CrudController<CategorySectionRepository, CategorySection>
+    [SieveAuth]
+    public class SectionController : CrudController<SectionRepository, Section>
     {
-        public CategorySectionController(IUnitOfWork unitOfWork, IUserContext userContext) : base(unitOfWork, userContext)
+        public SectionController(IUnitOfWork unitOfWork, IUserContext userContext) : base(unitOfWork, userContext)
         {
         }
     }

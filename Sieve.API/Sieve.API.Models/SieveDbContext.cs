@@ -9,6 +9,7 @@ namespace Sieve.API.Models
     {
         public SieveDbContext(DbContextOptions<SieveDbContext> options) : base(options) { }
 
+        public DbSet<Storage.CategorySection> CategoriesSections { get; set; }
         public DbSet<Storage.Category> Categories { get; set; }
         public DbSet<Storage.Section> Sections { get; set; }
         public DbSet<Storage.Product> Products { get; set; }
